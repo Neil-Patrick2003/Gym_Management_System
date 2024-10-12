@@ -2,9 +2,21 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+//home
 Route::get('/', function () {
     return view('welcome');
+});
+//about
+Route::get('/about', function () {
+    return view('about');
+});
+//galleryy
+Route::get('/gallery', function () {
+    return view('gallery');
+});
+//contact
+Route::get('/contact', function () {
+    return view('contact');
 });
 
 Route::get('/dashboard', function () {
@@ -18,3 +30,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+
