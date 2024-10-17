@@ -11,5 +11,7 @@ class UserProgramSchedules extends Model
 
     protected $fillable = ['name', 'user_program_id'];
 
-    
+
 }
+
+

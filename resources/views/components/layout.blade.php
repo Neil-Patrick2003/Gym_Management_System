@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Fitnes Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="{{ asset('images/workout.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/workout.png') }}" type="image/png" sizes="114x114">
     <style>
         /* Custom background image for main content */
         .main-bg {
