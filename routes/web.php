@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ProgramController;
 
 //guesst-viwers
 Route::get('/', function () {
@@ -31,8 +32,13 @@ require __DIR__ . '/auth.php';
 //admin-side
 Route::get('/dashboard', [AdminController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('dashboard');
-
+//member-index
 Route::get('/admin/members', [MemberController::class, 'index'] );
-
+//update role
 Route::patch('/admin/members/{member}', [MemberController::class, 'edit'] );
 
+//programs
+//index
+Route::get('/admin/programs', [ProgramController::class, 'index']);
+//create
+Route::get('/admin/programs/create', [ProgramController::class, 'create']);
