@@ -5,6 +5,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\Admin\ExercisesController;
 
 //guesst-viwers
 Route::get('/', function () {
@@ -42,3 +43,14 @@ Route::patch('/admin/members/{member}', [MemberController::class, 'edit'] );
 Route::get('/admin/programs', [ProgramController::class, 'index']);
 //create
 Route::get('/admin/programs/create', [ProgramController::class, 'create']);
+//store
+Route::post('/admin/programs', [ProgramController::class, 'store']);
+//show
+Route::get('/admin/programs/program{program}', [ProgramController::class, 'show']);
+
+
+//exercise
+Route::get('/admin/exercises', [ExercisesController::class, 'index']);
+Route::get('/admin/exercises/create', [ExercisesController::class, 'create']);
+
+

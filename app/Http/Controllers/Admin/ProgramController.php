@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Programs;
+use Illuminate\Http\Request;
 
 class ProgramController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        return view('admin/program/index');
+        $programs = Programs::with('user')->paginate(15);
+
+        return view('admin/programs/index', [
+            'programs' => $programs
+        ]);
     }
 
     /**
@@ -28,15 +31,44 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'photo_link' => 'required|file|mimes:jpg,png,svg,pdf|max:2048',
+        ]);
+
+        $input = $request->all();
+
+        if ($request->hasFile('photo_link')) {
+            // Specify the destination path without 'public/' prefix
+            $destination_path = 'images/programs';
+
+            // Get the uploaded file
+            $photo_link = $request->file('photo_link');
+
+            // Use the correct variable name here for getting the original name
+            $image_name = $photo_link->getClientOriginalName();
+
+            // Store the file using the correct input name
+            $path = $photo_link->storeAs($destination_path, $image_name); // Fixed here: use $photo_link instead of $request->file('image')
+
+            // Save the file name in the input array
+            $input['photo_link'] = $path;
+        }
+
+        Programs::create($input);
+
+        return redirect('admin/programs');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( Programs $program)
     {
-        //
+
+        return view('admin.programs.show', [
+            'program' => $program
+        ]);
     }
 
     /**

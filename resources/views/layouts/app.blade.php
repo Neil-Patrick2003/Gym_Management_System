@@ -79,7 +79,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/programs') }}" :active="request()->is('/admin/programs')">
+                                    <x-admin-nav-link href="{{ url('/admin/programs') }}" :active="request()->is('admin/programs')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
@@ -92,7 +92,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/payments') }}" :active="request()->is('/admin/payments')">
+                                    <x-admin-nav-link href="{{ url('/admin/payments') }}" :active="request()->is('admin/payments')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
@@ -105,7 +105,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/tutorials') }}" :active="request()->is('/admin/tutorials')">
+                                    <x-admin-nav-link href="{{ url('/admin/tutorials') }}" :active="request()->is('admin/tutorials')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
@@ -118,7 +118,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/feedback') }}" :active="request()->is('/admin/feedback')">
+                                    <x-admin-nav-link href="{{ url('/admin/feedback') }}" :active="request()->is('admin/feedback')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
@@ -131,7 +131,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/report') }}" :active="request()->is('/admin/report')">
+                                    <x-admin-nav-link href="{{ url('/admin/report') }}" :active="request()->is('admin/report')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
@@ -191,7 +191,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/programs') }}" :active="request()->is('/admin/programs')">
+                                    <x-admin-nav-link href="{{ url('/admin/programs') }}" :active="request()->is('admin/programs')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
@@ -204,7 +204,20 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/payment') }}" :active="request()->is('/admin/payment')">
+                                    <x-admin-nav-link href="{{ url('/admin/exercises') }}" :active="request()->is('admin/exercises')">
+                                        <x-slot:icon>
+                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
+                                                data-slot="icon">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                                            </svg>
+                                        </x-slot:icon>
+                                        Exercises
+                                    </x-admin-nav-link>
+                                </li>
+                                <li>
+                                    <x-admin-nav-link href="{{ url('/admin/payment') }}" :active="request()->is('admin/payment')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
@@ -217,7 +230,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/tutorials') }}" :active="request()->is('/admin/tutorials')">
+                                    <x-admin-nav-link href="{{ url('/admin/tutorials') }}" :active="request()->is('admin/tutorials')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
@@ -230,7 +243,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/feedbacks') }}" :active="request()->is('/admin/feedbacks')">
+                                    <x-admin-nav-link href="{{ url('/admin/feedbacks') }}" :active="request()->is('admin/feedbacks')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
@@ -243,7 +256,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/report') }}" :active="request()->is('/admin/report')">
+                                    <x-admin-nav-link href="{{ url('/admin/report') }}" :active="request()->is('admin/report')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
@@ -302,7 +315,7 @@
             </div>
 
             <main class="py-10">
-                <div class="px-4 sm:px-6 lg:px-8">
+                <div class="px-2 sm:px-4 lg:px-4">
                     {{ $slot }}
                 </div>
             </main>
