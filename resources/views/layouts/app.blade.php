@@ -21,7 +21,7 @@
     </style>
 </head>
 
-<body class="h-full">
+<body class="h-full bg-gray-100">
 
     <div>
         <!-- Button to Open the Menu -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Exercises;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -12,7 +13,11 @@ class ExercisesController extends Controller
      */
     public function index()
     {
-        return view('admin.exercises.index');
+        $exercises = Exercises::paginate(10);
+
+        return view('admin.exercises.index', [
+            'exercises' => $exercises,
+        ]);
     }
 
     /**
@@ -28,7 +33,39 @@ class ExercisesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:500',
+            'no_of_sets' => 'required|integer',
+            'no_of_reps' => 'required|integer',
+            'tutorial_link' => 'required|file|mimes:mp4,mov,avi|max:2048',
+            'photo_link' => 'required|file|mimes:jpg,png,svg,pdf|max:2048',
+        ]);
+
+        $input = $request->all();
+
+        if ($request->hasFile('photo_link')) {
+            $destination_path = 'images/exercies';
+            $photo_link = $request->file('photo_link');
+            $image_name = $photo_link->getClientOriginalName();
+            $path = $photo_link->storeAs($destination_path, $image_name);
+            $input['photo_link'] = $path;
+        }
+
+        if ($request->hasFile('tutorial_link')) {
+            $destination_path = 'videos/tutorials';
+            $tutorial_link = $request->file('tutorial_link');
+            $video_name = $tutorial_link->getClientOriginalName();
+            $path = $tutorial_link->storeAs($destination_path, $video_name);
+            $input['tutorial_link'] = $path;
+        }
+
+        dump($request->all());
+
+        Exercises::create($input);
+
+        return redirect('admin/exercises');
+
     }
 
     /**

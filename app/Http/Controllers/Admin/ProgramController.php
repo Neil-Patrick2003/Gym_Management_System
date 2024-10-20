@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Programs;
+use App\Models\ProgramSchedule;
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
@@ -11,6 +12,7 @@ class ProgramController extends Controller
 
     public function index()
     {
+
         $programs = Programs::with('user')->paginate(15);
 
         return view('admin/programs/index', [
@@ -66,8 +68,10 @@ class ProgramController extends Controller
     public function show( Programs $program)
     {
 
+        $program_schedules = ProgramSchedule::all();
         return view('admin.programs.show', [
-            'program' => $program
+            'program' => $program,
+            'program_schedules' => $program_schedules
         ]);
     }
 

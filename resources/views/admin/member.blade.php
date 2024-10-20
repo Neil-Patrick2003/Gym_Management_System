@@ -5,7 +5,7 @@
 
 
     @include('components.success-message')
-    <div class="px-4 py-4 sm:px-6 lg:px-8 border border-gray-400 rounded">
+    <div class="px-4 py-4 sm:px-6 lg:px-8 border bg-white shadow rounded">
         <div class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
             </div>

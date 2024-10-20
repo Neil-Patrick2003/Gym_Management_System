@@ -39,9 +39,9 @@
     <div class="overflow-hidden rounded-lg bg-white shadow mb-6">
         <div class="px-4 py-5 sm:p-6">
 
-            <form action="/admin/programs" method="POST" enctype="multipart/form-data"
+            <form action="/admin/programs/program/{{$program->id}}" method="POST" enctype="multipart/form-data"
                 class="space-y-6 max-w-lg mx-auto p-4">
-                @csrf <!-- CSRF token for security -->
+                @csrf
 
                 <input type="hidden" name="created_by" value="{{ Auth::user()->name }}">
                 <div class="flex flex-col">
@@ -51,7 +51,7 @@
                         placeholder="Enter program name" />
                 </div>
 
-                <!-- File Upload -->
+
                 <div class="flex flex-col">
                     <label for="photo_link" class="mb-1 text-sm font-medium text-gray-500">Upload File</label>
                     <input id="photo_link" name="photo_link" type="file"

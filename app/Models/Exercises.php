@@ -9,7 +9,7 @@ class Exercises extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'no.of_sets', 'no.of_sets', 'description', 'tutorial_link', 'photo_link'];
+    protected $fillable = ['name', 'no_of_sets', 'no_of_reps', 'description', 'tutorial_link', 'photo_link'];
 
     public function daily_exercise(){
         return $this->belongsTo(DailyExercises::class);
