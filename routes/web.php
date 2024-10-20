@@ -57,8 +57,7 @@ Route::post('/admin/exercises/create', [ExercisesController::class, 'store']);
 //ProgramSchedule
 Route::post('/admin/programs/program/{program}', [ProgramScheduleController::class, 'store']);
 
-//DailyExercises
-Route::post('/admin/programs/program{program}/create', [DailyExerciseController::class, 'show']);
+
 
 
 

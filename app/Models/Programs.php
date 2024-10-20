@@ -25,4 +25,8 @@ class Programs extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function program_schedule(){
+        return $this->hasMany(ProgramSchedule::class, 'program_id');
+    }
+
 }

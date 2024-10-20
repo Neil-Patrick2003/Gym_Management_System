@@ -12,7 +12,7 @@ class ProgramSchedule extends Model
     protected $fillable = ['name', 'program_id'];
 
     public function program(){
-        return $this->belongsTo(Programs::class);
+        return $this->belongsTo(Programs::class, 'program_id');
     }
 
     public function daily_exercise(){
