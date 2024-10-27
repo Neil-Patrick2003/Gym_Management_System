@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\DailyExerciseController;
 use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\ExercisesController;
 use App\Http\Controllers\Admin\ProgramScheduleController;
@@ -47,6 +48,7 @@ Route::get('/admin/programs/create', [ProgramController::class, 'create']);
 //store
 Route::post('/admin/programs', [ProgramController::class, 'store']);
 //show
+
 Route::get('/admin/programs/program{program}', [ProgramController::class, 'show']);
 
 //exercise
@@ -56,6 +58,9 @@ Route::post('/admin/exercises/create', [ExercisesController::class, 'store']);
 
 //ProgramSchedule
 Route::post('/admin/programs/program/{program}', [ProgramScheduleController::class, 'store']);
+Route::post('/admin/programs/program/{program}/add_exercise', [DailyExerciseController::class, 'store']);
+
+
 
 
 

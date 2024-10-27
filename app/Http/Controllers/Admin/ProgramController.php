@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\DailyExercises;
+use App\Models\Exercises;
 use App\Models\Programs;
 use Illuminate\Http\Request;
 
@@ -50,7 +52,7 @@ class ProgramController extends Controller
             $image_name = $photo_link->getClientOriginalName();
 
             // Store the file using the correct input name
-            $path = $photo_link->storeAs($destination_path, $image_name); // Fixed here: use $photo_link instead of $request->file('image')
+            $path = $photo_link->storeAs($destination_path, $image_name);
 
             // Save the file name in the input array
             $input['photo_link'] = $path;
@@ -67,14 +69,23 @@ class ProgramController extends Controller
     public function show($id)
     {
 
-        $program = Programs::with('program_schedule')->findOrFail($id);
-        $program_schedules = $program->program_schedule;
+        $program = Programs::with(['program_schedule'])->findOrFail($id);
+        dd($program->program_schedule->first()->exercises()->toSql());
+        dd($program->toArray());
 
+        $programs = Programs::with('program_schedule')->findOrFail($id);
+        $program_schedules = $program->program_schedule;
+        $exercises = Exercises::all();
+
+        // $daily_exercises = DailyExercises::with(   ['program_schedule' => ['exercise']])->findOrFail($id);
+        // dd($daily_exercises);
 
 
         return view('admin.programs.show', [
             'program' => $program,
             'program_schedules' => $program_schedules,
+            'exercises' => $exercises,
+            // 'daily_exercises' => $daily_exercises,
         ]);
     }
 

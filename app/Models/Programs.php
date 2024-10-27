@@ -26,7 +26,7 @@ class Programs extends Model
     }
 
     public function program_schedule(){
-        return $this->hasMany(ProgramSchedule::class, 'program_id');
+        return $this->hasMany(ProgramSchedule::class, 'program_schedule_id', 'program_id');
     }
 
 }

@@ -33,14 +33,18 @@ class ExercisesController extends Controller
      */
     public function store(Request $request)
     {
+
+        dump(request()->all());
+
         $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'required|string|max:500',
+            'description' => 'required|string',
             'no_of_sets' => 'required|integer',
             'no_of_reps' => 'required|integer',
-            'tutorial_link' => 'required|file|mimes:mp4,mov,avi|max:2048',
-            'photo_link' => 'required|file|mimes:jpg,png,svg,pdf|max:2048',
+            'tutorial_link' => 'required|file|mimes:mp4,mov,avi',
+            'photo_link' => 'required|file|mimes:jpg,png,svg,pdf',
         ]);
+
 
         $input = $request->all();
 
@@ -59,8 +63,6 @@ class ExercisesController extends Controller
             $path = $tutorial_link->storeAs($destination_path, $video_name);
             $input['tutorial_link'] = $path;
         }
-
-        dump($request->all());
 
         Exercises::create($input);
 

@@ -9,7 +9,7 @@ class DailyExercises extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['daily_exercise_id', 'exercise_id'];
+    protected $fillable = ['program_schedule_id','exercise_id'];
 
     public function program_schedule(){
         return $this->hasMany(Exercises::class);
