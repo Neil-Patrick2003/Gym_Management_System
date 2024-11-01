@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DailyExerciseController;
 use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\ExercisesController;
 use App\Http\Controllers\Admin\ProgramScheduleController;
+use App\Http\Controllers\TutorialController;
 
 //guesst-viwers
 Route::get('/', function () {
@@ -49,7 +50,7 @@ Route::get('/admin/programs/create', [ProgramController::class, 'create']);
 Route::post('/admin/programs', [ProgramController::class, 'store']);
 //show
 
-Route::get('/admin/programs/program{program}', [ProgramController::class, 'show']);
+Route::get('/admin/programs/{program}', [ProgramController::class, 'show']);
 
 //exercise
 Route::get('/admin/exercises', [ExercisesController::class, 'index']);
@@ -59,6 +60,11 @@ Route::post('/admin/exercises/create', [ExercisesController::class, 'store']);
 //ProgramSchedule
 Route::post('/admin/programs/program/{program}', [ProgramScheduleController::class, 'store']);
 Route::post('/admin/programs/program/{program}/add_exercise', [DailyExerciseController::class, 'store']);
+
+
+//tutorials
+Route::get('/admin/tutorials', [TutorialController::class, 'index']);
+
 
 
 

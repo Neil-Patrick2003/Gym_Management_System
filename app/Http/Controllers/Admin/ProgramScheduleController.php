@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Programs;
+use App\Models\Program;
 use App\Models\ProgramSchedule;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -30,6 +30,7 @@ class ProgramScheduleController extends Controller
      */
     public function store(Request $request)
     {
+        dd("HERE");
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -42,14 +43,14 @@ class ProgramScheduleController extends Controller
             'program_id' => $request->program_id,
         ]);
 
-        return redirect("/admin/programs/program{$program_schedule->program_id}");
+        return redirect("/admin/programs/{$program_schedule->program_id}");
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Programs $program, Request $request)
+    public function show(Program $program, Request $request)
     {
 
     }

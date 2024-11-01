@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Exercises;
+use App\Models\Exercise;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -13,7 +13,7 @@ class ExercisesController extends Controller
      */
     public function index()
     {
-        $exercises = Exercises::paginate(10);
+        $exercises = Exercise::paginate(10);
 
         return view('admin.exercises.index', [
             'exercises' => $exercises,
@@ -34,7 +34,6 @@ class ExercisesController extends Controller
     public function store(Request $request)
     {
 
-        dump(request()->all());
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -64,7 +63,7 @@ class ExercisesController extends Controller
             $input['tutorial_link'] = $path;
         }
 
-        Exercises::create($input);
+        Exercise::create($input);
 
         return redirect('admin/exercises');
 

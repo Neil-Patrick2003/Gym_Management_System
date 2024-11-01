@@ -13,16 +13,15 @@ class ProgramSchedule extends Model
 
     public function program()
     {
-        return $this->belongsTo(Programs::class, 'program_id');
+        return $this->belongsTo(Program::class, 'program_id');
     }
 
     public function daily_exercise()
     {
-        return $this->hasMany(DailyExercises::class, 'program_schedule_id');
+        return $this->hasMany(DailyExercise::class, 'program_schedule_id');
     }
 
     public function exercises() {
-        return $this->belongsToMany(Exercises::class, 'daily_exercises', 'id', 'id', 'exercise_id');
+        return $this->belongsToMany(Exercise::class, 'daily_exercises', foreignPivotKey: 'program_schedule_id', relatedPivotKey: 'exercise_id');
     }
-
 }

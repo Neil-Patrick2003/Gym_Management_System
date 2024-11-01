@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Programs extends Model
+class Program extends Model
 {
     use HasFactory;
 
     protected $fillable = ['name', 'created_by', 'photo_link'];
 
     public function daily_exercise(){
-        return $this->hasMany(DailyExercises::class);
+        return $this->hasMany(DailyExercise::class);
     }
 
     public function user_program(){
@@ -25,8 +25,8 @@ class Programs extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function program_schedule(){
-        return $this->hasMany(ProgramSchedule::class, 'program_schedule_id', 'program_id');
+    public function program_schedules(){
+        return $this->hasMany(ProgramSchedule::class);
     }
 
 }

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\DailyExercises;
-use App\Models\Exercises;
-use App\Models\Programs;
+use App\Models\DailyExercise;
+use App\Models\Exercise;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
@@ -14,7 +14,7 @@ class ProgramController extends Controller
     public function index()
     {
 
-        $programs = Programs::with('user')->paginate(15);
+        $programs = Program::with('user')->paginate(15);
 
         return view('admin/programs/index', [
             'programs' => $programs,
@@ -58,7 +58,7 @@ class ProgramController extends Controller
             $input['photo_link'] = $path;
         }
 
-        Programs::create($input);
+        Program::create($input);
 
         return redirect('admin/programs');
     }
@@ -69,23 +69,16 @@ class ProgramController extends Controller
     public function show($id)
     {
 
-        $program = Programs::with(['program_schedule'])->findOrFail($id);
-        dd($program->program_schedule->first()->exercises()->toSql());
-        dd($program->toArray());
 
-        $programs = Programs::with('program_schedule')->findOrFail($id);
-        $program_schedules = $program->program_schedule;
-        $exercises = Exercises::all();
+        $program = Program::with(relations: ['program_schedules' => ['exercises']])
+            ->findOrFail($id);
 
-        // $daily_exercises = DailyExercises::with(   ['program_schedule' => ['exercise']])->findOrFail($id);
-        // dd($daily_exercises);
+        $exercises = Exercise::all();
 
 
         return view('admin.programs.show', [
             'program' => $program,
-            'program_schedules' => $program_schedules,
             'exercises' => $exercises,
-            // 'daily_exercises' => $daily_exercises,
         ]);
     }
 

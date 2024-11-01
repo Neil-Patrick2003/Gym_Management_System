@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Appointments extends Model
+class Feedback extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'trainer_id', 'start_time', 'end_time', 'status'];
+    protected $fillable = ['user_id', 'trainer_id', 'content', 'created_at', 'rating' ];
 
     public function user(){
         return $this->belongsTo(User::class);

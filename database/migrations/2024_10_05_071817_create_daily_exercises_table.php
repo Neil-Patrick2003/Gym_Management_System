@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('daily_exercises', function (Blueprint $table) {
-            $table->id();
             $table->unsignedBigInteger(column: 'program_schedule_id');
             $table->unsignedBigInteger(column: 'exercise_id');
 

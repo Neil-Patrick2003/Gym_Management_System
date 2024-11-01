@@ -25,7 +25,7 @@
                     <p class="text-white">Created by: {{ $program->created_by }}</p>
                 </div>
                 <div>
-                    <a href="/admin/programs/program{{$program->id}}" class="text-white text-lg font-normal hover:underline">View></a>
+                    <a href="/admin/programs/{{$program->id}}" class="text-white text-lg font-normal hover:underline">View></a>
                     {{-- <a href="/admin/programs/{programId}/daily-exercises/{daily-exercise-id}" class="text-white text-lg font-normal hover:underline">View></a> --}}
                 </div>
             </div>
@@ -40,7 +40,7 @@
     <div class="overflow-hidden rounded-lg bg-white shadow mb-6">
         <div class="px-4 py-5 sm:p-6">
 
-            <form action="/admin/programs/program/{{$program->id}}" method="POST" enctype="multipart/form-data"
+            <form action="/admin/programs" method="POST" enctype="multipart/form-data"
                 class="space-y-6 max-w-lg mx-auto p-4">
                 @csrf
 

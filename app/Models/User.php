@@ -49,21 +49,21 @@ class User extends Authenticatable
 
     public function feedback()
     {
-        return $this->hasMany(Feedbacks::class);
+        return $this->hasMany(Feedback::class);
     }
 
     public function appointment()
     {
-        return $this->hasMany(Appointments::class);
+        return $this->hasMany(Appointment::class);
     }
 
     public function Recommendation()
     {
-        return $this->hasMany(Recommendations::class);
+        return $this->hasMany(Recommendation::class);
     }
 
     public function program(){
-        return $this->hasMany(Programs::class);
+        return $this->hasMany(Program::class);
     }
 
 }

@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Models\DailyExercise;
-use App\Models\ProgramSchedule;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
-class DailyExerciseController extends Controller
+class TutorialController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admin.tutorials.index');
     }
 
     /**
@@ -30,13 +27,7 @@ class DailyExerciseController extends Controller
      */
     public function store(Request $request)
     {
-
-        $schedule = ProgramSchedule::find($request->program_schedule_id);
-
-        $schedule->exercises()->sync($request->exercise_ids);
-
-        return back();
-
+        //
     }
 
     /**
@@ -44,7 +35,7 @@ class DailyExerciseController extends Controller
      */
     public function show(string $id)
     {
-
+        //
     }
 
     /**
