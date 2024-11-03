@@ -31,7 +31,7 @@ class DailyExerciseController extends Controller
     public function store(Request $request)
     {
 
-        $schedule = ProgramSchedule::find($request->program_schedule_id);
+        $schedule = ProgramSchedule::find(id: $request->program_schedule_id);
 
         $schedule->exercises()->sync($request->exercise_ids);
 

@@ -1,14 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\DailyExerciseController;
-use App\Http\Controllers\Admin\ProgramController;
-use App\Http\Controllers\Admin\ExercisesController;
-use App\Http\Controllers\Admin\ProgramScheduleController;
 use App\Http\Controllers\TutorialController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Member\MemberController;
+use App\Http\Controllers\Admin\ExercisesController;
+use App\Http\Controllers\Member\UserProgramController;
+use App\Http\Controllers\Admin\DailyExerciseController;
+use App\Http\Controllers\Admin\ProgramScheduleController;
+use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
+use App\Http\Controllers\Member\ProgramController as MemberProgramController;
+use App\Http\Controllers\Member\UserProgramDailyExercise;
 
 //guesst-viwers
 Route::get('/', function () {
@@ -35,22 +38,22 @@ require __DIR__ . '/auth.php';
 
 //admin-side
 Route::get('/dashboard', [AdminController::class, 'index'])
-    ->middleware(['auth', 'verified'])->name('dashboard');
+    ->middleware(middleware: ['auth', 'verified'])->name('dashboard');
 //member-index
-Route::get('/admin/members', [MemberController::class, 'index'] );
+Route::get('/admin/members', [AdminController::class, 'index'] );
 //update role
-Route::patch('/admin/members/{member}', [MemberController::class, 'edit'] );
+Route::patch('/admin/members/{member}', [AdminController::class, 'edit'] );
 
 //programs
 //index
-Route::get('/admin/programs', [ProgramController::class, 'index']);
+Route::get('/admin/programs', [AdminProgramController::class, 'index']);
 //create
-Route::get('/admin/programs/create', [ProgramController::class, 'create']);
+Route::get('/admin/programs/create', [AdminProgramController::class, 'create']);
 //store
-Route::post('/admin/programs', [ProgramController::class, 'store']);
+Route::post('/admin/programs', [AdminProgramController::class, 'store']);
 //show
 
-Route::get('/admin/programs/{program}', [ProgramController::class, 'show']);
+Route::get('/admin/programs/{program}', [AdminProgramController::class, 'show']);
 
 //exercise
 Route::get('/admin/exercises', [ExercisesController::class, 'index']);
@@ -65,6 +68,19 @@ Route::post('/admin/programs/program/{program}/add_exercise', [DailyExerciseCont
 //tutorials
 Route::get('/admin/tutorials', [TutorialController::class, 'index']);
 
+
+
+//user
+Route::get('/home', [MemberController::class, 'index']);
+
+Route::get('/member/programs', [MemberProgramController::class, 'index']);
+Route::get('/member/programs/{program}', [MemberProgramController::class, 'show']);
+
+//action to form
+Route::post('/member/programs/{program}', [UserProgramController::class, 'store']);
+
+//nav-myprogram
+Route::get('member/myprogram', [UserProgramDailyExercise::class, 'index'] );
 
 
 

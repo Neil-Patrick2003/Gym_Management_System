@@ -1,20 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Member;
 
-use App\Models\User;
+use App\Models\UserProgram;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Program;
+use Illuminate\Support\Facades\Auth;
 
-class MemberController extends Controller
+class UserProgramDailyExercise extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $members = User::all();
-        return view('admin.member', [
-            'members' => $members,
+        $user_id = Auth::id();
+        $user_programs = UserProgram::with('program')->get();
+
+        return view('member.myprogram.index', [
+            'user_programs' => $user_programs
         ]);
     }
 
@@ -45,24 +50,9 @@ class MemberController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id, Request $request)
+    public function edit(string $id)
     {
-        $data = request()->validate([
-            'role' => 'required|in:Admin,Member,Trainer',
-        ]);
-
-        $trainerCount = User::where('role', 'Trainer')->count();
-
-        $user = User::findOrFail($id);
-
-        $user->update([
-            'role' => request('role'),
-            'trainer' => $trainerCount
-        ]);
-
-        return redirect('/admin/members')->with('sucess', 'role updated sucessfully!');
-
-
+        //
     }
 
     /**

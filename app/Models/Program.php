@@ -18,7 +18,7 @@ class Program extends Model
     }
 
     public function user_program(){
-        return $this->hasMany(UserProgram::class);
+        return $this->belongsTo(UserProgram::class);
     }
 
     public function user(){
