@@ -1,17 +1,19 @@
 <?php
 
+use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TutorialController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\MembersController;
 use App\Http\Controllers\Member\MemberController;
 use App\Http\Controllers\Admin\ExercisesController;
 use App\Http\Controllers\Member\UserProgramController;
 use App\Http\Controllers\Admin\DailyExerciseController;
 use App\Http\Controllers\Admin\ProgramScheduleController;
+use App\Http\Controllers\Member\UserProgramDailyExercise;
 use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
 use App\Http\Controllers\Member\ProgramController as MemberProgramController;
-use App\Http\Controllers\Member\UserProgramDailyExercise;
 
 //guesst-viwers
 Route::get('/', function () {
@@ -37,41 +39,40 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 //admin-side
-Route::get('/dashboard', [AdminController::class, 'index'])
-    ->middleware(middleware: ['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 //member-index
-Route::get('/admin/members', [AdminController::class, 'index'] );
+Route::get('/admin/members', [MembersController::class, 'index']);
 //update role
-Route::patch('/admin/members/{member}', [AdminController::class, 'edit'] );
+Route::patch('/admin/members/{member}', [MembersController::class, 'edit'] )->middleware(['auth', 'verified']);
 
 //programs
 //index
-Route::get('/admin/programs', [AdminProgramController::class, 'index']);
+Route::get('/admin/programs', [AdminProgramController::class, 'index'])->middleware( ['auth', 'verified']);
 //create
-Route::get('/admin/programs/create', [AdminProgramController::class, 'create']);
+Route::get('/admin/programs/create', [AdminProgramController::class, 'create'])->middleware( ['auth', 'verified']);
 //store
-Route::post('/admin/programs', [AdminProgramController::class, 'store']);
+Route::post('/admin/programs', [AdminProgramController::class, 'store'])->middleware( ['auth', 'verified']);
 //show
 
-Route::get('/admin/programs/{program}', [AdminProgramController::class, 'show']);
+Route::get('/admin/programs/{program}', [AdminProgramController::class, 'show'])->middleware( ['auth', 'verified']);
 
 //exercise
-Route::get('/admin/exercises', [ExercisesController::class, 'index']);
-Route::get('/admin/exercises/create', [ExercisesController::class, 'create']);
-Route::post('/admin/exercises/create', [ExercisesController::class, 'store']);
+Route::get('/admin/exercises', [ExercisesController::class, 'index'])->middleware( ['auth', 'verified']);
+Route::get('/admin/exercises/create', [ExercisesController::class, 'create'])->middleware( ['auth', 'verified']);
+Route::post('/admin/exercises/create', [ExercisesController::class, 'store'])->middleware( ['auth', 'verified']);
 
 //ProgramSchedule
-Route::post('/admin/programs/program/{program}', [ProgramScheduleController::class, 'store']);
-Route::post('/admin/programs/program/{program}/add_exercise', [DailyExerciseController::class, 'store']);
+Route::post('/admin/programs/program/{program}', [ProgramScheduleController::class, 'store'])->middleware( ['auth', 'verified']);
+Route::post('/admin/programs/program/{program}/add_exercise', [DailyExerciseController::class, 'store'])->middleware( ['auth', 'verified']);
 
 
 //tutorials
-Route::get('/admin/tutorials', [TutorialController::class, 'index']);
+Route::get('/admin/tutorials', [TutorialController::class, 'index'])->middleware(['auth', 'verified']);
 
 
 
-//user
-Route::get('/home', [MemberController::class, 'index']);
+//user-side
+Route::get('/home', [MemberController::class, 'index'])->middleware( ['auth', 'verified']);
 
 Route::get('/member/programs', [MemberProgramController::class, 'index']);
 Route::get('/member/programs/{program}', [MemberProgramController::class, 'show']);
@@ -81,6 +82,7 @@ Route::post('/member/programs/{program}', [UserProgramController::class, 'store'
 
 //nav-myprogram
 Route::get('member/myprogram', [UserProgramDailyExercise::class, 'index'] );
+Route::get('member/myprogram/{program}', [UserProgramDailyExercise::class, 'show'] );
 
 
 
