@@ -24,7 +24,7 @@ class UserProgramSchedule extends Model
     }
 
 
-    public function user_exercises() {
+    public function exercises() {
         return $this->belongsToMany(Exercise::class, 'user_program_daily_exercises', foreignPivotKey: 'user_program_schedule_id', relatedPivotKey: 'exercise_id');
     }
 

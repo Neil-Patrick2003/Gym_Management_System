@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\ProgramScheduleController;
 use App\Http\Controllers\Member\UserProgramDailyExercise;
 use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
 use App\Http\Controllers\Member\ProgramController as MemberProgramController;
+use App\Http\Controllers\Member\UserProgramScheduleController;
+use App\Models\UserProgram;
 
 //guesst-viwers
 Route::get('/', function () {
@@ -81,8 +83,11 @@ Route::get('/member/programs/{program}', [MemberProgramController::class, 'show'
 Route::post('/member/programs/{program}', [UserProgramController::class, 'store']);
 
 //nav-myprogram
-Route::get('member/myprogram', [UserProgramDailyExercise::class, 'index'] );
-Route::get('member/myprogram/{program}', [UserProgramDailyExercise::class, 'show'] );
+Route::get('member/myprogram', [UserProgramController::class, 'index'] );
+Route::get('member/myprogram/{program}', [UserProgramController::class, 'show'] );
+
+//program schedule
+Route::get('/member/myprogram/{program}/exercises', [UserProgramScheduleController::class, 'index'] );
 
 
 

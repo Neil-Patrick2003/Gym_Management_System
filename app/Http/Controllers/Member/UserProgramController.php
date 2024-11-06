@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Member;
 
 use App\Models\Program;
+use App\Models\Exercise;
 use App\Models\UserProgram;
-use App\Models\UserProgramDailyExercise;
-use App\Models\UserProgramSchedule;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use App\Models\UserProgramSchedule;
 use Illuminate\Support\Facades\Auth;
+use App\Models\UserProgramDailyExercise;
 
 class UserProgramController extends Controller
 {
@@ -17,7 +18,13 @@ class UserProgramController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::id();
+        $user_programs = UserProgram::with('program', 'user')->where('user_id', '=', $user_id)->get();
 
+
+        return view('member.myprogram.index', [
+            'user_programs' => $user_programs
+        ]);
     }
 
     /**
@@ -43,7 +50,6 @@ class UserProgramController extends Controller
             'program_id' => $program->id
         ]);
 
-        //foreach program schedule store in user program schedule
         foreach ($program->program_schedules as $program_schedules) {
             $user_schedule = UserProgramSchedule::create([
                 'name' => $program_schedules->name,
@@ -53,21 +59,21 @@ class UserProgramController extends Controller
             //to reset the array in every loop
             $exercises = [];
 
-            //to store each exercise 
+            //to store each exercise
             foreach($program_schedules->exercises as $exercise){
                 $exercises[$exercise->id] = ['is_complete' => false];
-    
+
             }
-    
-            $user_schedule->user_exercises()->sync($exercises);
+
+            $user_schedule->exercises()->sync($exercises);
 
         }
 
         return back();
 
-        
 
-        
+
+
 
     }
 
@@ -76,7 +82,15 @@ class UserProgramController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user_program = UserProgram::with(relations: ['program', 'program_schedules' => ['exercises']])
+            ->findOrFail($id);
+
+        $exercises = Exercise::all();
+
+        return view('member.myprogram.show', [
+            'user_program' => $user_program,
+            'exercises' => $exercises,
+        ]);
     }
 
     /**

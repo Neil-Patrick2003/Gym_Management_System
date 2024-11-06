@@ -19,4 +19,12 @@ class UserProgram extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function daily_exercises(){
+        return $this->hasMany(UserProgramDailyExercise::class);
+    }
+
+    public function program_schedules(){
+        return $this->hasMany(UserProgramSchedule::class);
+    }
 }
