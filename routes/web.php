@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 //admin-side
-Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth','admin', 'verified'])->name('dashboard');
 //member-index
 Route::get('/admin/members', [MembersController::class, 'index']);
 //update role
