@@ -1,1 +1,1 @@
-<x-member-layout>haha</x-member-layout>
+<x-member-layout>Member Dashboard</x-member-layout>

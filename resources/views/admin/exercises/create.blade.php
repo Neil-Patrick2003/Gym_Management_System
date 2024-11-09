@@ -60,7 +60,7 @@
 
 
 
-            @error('tutorial_link')
+            @error('tutorial_video')
                 <p class="text-xs text-red-500 font-italic mt-1">{{ $message }} </p>
             @enderror
             @error('photo_link')
@@ -68,7 +68,7 @@
             @enderror
             <div class="px-4 py-4 sm:px-6">
                 <label for="tutorial_link" class="block text-sm font-medium text-gray-900 mt-3">
-                    Tutorial Link
+                    Demo
                 </label>
                 <label class="block mt-2" for="tutorial_link_file">
                     <span class="sr-only">Choose Tutorial videos</span>

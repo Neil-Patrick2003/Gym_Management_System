@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\DailyExercise;
-use App\Models\Exercise;
 use App\Models\Program;
+use App\Models\Exercise;
+use App\Models\UserProgram;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ProgramController extends Controller
 {
@@ -14,10 +15,19 @@ class ProgramController extends Controller
     public function index()
     {
 
+        // $user_id = Auth::id();
+        // $user_programs = UserProgram::with(relations: 'program_schedules')->where('user_id', '=', $user_id)
+        //     ->oldest()
+        //     ->limit(5)
+        //     ->get();
+
+        
+
         $programs = Program::with('user')->paginate(15);
 
         return view('admin/programs/index', [
             'programs' => $programs,
+            
         ]);
     }
 
@@ -69,12 +79,10 @@ class ProgramController extends Controller
     public function show($id)
     {
 
-
         $program = Program::with(relations: ['program_schedules' => ['exercises']])
             ->findOrFail($id);
 
         $exercises = Exercise::all();
-
 
         return view('admin.programs.show', [
             'program' => $program,

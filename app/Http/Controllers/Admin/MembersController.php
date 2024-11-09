@@ -52,7 +52,6 @@ class MembersController extends Controller
         $data = request()->validate([
             'role' => 'required|in:Admin,Member,Trainer'
         ]);
-        dump($data);
 
         $user = User::findOrFail($id);
 

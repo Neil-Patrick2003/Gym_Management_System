@@ -1,19 +1,23 @@
 <x-layout>
 
-    hahah
 
-    <div class=" mx-auto px-4">
-        <h1 class="text-4xl font-bold">Welcome to FitnessHub</h1>
-        <p class="mt-4">Your journey to a healthier life starts here.</p>
-        {{-- <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mt-8">Get
-            started</button> --}}
-        <center>
+
+
+    <div class="flex items-center justify-center h-screen w-full"
+        style="
+        background-image: url('{{ asset('images/bg.png') }}');
+        background-size: cover;
+        background-position: center;
+        ">
+        <div class="text-center">
+            <h1 class="text-4xl text-white font-bold">Welcome to FitnessHub</h1>
+            <p class="mt-4 text-white">Your journey to a healthier life starts here.</p>
+
             <a href="/register"
-                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mt-12 block w-32">
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mt-12 inline-block w-32">
                 Get Started
             </a>
-        </center>
-
+        </div>
     </div>
 
 

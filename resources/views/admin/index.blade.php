@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }} {{$user->name}}
                 </div>
-            </div>sdd
+            </div>
         </div>
     </div>
 </x-app-layout>

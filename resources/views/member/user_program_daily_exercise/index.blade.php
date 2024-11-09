@@ -4,8 +4,7 @@
     </div>
     <div class="px-4 py-5 sm:p-6">
         @if (session()->has('success'))
-            <div id="showOrHide"
-                class="flex items-center p-4 mb-4 text-green-800 border-t-4 border-green-300"
+            <div id="showOrHide" class="flex items-center p-4 mb-4 text-green-800 border-t-4 border-green-300"
                 role="alert">
                 <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                     viewBox="0 0 20 20">
@@ -31,6 +30,10 @@
         @endif
 
 
+        {{-- <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed pointer-events-none">
+            Disabled Button
+        </button> --}}
+
         @foreach ($program_schedule->exercises as $exercise)
             <div class="grid grid-cols-3 gap-4 border border-solid mb-4 p-4">
                 <div class="flex">
@@ -42,6 +45,7 @@
                         {{ $exercise->name }}
                     </div>
 
+
                 </div>
                 <div class="content-center">
                     <p><span class="bg-red-300 px-2 rounded">No.reps: {{ $exercise->no_of_reps }}</span>
@@ -51,24 +55,24 @@
                     <p><span class="bg-red-300 px-2 rounded">No.sets: {{ $exercise->no_of_sets }}</span>
                     </p>
                     <div>
-                        {{--
-                        if daily exercise status is completed disable btn
-                        enable btn
-                        --}}
-
-                        <form
-                            action="/member/myprogram/program/schedules/{{ $program_schedule->id }}/daily-exercises/{{ $exercise->id }}"
-                            method="POST">
-                            @csrf
-                            @method('PATCH')
-                            <input type="hidden" name="exercise_id" value="{{ $exercise->id }}">
-                            <button type="submit"
-                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-200 ease-in-out">
-                                Complete
+                        @if ($exercise->pivot->is_complete)
+                            <button
+                                class="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed pointer-events-none">
+                                Completed
                             </button>
-                        </form>
-
-
+                        @else
+                            <form
+                                action="/member/myprogram/program/schedules/{{ $program_schedule->id }}/daily-exercises/{{ $exercise->id }}"
+                                method="POST">
+                                @csrf
+                                @method('PATCH')
+                                <input type="hidden" name="exercise_id" value="{{ $exercise->id }}">
+                                <button type="submit"
+                                    class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-200 ease-in-out">
+                                    Complete
+                                </button>
+                            </form>
+                        @endif
                     </div>
                 </div>
 
