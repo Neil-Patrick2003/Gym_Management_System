@@ -229,7 +229,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/exercises') }}" :active="request()->is('admin/exercises')">
+                                    <x-admin-nav-link href="{{ url('/admin/programs') }}" :active="request()->is('admin/programs')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
@@ -242,7 +242,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/payment') }}" :active="request()->is('admin/payment')">
+                                    <x-admin-nav-link href="{{ url('/admin/payments') }}" :active="request()->is('admin/payment')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
@@ -281,7 +281,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/report') }}" :active="request()->is('admin/report')">
+                                    <x-admin-nav-link href="{{ url('/admin/reports') }}" :active="request()->is('admin/report')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"

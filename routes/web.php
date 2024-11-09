@@ -3,6 +3,7 @@
 use App\Models\UserProgram;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TutorialController;
 use App\Http\Controllers\Admin\AdminController;
@@ -42,7 +43,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 //admin-side
-Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth','admin', 'verified'])->name('dashboard');
+Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 //member-index
 Route::get('/admin/members', [MembersController::class, 'index']);
 //update role
@@ -68,9 +69,26 @@ Route::post('/admin/exercises/create', [ExercisesController::class, 'store'])->m
 Route::post('/admin/programs/program/{program}', [ProgramScheduleController::class, 'store'])->middleware( ['auth', 'verified']);
 Route::post('/admin/programs/program/{program}/add_exercise', [DailyExerciseController::class, 'store'])->middleware( ['auth', 'verified']);
 
+//payments
+Route::get('/admin/payments', [PaymentController::class, 'index']);
+
+
 
 //tutorials
 Route::get('/admin/tutorials', [TutorialController::class, 'index'])->middleware(['auth', 'verified']);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
