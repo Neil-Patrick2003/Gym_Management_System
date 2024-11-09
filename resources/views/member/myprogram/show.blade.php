@@ -18,7 +18,7 @@
         <div class="rounded-lg bg-white shadow mb-2">
             <div class="flex justify-between px-4 py-5 sm:px-6">
                 <h1>{{ $program_schedule->name }}</h1>
-                <a href="/member/myprogram/{{$program_schedule->id}}/exercises">Start</a>
+                <a href="/member/myprogram/program/schedules/{{$program_schedule->id}}/daily-exercises">Start</a>
             </div>
         </div>
     @endforeach

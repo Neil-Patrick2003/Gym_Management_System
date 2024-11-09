@@ -2,26 +2,30 @@
 
 namespace App\Http\Controllers\Member;
 
-use App\Models\Program;
-use App\Models\Exercise;
-use App\Models\UserProgram;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\Models\UserProgramDailyExercise;
+use App\Models\UserProgramSchedule;
+use Illuminate\Http\Request;
 
 class UserProgramDailyExerciseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(string $id)
     {
+
+        $program_schedule = UserProgramSchedule::with('exercises')->find($id);
+
+        dump($program_schedule->toArray());
+
+        return view('member.user_program_daily_exercise.index', [
+            'program_schedule' => $program_schedule,
+        ]);
+
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
@@ -41,16 +45,6 @@ class UserProgramDailyExerciseController extends Controller
     public function show(string $id)
     {
 
-        $user_program = UserProgram::with(relations: ['program', 'program_schedules' => ['exercises']])
-            ->findOrFail($id);
-
-        $exercises = Exercise::all();
-
-        return view('member.myprogram.show', [
-            'user_program' => $user_program,
-            'exercises' => $exercises,
-        ]);
-
     }
 
     /**
@@ -64,9 +58,19 @@ class UserProgramDailyExerciseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $user_program_schedule_id, $exercise_id)
     {
-        //
+
+        $user_program_daily_exercise = UserProgramDailyExercise::where('user_program_schedule_id', '=', $user_program_schedule_id)
+        ->where('exercise_id', $exercise_id)
+        ->first();
+
+        $user_program_daily_exercise->is_complete = true;
+        $user_program_daily_exercise->save();
+
+        return redirect()->back()->with('success', 'Completed!');
+
+
     }
 
     /**

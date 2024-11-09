@@ -195,7 +195,6 @@
                                     </x-member-nav-link>
                                 </li>
                                 <li>
-
                                     <x-member-nav-link href="{{ url('/member/myprogram') }}" :active="request()->is('member/myprogram')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -206,19 +205,21 @@
                                         </x-slot:icon>
                                         My Progress
                                     </x-member-nav-link>
-                                    <a href="#"
-                                        class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                        <svg class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600"
-                                            fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                            stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
-                                        </svg>
-                                        Projects
-                                    </a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <x-member-nav-link href="{{ url('/member/appointments') }}" :active="request()->is('member/appoinments')">
+                                        <x-slot:icon>
+                                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                                                                               </svg>
+                                        </x-slot:icon>
+                                        Appointment
+                                    </x-member-nav-link>
+                                </li>
+                                <li>
+                                    <a href=""
                                         class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
                                         <svg class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600"
                                             fill="none" viewBox="0 0 24 24" stroke-width="1.5"

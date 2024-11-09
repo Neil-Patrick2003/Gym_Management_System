@@ -59,7 +59,7 @@ class UserProgramController extends Controller
             //to reset the array in every loop
             $exercises = [];
 
-            //to store each exercise
+             //to store each exercise
             foreach($program_schedules->exercises as $exercise){
                 $exercises[$exercise->id] = ['is_complete' => false];
 

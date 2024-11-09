@@ -1,6 +1,8 @@
 <x-layout>
 
-    <div class="container mx-auto px-4">
+    hahah
+
+    <div class=" mx-auto px-4">
         <h1 class="text-4xl font-bold">Welcome to FitnessHub</h1>
         <p class="mt-4">Your journey to a healthier life starts here.</p>
         {{-- <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mt-8">Get

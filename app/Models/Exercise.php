@@ -15,4 +15,8 @@ class Exercise extends Model
         return $this->belongsTo(DailyExercise::class);
     }
 
+    public function complete(){
+        
+    }
+
 }

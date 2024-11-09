@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\UserProgram;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -8,14 +9,14 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MembersController;
 use App\Http\Controllers\Member\MemberController;
 use App\Http\Controllers\Admin\ExercisesController;
+use App\Http\Controllers\Member\AppointmentController;
 use App\Http\Controllers\Member\UserProgramController;
 use App\Http\Controllers\Admin\DailyExerciseController;
 use App\Http\Controllers\Admin\ProgramScheduleController;
-use App\Http\Controllers\Member\UserProgramDailyExercise;
+use App\Http\Controllers\Member\UserProgramScheduleController;
+use App\Http\Controllers\Member\UserProgramDailyExerciseController;
 use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
 use App\Http\Controllers\Member\ProgramController as MemberProgramController;
-use App\Http\Controllers\Member\UserProgramScheduleController;
-use App\Models\UserProgram;
 
 //guesst-viwers
 Route::get('/', function () {
@@ -87,11 +88,12 @@ Route::get('member/myprogram', [UserProgramController::class, 'index'] );
 Route::get('member/myprogram/{program}', [UserProgramController::class, 'show'] );
 
 //program schedule
-Route::get('/member/myprogram/{program}/exercises', [UserProgramScheduleController::class, 'index'] );
+Route::get('/member/myprogram/program/schedules/{user_program_schedule}/daily-exercises', [UserProgramDailyExerciseController::class, 'index'] );
+Route::patch ('/member/myprogram/program/schedules/{user_program_schedule}/daily-exercises/{excercise}', [UserProgramDailyExerciseController::class, 'update'] );
 
 
-
-
+//appointment tab
+Route::get('/member/appointments', [AppointmentController::class, 'index']);
 
 
 
