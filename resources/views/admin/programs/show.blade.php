@@ -48,7 +48,6 @@
                                     <div class="content-center">
                                         {{ $exercise->name }}
                                     </div>
-
                                 </div>
                                 <div class="content-center">
                                     <p><span class="bg-red-300 px-2 rounded">No.reps: {{ $exercise->no_of_reps }}</span>
@@ -63,9 +62,6 @@
                     @endforeach
                 </ul>
             </div>
-
-
-
             <div class="px-4 py-4 sm:px-6 flex justify-center">
                 <button class="open-modal bg-green-500 text-white px-4 py-2 rounded" data-modal="modal2"
                     data-id="{{ $program_schedule->id }}" data-name="{{ $program_schedule->name }}">
@@ -159,8 +155,6 @@
             </div>
         </div>
     </div>
-
-
 
     <script>
         $(document).ready(function() {

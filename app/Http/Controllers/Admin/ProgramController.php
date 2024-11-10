@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Program;
-use App\Models\Exercise;
-use App\Models\UserProgram;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Exercise;
+use App\Models\Program;
+use Illuminate\Http\Request;
 
 class ProgramController extends Controller
 {
@@ -21,13 +19,11 @@ class ProgramController extends Controller
         //     ->limit(5)
         //     ->get();
 
-        
-
         $programs = Program::with('user')->paginate(15);
 
         return view('admin/programs/index', [
             'programs' => $programs,
-            
+
         ]);
     }
 
@@ -109,8 +105,10 @@ class ProgramController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Program $program)
     {
-        //
+        $program->delete();
+
+        return redirect()->back();
     }
 }

@@ -4,9 +4,9 @@
         <div class="px-4 py-5 sm:p-6">
             <div class="flex justify-between items-center">
                 <h2 class="text-xl font-bold">Exercises</h2>
-                <button id="global-toggle-button" onclick="toggleAllButtons()" class="text-indigo-600">
+                {{-- <button id="global-toggle-button" onclick="toggleAllButtons()" class="text-indigo-600">
                     Edit
-                </button>
+                </button> --}}
             </div>
         </div>
     </div>
@@ -41,13 +41,14 @@
             </div>
 
 
+
         </div>
     @endforeach
 
 
     {{ $exercises->links() }}
 
-    <script>
+    {{-- <script>
         function toggleAllButtons() {
             const actionButtons = document.querySelectorAll(".action-buttons");
             const toggleButton = document.getElementById("global-toggle-button");
@@ -60,6 +61,6 @@
 
             toggleButton.textContent = isHidden ? "Hide All Actions" : "Show All Actions";
         }
-    </script>
+    </script> --}}
 
 </x-app-layout>

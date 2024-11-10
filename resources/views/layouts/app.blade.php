@@ -229,7 +229,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/programs') }}" :active="request()->is('admin/programs')">
+                                    <x-admin-nav-link href="{{ url('/admin/exercises') }}" :active="request()->is('admin/exercises')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"

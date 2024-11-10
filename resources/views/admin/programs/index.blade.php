@@ -52,7 +52,20 @@
                 <div>
                     <a href="/admin/programs/{{ $program->id }}"
                         class="text-white text-lg font-normal hover:underline">View></a>
+                    
                     {{-- <a href="/admin/programs/{programId}/daily-exercises/{daily-exercise-id}" class="text-white text-lg font-normal hover:underline">View></a> --}}
+                </div>
+                <div>
+                    <form action="/admin/programs/delete/{{ $program->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" name="program_id" value="{{ $program->id }}">
+                        <button
+                            class="bg-red-500 hover:bg-red-600 text-white text-sm font-semibold py-1 px-3 rounded">
+                            Remove
+                        </button>
+                    </form>
+
                 </div>
             </div>
 

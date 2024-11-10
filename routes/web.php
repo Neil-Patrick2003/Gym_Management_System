@@ -18,6 +18,7 @@ use App\Http\Controllers\Member\UserProgramScheduleController;
 use App\Http\Controllers\Member\UserProgramDailyExerciseController;
 use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
 use App\Http\Controllers\Member\ProgramController as MemberProgramController;
+use App\Models\Exercise;
 
 //guesst-viwers
 Route::get('/', function () {
@@ -56,8 +57,9 @@ Route::get('/admin/programs', [AdminProgramController::class, 'index'])->middlew
 Route::get('/admin/programs/create', [AdminProgramController::class, 'create'])->middleware( ['auth', 'verified']);
 //store
 Route::post('/admin/programs', [AdminProgramController::class, 'store'])->middleware( ['auth', 'verified']);
+//delete
+Route::delete('/admin/programs/delete/{program}', [AdminProgramController::class, 'destroy']);
 //show
-
 Route::get('/admin/programs/{program}', [AdminProgramController::class, 'show'])->middleware( ['auth', 'verified']);
 
 //exercise
@@ -66,6 +68,7 @@ Route::get('/admin/exercises/create', [ExercisesController::class, 'create'])->m
 Route::post('/admin/exercises/create', [ExercisesController::class, 'store'])->middleware( ['auth', 'verified']);
 
 //ProgramSchedule
+//index
 Route::post('/admin/programs/program/{program}', [ProgramScheduleController::class, 'store'])->middleware( ['auth', 'verified']);
 Route::post('/admin/programs/program/{program}/add_exercise', [DailyExerciseController::class, 'store'])->middleware( ['auth', 'verified']);
 
