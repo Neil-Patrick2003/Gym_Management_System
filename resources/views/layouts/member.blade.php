@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="{{ asset('images/workout.png') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('images/workout.png') }}" type="image/png" sizes="114x114">
 
+
     <style>
         #offCanvasMenu {
             transform: translateX(-100%);

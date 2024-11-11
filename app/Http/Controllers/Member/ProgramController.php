@@ -8,12 +8,12 @@ use Illuminate\Routing\Controller;
 
 class ProgramController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
+        //fetch
         $programs = Program::with('user')->paginate(15);
+
         return view('member.program/index', [
             'programs' => $programs,
         ]);

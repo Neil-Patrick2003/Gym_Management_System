@@ -30,7 +30,6 @@ class ProgramScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        dd("HERE");
 
         $request->validate([
             'name' => 'required|string|max:255',

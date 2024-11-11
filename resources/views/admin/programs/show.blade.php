@@ -151,7 +151,7 @@
                     <div class="mt-6 flex items-center justify-end gap-x-2">
                         <button class="close-modal" data-modal="modal2" type="button">Close</button>
                     </div>
-                </div>7
+                </div>
             </div>
         </div>
     </div>

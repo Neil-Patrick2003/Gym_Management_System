@@ -52,7 +52,7 @@
                 <div>
                     <a href="/admin/programs/{{ $program->id }}"
                         class="text-white text-lg font-normal hover:underline">View></a>
-                    
+
                     {{-- <a href="/admin/programs/{programId}/daily-exercises/{daily-exercise-id}" class="text-white text-lg font-normal hover:underline">View></a> --}}
                 </div>
                 <div>

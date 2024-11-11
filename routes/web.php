@@ -115,6 +115,6 @@ Route::patch ('/member/myprogram/program/schedules/{user_program_schedule}/daily
 
 //appointment tab
 Route::get('/member/appointments', [AppointmentController::class, 'index']);
-
+Route::post('/member/appointments', [AppointmentController::class, 'store']);
 
 
