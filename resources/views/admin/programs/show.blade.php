@@ -71,8 +71,6 @@
         </div>
     @endforeach
 
-    <button class="open-modal" data-modal="modal3">Open Modal 3</button>
-
     <!-- Modal 1 -->
     <div class="modal hidden" id="modal1" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
@@ -103,7 +101,7 @@
                             </div>
                             <div class="mt-6 flex items-center justify-end gap-x-6">
                                 <div class="mt-6 flex items-center justify-end gap-x-2">
-                                    <button class="close-modal" data-modal="modal1" type="button">Close</button>
+                                    <button class="close-modal border border-2 w-full" data-modal="modal1" type="button">Close</button>
                                 </div>
                                 <button type="submit"
                                     class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
@@ -115,7 +113,10 @@
         </div>
     </div>
 
-    <!-- Modal 2 -->
+
+
+
+    <!-- Modal 2 For add Exercises in daily Schedule -->
     <div class="modal hidden" id="modal2" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
         <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
@@ -144,12 +145,13 @@
                                 </div>
                             @endforeach
 
-                            <button type="submit">Submit</button>
+                            <button type="submit"
+                                class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Submit</button>
                         </form>
 
                     </div>
                     <div class="mt-6 flex items-center justify-end gap-x-2">
-                        <button class="close-modal" data-modal="modal2" type="button">Close</button>
+                        <button class="close-modal inline-flex w-full justify-center rounded-md  px-4 py-2 text-sm font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" data-modal="modal2" type="button">Close</button>
                     </div>
                 </div>
             </div>
@@ -157,6 +159,7 @@
     </div>
 
     <script>
+        
         $(document).ready(function() {
             $('.open-modal').click(function() {
                 const modalId = $(this).data('modal');

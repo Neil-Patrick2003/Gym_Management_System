@@ -32,6 +32,6 @@ class MembersController extends Controller
         ]);
 
 
-        return redirect('/admin/members')->with('success', 'role updated sucessfully');
+        return redirect('/admin/members')->with('success', 'Role updated sucessfully');
     }
 }

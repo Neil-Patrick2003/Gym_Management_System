@@ -1,37 +1,7 @@
 <x-app-layout>
-    {{-- <h1 class="p-4">
-        My Progress
-    </h1>
-
-    <div class="flex flex-col  m-auto p-auto">
-
-
-        <div class="flex overflow-x-scroll  hide-scroll-bar">
-            <div class="flex flex-nowrap lg:ml-0 md:ml-0 ml-0">
-                @foreach ($user_programs as $user_program)
-                    <div class="inline-block px-3">
-                        <div
-                            class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div> --}}
-
-
-
-
-
-
     <h1 class="p-4">
         All Programs
     </h1>
-
-
-
-
-
 
     @foreach ($programs as $program)
         <div class="relative border border-gray-300 rounded-lg mb-4 overflow-hidden"
@@ -43,7 +13,6 @@
                 border-radius: 15px;
                 opacity: 98%;">
 
-            <!-- Optional Overlay and Content -->
             <div class="absolute px-4 py-4 inset-0 bg-black/50 flex items-end justify-between">
                 <div>
                     <h2 class="text-white text-2xl font-bold">{{ $program->name }}</h2>
@@ -53,15 +22,14 @@
                     <a href="/admin/programs/{{ $program->id }}"
                         class="text-white text-lg font-normal hover:underline">View></a>
 
-                    {{-- <a href="/admin/programs/{programId}/daily-exercises/{daily-exercise-id}" class="text-white text-lg font-normal hover:underline">View></a> --}}
                 </div>
                 <div>
-                    <form action="/admin/programs/delete/{{ $program->id }}" method="POST">
+                    <form action="/admin/programs/delete/{{ $program->id }}" method="POST"
+                        onsubmit="return confirmDelete()">
                         @csrf
                         @method('DELETE')
                         <input type="hidden" name="program_id" value="{{ $program->id }}">
-                        <button
-                            class="bg-red-500 hover:bg-red-600 text-white text-sm font-semibold py-1 px-3 rounded">
+                        <button class="bg-red-500 hover:bg-red-600 text-white text-sm font-semibold py-1 px-3 rounded">
                             Remove
                         </button>
                     </form>
@@ -126,5 +94,11 @@
             display: none;
         }
     </style>
+
+    <script>
+        function confirmDelete(){
+            return confirm('Are you sure want to remove this program?');
+        }
+    </script>
 
 </x-app-layout>

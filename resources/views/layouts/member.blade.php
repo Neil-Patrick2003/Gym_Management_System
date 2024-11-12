@@ -123,7 +123,7 @@
         <!-- Static sidebar for desktop -->
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
             <!-- Sidebar component, swap this element with another sidebar if you like -->
-            <div class="flex grow flex-col gap-y-5 overflow-y-auto px-6 pb-4 border border-solid">
+            <div class="flex grow flex-col overflow-y-auto px-6 pb-4">
                 <div class="flex h-16 shrink-0 items-center">
                     <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
                         alt="Your Company">
@@ -195,9 +195,9 @@
             </div>
         </div>
 
-        <div class="lg:pl-72">
+        <div class="lg:pl-72 bg-neutral-900">
             <div
-                class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+                class="sticky top-0 z-40 flex  h-12 shrink-0 items-center gap-x-4  bg-neutral-900 px-4 shadow-sm sm:px-6 lg:px-8">
                 <button id="menuButton" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
                     <span class="sr-only">Open sidebar</span>
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -224,8 +224,8 @@
 
             </div>
 
-            <main class="py-10">
-                <div class="px-2 sm:px-4 lg:px-4">
+            <main class="">
+                <div class="px-2 sm:px-4 lg:px-4 bg-neutral-900 ">
                     {{ $slot }}
                 </div>
             </main>

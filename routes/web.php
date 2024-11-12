@@ -18,6 +18,7 @@ use App\Http\Controllers\Member\UserProgramScheduleController;
 use App\Http\Controllers\Member\UserProgramDailyExerciseController;
 use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
 use App\Http\Controllers\Member\ProgramController as MemberProgramController;
+use App\Http\Controllers\TimeSheetController;
 use App\Models\Exercise;
 
 //guesst-viwers
@@ -97,6 +98,8 @@ Route::get('/admin/tutorials', [TutorialController::class, 'index'])->middleware
 
 //user-side
 Route::get('/home', [MemberController::class, 'index'])->middleware( ['auth', 'verified']);
+//form action to choose trainer
+Route::post('/home', [TimeSheetController::class, 'store']);
 
 Route::get('/member/programs', [MemberProgramController::class, 'index']);
 Route::get('/member/programs/{program}', [MemberProgramController::class, 'show']);
