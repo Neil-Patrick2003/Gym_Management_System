@@ -1,70 +1,15 @@
 <x-member-layout>
-
-    <div class="relative flex flex-col my-6 bg-orange-400 rounded-lg w-full p-4">
-        <h1 class="text-white text-2xl md:text-3xl font-bold mb-4">
-            Hello, {{ Auth::user()->name }}!
-        </h1>
-    </div>
-
-    <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-        <div class="...">
-            <div class="relative flex flex-col my-6 bg-zinc-800 rounded-lg w-full p-4">
-                <h1 class="text-white text-2xl md:text-3xl font-bold mb-4">
-                    Hello, {{ Auth::user()->name }}!
-                </h1>
-            </div>
-        </div>
-        <div class="...">
-            <div class="relative flex flex-col my-6 bg-orange-400 rounded-lg w-full p-4">
-                <h1 class="text-white text-2xl md:text-3xl font-bold mb-4">
-                    Hello, {{ Auth::user()->name }}!
-                </h1>
-            </div>
-        </div>
-        <div class="...">
-            <div class="relative flex flex-col my-6 bg-orange-400 rounded-lg w-full p-4">
-                <h1 class="text-white text-2xl md:text-3xl font-bold mb-4">
-                    Hello, {{ Auth::user()->name }}!
-                </h1>
-            </div>
-        </div>
-        <div class="sm:col-span-2 md:col-span-2 ...">
-            <div class="relative flex flex-col my-6 bg-orange-400 rounded-lg w-full p-4">
-                <h1 class="text-white text-2xl md:text-3xl font-bold mb-4">
-                    Hello, {{ Auth::user()->name }}!
-                </h1>
-            </div>
-        </div>
-        <div class="...">
-            <div class="relative flex flex-col my-6 bg-orange-400 rounded-lg w-full p-4">
-                <h1 class="text-white text-2xl md:text-3xl font-bold mb-4">
-                    Hello, {{ Auth::user()->name }}!
-                </h1>
-            </div>
-        </div>
-        <div class="...">
-            <div class="relative flex flex-col my-6 bg-orange-400 rounded-lg w-full p-4">
-                <h1 class="text-white text-2xl md:text-3xl font-bold mb-4">
-                    Hello, {{ Auth::user()->name }}!
-                </h1>
-            </div>
-        </div>
-        <div class="sm:col-span-2 md:col-span-2 ...">
-            <div class="relative flex flex-col my-6 bg-orange-400 rounded-lg w-full p-4">
-                <h1 class="text-white text-2xl md:text-3xl font-bold mb-4">
-                    Hello, {{ Auth::user()->name }}!
-                </h1>
-            </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+        <div class="h-24 bg-orange-400 rounded-lg w-full p-4">
+            <h1 class="text-white text-2xl md:text-3xl font-bold mb-4">
+                Hello, {{ Auth::user()->name }}!
+            </h1>
         </div>
     </div>
 
-
-
-
-
-    {{-- Programs --}}
-    <div class="flex flex-col bg-zinc-800 m-auto p-auto">
-        <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-gray-800">
+    {{-- Programs sample list --}}
+    {{-- <div class="flex flex-col bg-zinc-800 m-auto p-auto">
+        <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-white">
             Programs
         </h1>
         <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
@@ -78,7 +23,7 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Fixed Check-in Button -->
     <div class="fixed bottom-4 right-4 z-50">
@@ -119,6 +64,7 @@
         </div>
     </div>
 
+    ksaljdddalkadsadlkadadlksajdsaddklj
 
     <style>
         .hide-scroll-bar {

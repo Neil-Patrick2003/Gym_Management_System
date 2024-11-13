@@ -51,7 +51,7 @@
                     </div>
 
                     <div
-                        class="flex grow flex-col gap-y-5 overflow-y-auto  px-6 pb-4 ring-1 ring-white/10 border border-solid">
+                        class="flex text-white grow flex-col gap-y-5 overflow-y-auto  px-6 pb-4 ring-1 ring-white/10 border border-solid">
                         <div class="flex h-16 shrink-0 items-center">
                             <img class="h-8 w-auto"
                                 src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
@@ -61,7 +61,7 @@
                         <nav class="flex flex-1 flex-col ">
                             <ul role="list" class="flex flex-1 flex-col gap-y-7">
                                 <li>
-                                    <x-member-nav-link href="{{ url('/home') }}" :active="request()->is('home')">
+                                    <x-member-nav-link href="{{ url('/trainer/home') }}" :active="request()->is('trainer/home')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                                 stroke="currentColor" aria-hidden="true">
@@ -74,7 +74,7 @@
                                     </x-member-nav-link>
                                 </li>
                                 <li>
-                                    <x-member-nav-link href="{{ url('/member/programs') }}" :active="request()->is('member/programs')">
+                                    <x-member-nav-link href="{{ url('/trainer/programs') }}" :active="request()->is('trainer/programs')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                                 stroke="currentColor" aria-hidden="true">
@@ -86,7 +86,7 @@
                                     </x-member-nav-link>
                                 </li>
                                 <li>
-                                    <x-member-nav-link href="{{ url('/member/myprogram') }}" :active="request()->is('member/myprogram')">
+                                    <x-member-nav-link href="{{ url('/trainer/appointments') }}" :active="request()->is('trainer/appoinments')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                                 stroke="currentColor" aria-hidden="true">
@@ -94,11 +94,11 @@
                                                     d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
                                             </svg>
                                         </x-slot:icon>
-                                        My Progress
+                                        Appointments
                                     </x-member-nav-link>
                                 </li>
                                 <li>
-                                    <x-member-nav-link href="{{ url('/member/appointments') }}" :active="request()->is('member/appoinments')">
+                                    <x-member-nav-link href="{{ url('/trainer/recommendations') }}" :active="request()->is('member/appoinments')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                                 stroke="currentColor" aria-hidden="true">
@@ -106,7 +106,7 @@
                                                     d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
                                             </svg>
                                         </x-slot:icon>
-                                        Appointment
+                                        Recommendations
                                     </x-member-nav-link>
                                 </li>
                             </ul>
@@ -130,7 +130,7 @@
                             <li>
                                 <ul role="list" class="-mx-2 space-y-1">
                                     <li>
-                                        <x-member-nav-link href="{{ url('/home') }}" :active="request()->is('home')">
+                                        <x-member-nav-link href="{{ url('/trainer/home') }}" :active="request()->is('trainer/home')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -143,7 +143,7 @@
                                         </x-member-nav-link>
                                     </li>
                                     <li>
-                                        <x-member-nav-link href="{{ url('/member/programs') }}" :active="request()->is('member/programs')">
+                                        <x-member-nav-link href="{{ url('/trainer/programs') }}" :active="request()->is('trainer/programs')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -155,7 +155,7 @@
                                         </x-member-nav-link>
                                     </li>
                                     <li>
-                                        <x-member-nav-link href="{{ url('/member/myprogram') }}" :active="request()->is('member/myprogram')">
+                                        <x-member-nav-link href="{{ url('/trainer/appointments') }}" :active="request()->is('trainer/appoinments')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -163,11 +163,12 @@
                                                         d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
                                                 </svg>
                                             </x-slot:icon>
-                                            My Progress
+                                            Appointments
                                         </x-member-nav-link>
                                     </li>
                                     <li>
-                                        <x-member-nav-link href="{{ url('/member/appointments') }}" :active="request()->is('member/appoinments')">
+                                        <x-member-nav-link href="{{ url('/trainer/recommendations') }}"
+                                            :active="request()->is('member/appoinments')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -175,7 +176,7 @@
                                                         d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
                                                 </svg>
                                             </x-slot:icon>
-                                            Appointment
+                                            Recommendations
                                         </x-member-nav-link>
                                     </li>
                                 </ul>

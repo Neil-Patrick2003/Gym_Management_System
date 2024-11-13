@@ -5,18 +5,7 @@
 
 
     <div class="px-4 sm:px-6 lg:px-8">
-        <div class="sm:flex sm:items-center">
-            <div class="sm:flex-auto">
-                <h1 class="text-base font-semibold text-gray-900">Users</h1>
-                <p class="mt-2 text-sm text-gray-700">A list of all the users in your account including their name,
-                    title, email and role.</p>
-            </div>
-            <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                <button type="button"
-                    class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add
-                    user</button>
-            </div>
-        </div>
+        <H1 class="text-white">Appoint A Session</H1>
         <div class="mt-8 flow-root">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -24,14 +13,14 @@
                         <thead>
                             <tr>
                                 <th scope="col"
-                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">
                                     Trainer
                                 </th>
-                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">
                                     Start</th>
-                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">
                                     End</th>
-                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">
                                     Status</th>
                                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
                                     <span class="sr-only">Edit</span>
@@ -146,7 +135,10 @@
 
     <form action="/member/appointments" method="POST">
         @csrf
-        <div class="flex flex-col space-y-4 max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg">
+        <div class="flextext-white mt-6 flex-col space-y-4 max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg">
+            <center>
+                <h1 class="font-bold	">Create Appointment</h1>
+            </center>
             <!-- Start Time Picker -->
             <div>
                 <label for="start_time" class="block text-sm font-medium text-gray-700">Start Date & Time</label>

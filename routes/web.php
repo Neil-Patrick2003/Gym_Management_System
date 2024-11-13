@@ -1,25 +1,27 @@
 <?php
 
+use App\Models\Exercise;
 use App\Models\UserProgram;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TutorialController;
+use App\Http\Controllers\TimeSheetController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MembersController;
 use App\Http\Controllers\Member\MemberController;
 use App\Http\Controllers\Admin\ExercisesController;
+use App\Http\Controllers\Trainer\TrainerController;
 use App\Http\Controllers\Member\AppointmentController;
 use App\Http\Controllers\Member\UserProgramController;
 use App\Http\Controllers\Admin\DailyExerciseController;
 use App\Http\Controllers\Admin\ProgramScheduleController;
+use App\Http\Controllers\Trainer\RecommendationController;
 use App\Http\Controllers\Member\UserProgramScheduleController;
 use App\Http\Controllers\Member\UserProgramDailyExerciseController;
 use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
 use App\Http\Controllers\Member\ProgramController as MemberProgramController;
-use App\Http\Controllers\TimeSheetController;
-use App\Models\Exercise;
 
 //guesst-viwers
 Route::get('/', function () {
@@ -121,3 +123,7 @@ Route::get('/member/appointments', [AppointmentController::class, 'index']);
 Route::post('/member/appointments', [AppointmentController::class, 'store']);
 
 
+//traineer-side
+Route::get('/trainer/home', [TrainerController::class, 'index']);
+
+Route::get('/trainer/recommendations', [RecommendationController::class, 'index']);
