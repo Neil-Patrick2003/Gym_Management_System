@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Trainer;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Foundation\Auth\User;
 
 class TrainerController extends Controller
 {
@@ -12,7 +13,9 @@ class TrainerController extends Controller
      */
     public function index()
     {
+        $members = User::where('role', '=', 'Member')->get();
         return view('trainer/index', [
+            'members' => $members
         ]);
     }
 

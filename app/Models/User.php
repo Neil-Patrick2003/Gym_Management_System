@@ -66,4 +66,8 @@ class User extends Authenticatable
         return $this->hasMany(Program::class);
     }
 
+    public function timesheet(){
+        return $this->hasMany(Appoinment::class);
+    }
+
 }

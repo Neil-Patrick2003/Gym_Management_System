@@ -83,6 +83,9 @@ Route::get('/admin/payments', [PaymentController::class, 'index']);
 //tutorials
 Route::get('/admin/tutorials', [TutorialController::class, 'index'])->middleware(['auth', 'verified']);
 
+Route::get('/trainer/recommendations/create/{user}', [RecommendationController::class, 'create']);
+
+Route::post('/trainer/recommendations/create/{user}', [RecommendationController::class, 'store']);
 
 
 

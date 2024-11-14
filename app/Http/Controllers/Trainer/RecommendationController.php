@@ -15,15 +15,19 @@ class RecommendationController extends Controller
     {
         $members = User::where('role', '=', 'Member')->get();
 
-        dd($members->toArray());
+        return view('trainer.recommendation.index', [
+            'members' => $members
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
-        //
+
+        $member = User::where('id', '-', $id);
+        return view('trainer.recommendation.create');
     }
 
     /**
@@ -31,7 +35,7 @@ class RecommendationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd(request()->toArray());
     }
 
     /**
