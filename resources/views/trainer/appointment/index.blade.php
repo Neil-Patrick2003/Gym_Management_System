@@ -45,18 +45,54 @@
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
                                         <div class="text-gray-900">
-                                            {{ \Carbon\Carbon::parse($appointment->start_time)->format('l jS \o\f F Y h:i:s A')  }}</div>
+                                            {{ \Carbon\Carbon::parse($appointment->start_time)->format(' jS F Y h:i:s A') }}
+                                        </div>
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                                        <div class="text-gray-900">Front-end Developer</div>
+                                        <div class="text-gray-900">
+                                            {{ \Carbon\Carbon::parse($appointment->end_time)->format(' jS F Y h:i:s A') }}
+                                        </div>
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                                        <span
-                                            class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Active</span>
+                                        @if ($appointment->status === 'Pending')
+                                            <span
+                                                class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-600/20">
+                                                Waiting for Approval
+                                            </span>
+                                        @elseif ($appointment->status === 'Approved')
+                                            <span
+                                                class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20">
+                                                Approved
+                                            </span>
+                                        @elseif ($appointment->status === 'Denied')
+                                            <span
+                                                class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20">
+                                                Denied
+                                            </span>
+                                        @elseif ($appointment->status === 'Completed')
+                                            <span
+                                                class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                                                Completed
+                                            </span>
+                                        @elseif ($appointment->status === 'Expired')
+                                            <span
+                                                class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20">
+                                                Expired
+                                            </span>
+                                        @else
+                                            <span
+                                                class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-500 ring-1 ring-inset ring-gray-400/20">
+                                                Unknown Status
+                                            </span>
+                                        @endif
                                     </td>
                                     <td
                                         class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                                        <a href="#"
+                                        <form action="">
+                                            <input type="hidden" name="apointment_id" value="{{$appointment->id}}">
+                                            <button type="submit" c></button>
+                                        </form>
+                                        <a href="/trainer/appointments/{{$appointment->id}}"
                                             class="rounded bg-red-50 px-2 py-1 text-xs font-semibold text-indigo-600 shadow-sm hover:bg-red-100">Accept<span
                                                 class="sr-only">, Lindsay Walton</span></a>
                                         <a href="#"
