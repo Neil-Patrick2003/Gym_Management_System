@@ -3,89 +3,61 @@
         <h1>All Members</h1>
     </div>
 
-    @if (session('success'))
-        <div id="success-alert" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
-            role="alert">
-            <span class="block sm:inline">{{ session('success') }}</span>
-            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                <button type="button" onclick="document.getElementById('success-alert').style.display='none'">
-                    <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20">
-                        <title>Close</title>
-                        <path
-                            d="M14.348 5.652a1 1 0 00-1.414 0L10 8.586 7.066 5.652a1 1 0 10-1.414 1.414L8.586 10l-2.934 2.934a1 1 0 001.414 1.414L10 11.414l2.934 2.934a1 1 0 001.414-1.414L11.414 10l2.934-2.934a1 1 0 000-1.414z" />
-                    </svg>
-                </button>
-            </span>
-        </div>
-    @endif
+    <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        @foreach ($members as $member)
+            <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
+                <div class="flex w-full items-center justify-between space-x-6 p-6">
+                    <div class="flex-1 truncate">
+                        <div class="flex items-center space-x-3">
+                            <h3 class="truncate text-sm font-medium text-gray-900">{{ $member->name }}</h3>
+                            @php
+                                // Calculate the number of days since the user joined
+                                $daysSinceJoined = now()->diffInDays($member->created_at);
+                            @endphp
 
-    <div class="px-4 py-4 sm:px-6 lg:px-8 border bg-white shadow rounded">
-        <div class="mt-8 flow-root">
-            <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                    <table class="min-w-full divide-y divide-gray-300">
-                        <thead>
-                            <tr>
-                                <th scope="col"
-                                    class="py-3 pl-4 pr-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500 sm:pl-0">
-                                    Name</th>
-                                <th scope="col"
-                                    class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">
-                                    Email</th>
-                                <th scope="col"
-                                    class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">
-                                    Role</th>
-                                <th scope="col" class="relative py-3 pl-3 pr-4 sm:pr-0">
-                                    <span class="sr-only">Edit</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200 bg-white">
-                            @foreach ($members as $member)
-                                <tr>
-                                    <td
-                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                        {{ $member->name }} </td>
+                            <span
+                                class="inline-flex shrink-0 items-center rounded-full {{ $daysSinceJoined >= 30 ? 'bg-green-50 text-green-700 ring-green-600/20' : 'bg-yellow-50 text-yellow-700 ring-yellow-600/20' }} px-1.5 py-0.5 text-xs font-medium ring-1 ring-inset">
+                                @if ($daysSinceJoined >= 30)
+                                    Joined {{ $daysSinceJoined }} days ago
+                                @else
+                                    New member
+                                @endif
+                            </span>
+                        </div>
+                        <p class="mt-1 truncate text-sm text-gray-500">
+                            Member since {{ \Carbon\Carbon::parse($member->created_at)->format('F j, Y') }}
+                        </p>
 
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                        {{ $member->email }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                        <form action="/admin/members/{{ $member->id }}" method="POST"
-                                            id="roleForm-{{ $member->id }}">
-                                            @csrf
-                                            @method('PATCH')
-
-                                            <input type="hidden" name="user" value="{{ $member }}">
-
-                                            <select name="role" id="role"
-                                                class="border border-gray-300 rounded-md px-2 py-1"
-                                                onchange="document.getElementById('roleForm-{{ $member->id }}').submit();">
-                                                <option value="{{ $member->role }}" selected>{{ $member->role }}
-                                                </option>
-                                                <option value="Admin">Admin</option>
-                                                <option value="Member">Member</option>
-                                                <option value="Trainer">Trainer</option>
-                                            </select>
-                                        </form>
-
-
-                                    </td>
-                                    <td
-                                        class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span
-                                                class="sr-only">, Lindsay Walton</span></a>
-                                    </td>
-                                </tr>
-                            @endforeach
-
-                        </tbody>
-                    </table>
+                    </div>
+                    <img class="size-10 shrink-0 rounded-full bg-gray-300"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTruq-IX6Xj3QHR6Bq5nrLeY1PXh9aYVYszSKMUrOMPw-i0OhojWNnbVODSBQEANBCQ58&usqp=CAU"
+                        alt="">
                 </div>
-            </div>
-        </div>
-    </div>
+                <div>
+                    <div class="-mt-px flex divide-x divide-gray-200">
+                        <div class="flex w-0 flex-1">
+                            <a href="mailto:{{ $member->email }}"
+                                class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
+                                <svg class="size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
+                                    aria-hidden="true" data-slot="icon">
+                                    <path
+                                        d="M3 4a2 2 0 0 0-2 2v1.161l8.441 4.221a1.25 1.25 0 0 0 1.118 0L19 7.162V6a2 2 0 0 0-2-2H3Z" />
+                                    <path
+                                        d="m19 8.839-7.77 3.885a2.75 2.75 0 0 1-2.46 0L1 8.839V14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.839Z" />
+                                </svg>
+                                Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        @endforeach
+
+
+        <!-- More people... -->
+    </ul>
+
+
 
 
 </x-app-layout>

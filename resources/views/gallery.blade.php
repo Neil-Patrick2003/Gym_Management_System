@@ -1,7 +1,7 @@
 <x-layout>
-    <div class="gallery">
+    <div class="main-bg w-full gallery">
         <section id="trainor">
-            <div class="main-bg flex flex-col items-center justify-start h-full py-10">
+            <div class=" flex flex-col items-center justify-start h-full">
                 <div class="text-center text-white p-8">
                     <h1 class="text-4xl font-bold mb-8">Train With Us</h1>
                 </div>

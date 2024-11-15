@@ -8,6 +8,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TutorialController;
 use App\Http\Controllers\TimeSheetController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MembersController;
 use App\Http\Controllers\Member\MemberController;
@@ -78,13 +79,21 @@ Route::post('/admin/programs/program/{program}/add_exercise', [DailyExerciseCont
 //payments
 Route::get('/admin/payments', [PaymentController::class, 'index']);
 
-
-
 //tutorials
 Route::get('/admin/tutorials', [TutorialController::class, 'index'])->middleware(['auth', 'verified']);
 
-Route::get('/trainer/recommendations/create/{user}', [RecommendationController::class, 'create']);
+//user-update-roles
+Route::get('/admin/users', [UserController::class, 'index']);
+//update role
+Route::patch('/admin/users/{member}', [UserController::class, 'edit'] )->middleware(['auth', 'verified']);
 
+
+
+
+
+
+//traiiner
+Route::get('/trainer/recommendations/create/{user}', [RecommendationController::class, 'create']);
 Route::post('/trainer/recommendations/create/{user}', [RecommendationController::class, 'store']);
 
 

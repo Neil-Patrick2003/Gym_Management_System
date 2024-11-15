@@ -4,8 +4,9 @@
     </h1>
 
     @foreach ($programs as $program)
-        <div class="relative border border-gray-300 rounded-lg mb-4 overflow-hidden"
-            style="background-image: url('{{ asset('storage/' . $program->photo_link) }}');
+        <a href="/admin/programs/{{ $program->id }}" class="text-white text-lg font-normal hover:underline">
+            <div class="relative border border-gray-300 rounded-lg mb-4 overflow-hidden"
+                style="background-image: url('{{ asset('storage/' . $program->photo_link) }}');
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: cover;
@@ -13,31 +14,31 @@
                 border-radius: 15px;
                 opacity: 98%;">
 
-            <div class="absolute px-4 py-4 inset-0 bg-black/50 flex items-end justify-between">
-                <div>
-                    <h2 class="text-white text-2xl font-bold">{{ $program->name }}</h2>
-                    <p class="text-white">Created by: {{ $program->created_by }}</p>
-                </div>
-                <div>
-                    <a href="/admin/programs/{{ $program->id }}"
-                        class="text-white text-lg font-normal hover:underline">View></a>
+                <div class="absolute px-4 py-4 inset-0 bg-black/50 flex items-end justify-between">
+                    <div>
+                        <h2 class="text-white text-2xl sm:text-4xl md:text-6xl font-bold">{{ $program->name }}</h2>
+                        <p class="text-white text-sm sm:text-base md:text-lg">Created by: {{ $program->created_by }}</p>
 
-                </div>
-                <div>
-                    <form action="/admin/programs/delete/{{ $program->id }}" method="POST"
-                        onsubmit="return confirmDelete()">
-                        @csrf
-                        @method('DELETE')
-                        <input type="hidden" name="program_id" value="{{ $program->id }}">
-                        <button class="bg-red-500 hover:bg-red-600 text-white text-sm font-semibold py-1 px-3 rounded">
-                            Remove
-                        </button>
-                    </form>
+                    </div>
+                    <div>
+                        <p class="text-white text-sm sm:text-base md:text-lg opacity-60">view</p>
+                    </div>
+                    {{-- <div>
+                        <form action="/admin/programs/delete/{{ $program->id }}" method="POST"
+                            onsubmit="return confirmDelete()">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="program_id" value="{{ $program->id }}">
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white text-sm font-semibold py-1 px-3 rounded">
+                                Remove
+                            </button>
+                        </form>
 
+                    </div> --}}
                 </div>
             </div>
-
-        </div>
+        </a>
     @endforeach
 
     <div>
@@ -61,10 +62,29 @@
                 </div>
 
                 <div class="flex flex-col">
-                    <label for="photo_link" class="mb-2 text-base font-semibold text-gray-600">Upload File</label>
-                    <input id="photo_link" name="photo_link" type="file"
-                        class="w-full pt-3 h-12 px-4 text-sm border border-gray-300 rounded-lg bg-white cursor-pointer focus:bg-gray-50 hover:border-gray-400 focus:border-indigo-500 focus:outline-none transition duration-200" />
+                    <label class="block mt-2" for="photo_link_file">
+                        <span class="sr-only">Choose Exercise photo</span>
+                        <input type="file" name="photo_link" id="photo_link_file" required
+                            class="block w-full text-sm text-slate-500
+                                file:mr-4 file:py-2 file:px-4
+                                file:rounded-full file:border-0
+                                file:text-sm file:font-semibold
+                                file:bg-violet-50 file:text-violet-700
+                                hover:file:bg-violet-100" />
+                    </label>
+
                 </div>
+
+
+
+
+
+
+
+
+
+
+
 
                 <div class="flex justify-center">
                     <button type="submit"
@@ -96,7 +116,7 @@
     </style>
 
     <script>
-        function confirmDelete(){
+        function confirmDelete() {
             return confirm('Are you sure want to remove this program?');
         }
     </script>

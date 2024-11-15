@@ -33,7 +33,7 @@
     </style>
 </head>
 
-<body class="h-full bg-neutral-900">
+<body class="h-full bg-white">
 
     <div>
         <!-- Off-Canvas Menu -->
@@ -119,17 +119,13 @@
         <!--idebar for desktop -->
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
             <!-- Sidebar component, home, projects, exercises ....-->
-            <div class="flex grow flex-col overflow-y-auto ml-6 pb-4">
-                <div class="flex h-16 shrink-0 items-center">
-                    <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                        alt="Your Company">
-                </div>
-                <div class="h-full p-6 bg-zinc-800 rounded-lg">
+            <div class="flex grow flex-col overflow-y-auto">
+                <div class="h-full p-6 bg-red-600">
                     <nav class="flex flex-1 flex-col">
                         <ul role="list" class="flex flex-1 flex-col gap-y-7">
                             <li>
-                                <ul role="list" class="-mx-2 space-y-1">
-                                    <li>
+                                <ul role="list" class="-mx-2 space-y-1 ">
+                                    <li class="pt-6">
                                         <x-member-nav-link href="{{ url('/home') }}" :active="request()->is('home')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -193,37 +189,46 @@
             </div>
         </div>
 
-        <div class="lg:pl-72 bg-neutral-900">
-            <div
-                class="sticky top-0 z-40 flex  h-12 shrink-0 items-center gap-x-4  bg-neutral-900 px-4 shadow-sm sm:px-6 lg:px-8">
-                <button id="menuButton" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
-                    <span class="sr-only">Open sidebar</span>
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" aria-hidden="true" data-slot="icon">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
-                </button>
-
-                <!-- Separator -->
-                <div class="h-6 w-px lg:hidden" aria-hidden="true"></div>
-
-                <div class="flex flex-1 justify-end gap-x-4 lg:gap-x-6 p-4">
-                    <!-- Notification Button -->
-                    <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
-                        <span class="sr-only">View notifications</span>
+        <div class="lg:pl-72 bg-white">
+            <div class="lg:pl-72 bg-white">
+                <div class="sticky top-0 z-40 flex h-14 shrink-0 items-center gap-x-4 px-4 shadow-sm sm:px-6 lg:px-8">
+                    <!-- Menu Button for Mobile -->
+                    <button id="menuButton" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
+                        <span class="sr-only">Open sidebar</span>
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
                     </button>
-                </div>
 
+                    <!-- Separator -->
+                    <div class="h-6 w-px bg-gray-200 mx-4" aria-hidden="true"></div>
+
+                    <!-- Search Bar -->
+                    <div class="flex flex-1 justify-center sm:justify-start">
+                        <input type="text" placeholder="Search..."
+                            class="w-full h-8 px-4 py-2 border-2 border-red-600 bg-transparent text-gray-700 placeholder-gray-500 rounded-full focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-300">
+                    </div>
+
+                    <!-- Right Section (Notifications and other buttons) -->
+                    <div class="flex flex-1 justify-end gap-x-4 lg:gap-x-6 p-4">
+                        <!-- Notification Button -->
+                        <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
+                            <span class="sr-only">View notifications</span>
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
 
+
             <main class="">
-                <div class="px-2 sm:px-4 lg:px-4 bg-neutral-900 ">
+                <div class="px-2 sm:px-4 lg:px-4 bg-white">
                     {{ $slot }}
                 </div>
             </main>

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Trainer;
 
+use App\Models\Recommendation;
 use App\Models\User;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class RecommendationController extends Controller
 {
@@ -14,6 +17,8 @@ class RecommendationController extends Controller
     public function index()
     {
         $members = User::where('role', '=', 'Member')->get();
+
+        // dd($members->toArray());
 
         return view('trainer.recommendation.index', [
             'members' => $members
@@ -26,16 +31,36 @@ class RecommendationController extends Controller
     public function create($id)
     {
 
-        $member = User::where('id', '-', $id);
-        return view('trainer.recommendation.create');
+        $member = User::find($id);
+
+        return view('trainer.recommendation.create', [
+            'member' => $member
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        dd(request()->toArray());
+
+        $trainerId = FacadesAuth::id(); // or $user->id
+        $request->validate([
+            'user_id' => 'required',
+            'trainer_id' => 'required',
+            'content' => 'required|max:9999|min:20',
+            'type' => 'required'
+        ]);
+
+        $recommendations = Recommendation::create([
+            'user_id' => $id,
+            'trainer_id' => $trainerId,
+            'content' => $request->content,
+            'type' => $request->category
+
+        ]);
+
+        return redirect('/trainer/recommendations')->back();
     }
 
     /**
