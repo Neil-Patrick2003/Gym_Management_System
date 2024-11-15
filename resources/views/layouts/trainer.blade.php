@@ -33,7 +33,7 @@
     </style>
 </head>
 
-<body class="h-full bg-neutral-900">
+<body class="h-full">
 
     <div>
         <!-- Off-Canvas Menu -->
@@ -124,7 +124,7 @@
                     <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
                         alt="Your Company">
                 </div>
-                <div class="h-full p-6 bg-zinc-800 rounded-lg">
+                <div class="h-full p-6 bg-red-600 rounded-lg mt-6">
                     <nav class="flex flex-1 flex-col">
                         <ul role="list" class="flex flex-1 flex-col gap-y-7">
                             <li>
@@ -194,9 +194,9 @@
             </div>
         </div>
 
-        <div class="lg:pl-72 bg-neutral-900">
+        <div class="lg:pl-72">
             <div
-                class="sticky top-0 z-40 flex  h-12 shrink-0 items-center gap-x-4  bg-neutral-900 px-4 shadow-sm sm:px-6 lg:px-8">
+                class="sticky top-0 z-40 flex  h-12 shrink-0 items-center gap-x-4   px-4 shadow-sm sm:px-6 lg:px-8">
                 <button id="menuButton" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
                     <span class="sr-only">Open sidebar</span>
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -224,7 +224,7 @@
             </div>
 
             <main class="">
-                <div class="px-2 sm:px-4 lg:px-4 bg-neutral-900 ">
+                <div class="px-2 sm:px-4 lg:px-4">
                     {{ $slot }}
                 </div>
             </main>

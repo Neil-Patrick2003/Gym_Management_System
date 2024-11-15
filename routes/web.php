@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Program;
 use App\Models\Exercise;
 use App\Models\UserProgram;
 use App\Http\Middleware\Admin;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MembersController;
 use App\Http\Controllers\Member\MemberController;
 use App\Http\Controllers\Admin\ExercisesController;
+use App\Http\Controllers\Trainer\ProgramController;
 use App\Http\Controllers\Trainer\TrainerController;
 use App\Http\Controllers\Member\AppointmentController;
 use App\Http\Controllers\Member\UserProgramController;
@@ -20,9 +22,12 @@ use App\Http\Controllers\Admin\DailyExerciseController;
 use App\Http\Controllers\Admin\ProgramScheduleController;
 use App\Http\Controllers\Trainer\RecommendationController;
 use App\Http\Controllers\Member\UserProgramScheduleController;
+
 use App\Http\Controllers\Member\UserProgramDailyExerciseController;
 use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
 use App\Http\Controllers\Member\ProgramController as MemberProgramController;
+use App\Http\Controllers\Trainer\AppointmentController as TrainerAppointmentController;
+use App\Http\Controllers\Trainer\TrainerProgramController as TrainerProgramsController;
 
 //guesst-viwers
 Route::get('/', function () {
@@ -96,6 +101,13 @@ Route::patch('/admin/users/{member}', [UserController::class, 'edit'] )->middlew
 Route::get('/trainer/recommendations/create/{user}', [RecommendationController::class, 'create']);
 Route::post('/trainer/recommendations/create/{user}', [RecommendationController::class, 'store']);
 
+
+//program
+Route::get('/trainer/programs', [TrainerProgramsController::class, 'index']);
+
+
+//appointment
+Route::get('/trainer/appointments', [TrainerAppointmentController::class, 'index']);
 
 
 

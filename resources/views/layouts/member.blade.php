@@ -116,9 +116,7 @@
             </div>
         </div>
 
-        <!--idebar for desktop -->
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-            <!-- Sidebar component, home, projects, exercises ....-->
             <div class="flex grow flex-col overflow-y-auto">
                 <div class="h-full p-6 bg-red-600">
                     <nav class="flex flex-1 flex-col">
@@ -132,7 +130,6 @@
                                                     stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-
                                                 </svg>
                                             </x-slot:icon>
                                             Home
@@ -192,7 +189,6 @@
         <div class="lg:pl-72 bg-white">
             <div class="lg:pl-72 bg-white">
                 <div class="sticky top-0 z-40 flex h-14 shrink-0 items-center gap-x-4 px-4 shadow-sm sm:px-6 lg:px-8">
-                    <!-- Menu Button for Mobile -->
                     <button id="menuButton" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
                         <span class="sr-only">Open sidebar</span>
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -201,19 +197,11 @@
                                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
                     </button>
-
-                    <!-- Separator -->
-                    <div class="h-6 w-px bg-gray-200 mx-4" aria-hidden="true"></div>
-
-                    <!-- Search Bar -->
                     <div class="flex flex-1 justify-center sm:justify-start">
                         <input type="text" placeholder="Search..."
                             class="w-full h-8 px-4 py-2 border-2 border-red-600 bg-transparent text-gray-700 placeholder-gray-500 rounded-full focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-300">
                     </div>
-
-                    <!-- Right Section (Notifications and other buttons) -->
                     <div class="flex flex-1 justify-end gap-x-4 lg:gap-x-6 p-4">
-                        <!-- Notification Button -->
                         <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
                             <span class="sr-only">View notifications</span>
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -225,7 +213,6 @@
                     </div>
                 </div>
             </div>
-
 
             <main class="">
                 <div class="px-2 sm:px-4 lg:px-4 bg-white">
@@ -248,7 +235,6 @@
             offCanvasMenu.classList.remove('show');
         });
 
-        // Close the menu when clicking outside of it
         window.addEventListener('click', (event) => {
             if (!offCanvasMenu.contains(event.target) && !menuButton.contains(event.target)) {
                 offCanvasMenu.classList.remove('show');
@@ -257,5 +243,4 @@
     </script>
 
 </body>
-
 </html>
