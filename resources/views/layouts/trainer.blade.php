@@ -124,7 +124,7 @@
                     <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
                         alt="Your Company">
                 </div>
-                <div class="h-full p-6 bg-red-600 rounded-lg mt-6">
+                <div class="h-full p-6 bg-red-800 rounded-lg mt-6">
                     <nav class="flex flex-1 flex-col">
                         <ul role="list" class="flex flex-1 flex-col gap-y-7">
                             <li>

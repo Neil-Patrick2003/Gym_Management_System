@@ -108,6 +108,8 @@ Route::get('/trainer/programs', [TrainerProgramsController::class, 'index']);
 
 //appointment
 Route::get('/trainer/appointments', [TrainerAppointmentController::class, 'index']);
+//update appointment (accpet/Reject)
+Route::patch('/trainer/appointments/{appointment}', [TrainerAppointmentController::class, 'update']);
 
 
 

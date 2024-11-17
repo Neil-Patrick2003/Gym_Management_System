@@ -61,7 +61,19 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $appointment = Appoinment::findOrFail($id);
+        $appointment->status = $request->status;
+        $appointment->save();
+
+        if($request->status === 'Accepted'){
+            return redirect()->back()->with('success', 'Appointment accepted');
+        }
+        else{   
+            return redirect()->back()->with('success', 'Status updated sucessfully');
+        }
+        
+        
+
     }
 
     /**
