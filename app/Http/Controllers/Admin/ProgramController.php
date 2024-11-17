@@ -12,13 +12,7 @@ class ProgramController extends Controller
 
     public function index()
     {
-
-        // $user_id = Auth::id();
-        // $user_programs = UserProgram::with(relations: 'program_schedules')->where('user_id', '=', $user_id)
-        //     ->oldest()
-        //     ->limit(5)
-        //     ->get();
-
+        //fetch
         $programs = Program::with('user')->paginate(15);
 
         return view('admin/programs/index', [
@@ -40,6 +34,7 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
+        //validate
         $request->validate([
             'name' => 'required|string|max:255',
             'photo_link' => 'required|file|mimes:jpg,png,svg,pdf|max:2048',
@@ -86,25 +81,9 @@ class ProgramController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Program $program)
     {
         $program->delete();
@@ -112,3 +91,6 @@ class ProgramController extends Controller
         return redirect()->back();
     }
 }
+
+
+//validate

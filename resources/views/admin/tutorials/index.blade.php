@@ -1,3 +1,3 @@
 <x-app-layout>
-    Tutorials
+    this is first page of tutorials
 </x-app-layout>

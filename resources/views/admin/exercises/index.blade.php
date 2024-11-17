@@ -22,8 +22,6 @@
 
 
 
-
-
     @foreach ($exercises as $exercise)
         <div
             class="exercise-item overflow-hidden bg-white shadow-sm hover:shadow-lg hover:scale-104 transition-transform duration-300 ease-in-out sm:rounded-lg mt-4 p-4">

@@ -13,6 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
+
+
         $members = User::all();
         return view('admin.user.index', [
             'members' => $members,
@@ -51,7 +53,7 @@ class UserController extends Controller
         $data = request()->validate([
             'role' => 'required|in:Admin,Member,Trainer'
         ]);
-        
+
 
         $user = User::findOrFail($id);
 
