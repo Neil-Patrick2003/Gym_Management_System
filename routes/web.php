@@ -21,6 +21,8 @@ use App\Http\Controllers\Member\UserProgramController;
 use App\Http\Controllers\Admin\DailyExerciseController;
 use App\Http\Controllers\Admin\ProgramScheduleController;
 use App\Http\Controllers\Trainer\RecommendationController;
+use App\Http\Controllers\Member\RecommendationController as MemberRecommendationController;
+
 use App\Http\Controllers\Member\UserProgramScheduleController;
 
 use App\Http\Controllers\Member\UserProgramDailyExerciseController;
@@ -116,20 +118,13 @@ Route::patch('/trainer/appointments/{appointment}', [TrainerAppointmentControlle
 
 
 
-
-
-
-
-
-
-
-
 //user-side
-Route::get('/home', [MemberController::class, 'index'])->middleware( ['auth', 'verified']);
+Route::get('/home', [MemberController::class, 'index'])->middleware( ['auth', 'verified'])->name('member_dashboard');
 //form action to choose trainer
 Route::post('/home', [TimeSheetController::class, 'store']);
-
+//user-program
 Route::get('/member/programs', [MemberProgramController::class, 'index']);
+//view-program
 Route::get('/member/programs/{program}', [MemberProgramController::class, 'show']);
 
 //action to form
@@ -148,8 +143,15 @@ Route::patch ('/member/myprogram/program/schedules/{user_program_schedule}/daily
 Route::get('/member/appointments', [AppointmentController::class, 'index']);
 Route::post('/member/appointments', [AppointmentController::class, 'store']);
 
+//recommendation-tab
+Route::get('/member/recommendations', [MemberRecommendationController::class, 'index']);
+
+
+
+
+
 
 //traineer-side
-Route::get('/trainer/home', [TrainerController::class, 'index']);
+Route::get('/trainer/home', [TrainerController::class, 'index'])->name('trainer_dashboard');
 
 Route::get('/trainer/recommendations', [RecommendationController::class, 'index']);

@@ -1,6 +1,11 @@
 <x-app-layout>
     <h1 class="p-4">
         All Programs
+        <br>
+
+        {{$message1}}
+        <br>
+        {{$message2}}
     </h1>
 
     @foreach ($programs as $program)

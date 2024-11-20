@@ -1,8 +1,8 @@
 <x-trainer-layout>
 
-    <div class="bg-gray-900">
+    <div class="mt-4 bg-gray-200 rounded rounded-lg">
         <div class="mx-auto max-w-7xl">
-            <div class="bg-gray-900 py-10">
+            <div class=" py-10">
                 <div class="px-4 sm:px-6 lg:px-8">
                     <div class="sm:flex sm:items-center">
                         <div class="sm:flex-auto">

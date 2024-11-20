@@ -2,21 +2,27 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Exercise;
 use App\Models\Program;
+use App\Models\Exercise;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ProgramController extends Controller
 {
 
     public function index()
     {
+        $message1 = "hello world";
+        $message2 = "hello lord";
+
         //fetch
         $programs = Program::with('user')->paginate(15);
 
         return view('admin/programs/index', [
             'programs' => $programs,
+            'message1' => $message1,
+            'message2'=> $message2
 
         ]);
     }
@@ -72,6 +78,7 @@ class ProgramController extends Controller
 
         $program = Program::with(relations: ['program_schedules' => ['exercises']])
             ->findOrFail($id);
+
 
         $exercises = Exercise::all();
 

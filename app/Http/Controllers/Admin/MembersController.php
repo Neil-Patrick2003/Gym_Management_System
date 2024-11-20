@@ -17,7 +17,7 @@ class MembersController extends Controller
         $members = User::where('role', '=', 'Member')
         ->get();
 
-        return view('admin.member', [
+        return view('admin.member.index', [
             'members' => $members
         ]);
     }
@@ -25,6 +25,6 @@ class MembersController extends Controller
 
     public function edit(string $id)
     {
-        
+
     }
 }

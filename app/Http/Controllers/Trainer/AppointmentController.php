@@ -19,6 +19,7 @@ class AppointmentController extends Controller
         ->where('trainer_id', '=', $id)
         ->get();
 
+
         return view('trainer.appointment.index', [
             'appointments' => $appointments
         ]);
@@ -68,11 +69,11 @@ class AppointmentController extends Controller
         if($request->status === 'Accepted'){
             return redirect()->back()->with('success', 'Appointment accepted');
         }
-        else{   
+        else{
             return redirect()->back()->with('success', 'Status updated sucessfully');
         }
-        
-        
+
+
 
     }
 
