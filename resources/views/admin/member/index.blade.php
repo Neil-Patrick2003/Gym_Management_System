@@ -15,7 +15,7 @@
                             <span
                                 class="inline-flex shrink-0 items-center rounded-full {{ $member->days_since_joined >= 30 ? 'bg-green-50 text-green-700 ring-green-600/20' : 'bg-yellow-50 text-yellow-700 ring-yellow-600/20' }} px-1.5 py-0.5 text-xs font-medium ring-1 ring-inset">
 
-                                @if ($member->days_since_joined >= 0 && $member->days_since_joined <= 7)
+                                @if ($member->days_since_joined >= 1 && $member->days_since_joined <= 7)
                                     Joined {{ round($member->days_since_joined, 0) }} days ago
                                 @elseif ($member->days_since_joined >= 7 )
                                     Old Member
