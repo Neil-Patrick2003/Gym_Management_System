@@ -70,4 +70,8 @@ class User extends Authenticatable
         return $this->hasMany(Appoinment::class);
     }
 
+    public function transaction(){
+        return $this->hasOne(Transaction::class);
+    }
+
 }

@@ -5,12 +5,12 @@ use App\Models\Exercise;
 use App\Models\UserProgram;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TutorialController;
 use App\Http\Controllers\TimeSheetController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\MembersController;
 use App\Http\Controllers\Member\MemberController;
 use App\Http\Controllers\Admin\ExercisesController;
@@ -94,6 +94,9 @@ Route::get('/admin/users', [UserController::class, 'index']);
 //update role
 Route::patch('/admin/users/{member}', [UserController::class, 'edit'] )->middleware(['auth', 'verified']);
 
+
+//payments
+Route::post('admin/payments', [PaymentController::class, 'store']);
 
 
 

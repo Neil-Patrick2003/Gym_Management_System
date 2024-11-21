@@ -13,26 +13,12 @@ class ProgramController extends Controller
 
     public function index()
     {
-        $message1 = "hello world";
-        $message2 = "hello lord";
-
         //fetch
         $programs = Program::with('user')->paginate(15);
 
         return view('admin/programs/index', [
-            'programs' => $programs,
-            'message1' => $message1,
-            'message2'=> $message2
-
+            'programs' => $programs
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('admin/program/create');
     }
 
     /**
@@ -65,9 +51,9 @@ class ProgramController extends Controller
             $input['photo_link'] = $path;
         }
 
-        Program::create($input);
+        $program = Program::create($input);
 
-        return redirect('admin/programs');
+        return redirect('admin/programs')->with('success', $program->name . ' added.');
     }
 
     /**
