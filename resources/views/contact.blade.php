@@ -1,6 +1,6 @@
 <x-layout>
-    <div class="contact">
-        <div class="main-bg flex flex-col items-center justify-center p-8">
+    <div class="contact w-full">
+        <div class="main-bg flex flex-col items-center justify-center w- full p-8 mt-12 ">
             <div class="text-center text-white mb-12">
                 <h1 class="text-4xl font-bold text-shadow">Contact Us</h1>
                 <p class="mt-4 text-shadow">We'd love to hear from you! Reach out to us via our social media platforms:</p>

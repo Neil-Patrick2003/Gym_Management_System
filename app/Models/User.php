@@ -3,9 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Attribute;
+use Carbon\Carbon;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -21,7 +24,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'about_me'
+        'about_me',
     ];
 
     /**
@@ -49,21 +52,37 @@ class User extends Authenticatable
 
     public function feedback()
     {
-        return $this->hasMany(Feedbacks::class);
+        return $this->hasMany(Feedback::class);
     }
 
     public function appointment()
     {
-        return $this->hasMany(Appointments::class);
+        return $this->hasMany(Appoinment::class);
     }
 
     public function Recommendation()
     {
-        return $this->hasMany(Recommendations::class);
+        return $this->hasMany(Recommendation::class);
     }
 
-    public function program(){
-        return $this->hasMany(Programs::class);
+    public function program()
+    {
+        return $this->hasMany(Program::class);
+    }
+
+    public function timesheet()
+    {
+        return $this->hasMany(Appoinment::class);
+    }
+
+    public function transaction()
+    {
+        return $this->hasOne(Transaction::class);
+    }
+
+    public function getDaysSinceJoinedAttribute()
+    {
+        return Carbon::parse($this->created_at)->diffInDays(Carbon::now());
     }
 
 }

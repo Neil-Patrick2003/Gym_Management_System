@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\DailyExercises;
+use App\Models\DailyExercise;
+use App\Models\ProgramSchedule;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -29,19 +30,9 @@ class DailyExerciseController extends Controller
      */
     public function store(Request $request)
     {
-
-        $exercise_ids = $request->exercise_ids;
-
-
-        foreach ($exercise_ids as $exercise_id) {
-            DailyExercises::create([
-                'program_schedule_id' => $request->program_schedule_id,
-                'exercise_id' => $exercise_id
-            ]);
-        }
-
+        $schedule = ProgramSchedule::find(id: $request->program_schedule_id);
+        $schedule->exercises()->sync($request->exercise_ids);
         return back();
-
     }
 
     /**

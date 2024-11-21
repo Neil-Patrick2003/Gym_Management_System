@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Trainer;
 
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Foundation\Auth\User;
 
-class MemberController extends Controller
+class TrainerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $members = User::all();
-        return view('admin.member', [
-            'members' => $members,
+        $members = User::where('role', '=', 'Member')->get();
+        return view('trainer/index', [
+            'members' => $members
         ]);
     }
 
@@ -45,24 +46,9 @@ class MemberController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id, Request $request)
+    public function edit(string $id)
     {
-        $data = request()->validate([
-            'role' => 'required|in:Admin,Member,Trainer',
-        ]);
-
-        $trainerCount = User::where('role', 'Trainer')->count();
-
-        $user = User::findOrFail($id);
-
-        $user->update([
-            'role' => request('role'),
-            'trainer' => $trainerCount
-        ]);
-
-        return redirect('/admin/members')->with('sucess', 'role updated sucessfully!');
-
-
+        //
     }
 
     /**

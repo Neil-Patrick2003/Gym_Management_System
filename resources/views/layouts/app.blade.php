@@ -11,6 +11,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="shortcut icon" href="{{ asset('images/workout.png') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('images/workout.png') }}" type="image/png" sizes="114x114">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         #offCanvasMenu {
             transform: translateX(-100%);
@@ -31,7 +33,7 @@
     </style>
 </head>
 
-<body class="h-full bg-gray-100">
+<body class="h-full bg-white">
 
     <div>
         <!-- Button to Open the Menu -->
@@ -73,7 +75,6 @@
                                         </x-slot:icon>
                                         Home
                                     </x-admin-nav-link>
-
                                 </li>
                                 <li>
                                     <x-admin-nav-link href="{{ url('/admin/members') }}" :active="request()->is('admin/members')">
@@ -91,12 +92,20 @@
                                 <li>
                                     <x-admin-nav-link href="{{ url('/admin/programs') }}" :active="request()->is('admin/programs')">
                                         <x-slot:icon>
-                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
-                                                data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100"
+                                                height="100">
+
+                                                <path d="M10 45 H90" stroke="black" fill="none" stroke-width="4" />
+
+                                                <circle cx="20" cy="45" r="8" stroke="black"
+                                                    fill="none" stroke-width="4" />
+
+                                                <circle cx="80" cy="45" r="8" stroke="black"
+                                                    fill="none" stroke-width="4" />
+
+                                                <path d="M40 35 V55" stroke="black" fill="none" stroke-width="4" />
                                             </svg>
+
                                         </x-slot:icon>
                                         Programs
                                     </x-admin-nav-link>
@@ -176,7 +185,7 @@
         <!-- Static sidebar for desktop -->
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
             <!-- Sidebar component, swap this element with another sidebar if you like -->
-            <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4">
+            <div class="flex grow flex-col gap-y-5 overflow-y-auto px-6 pb-4" style="background-color: #710c04;">
                 <div class="flex h-16 shrink-0 items-center">
                     <img class="h-8 w-auto"
                         src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
@@ -211,7 +220,7 @@
                                             </svg>
                                         </x-slot:icon>
                                         Member
-                                    </x-admin-nav-link>
+                                        </x-admin-navx-link>
                                 </li>
                                 <li>
                                     <x-admin-nav-link href="{{ url('/admin/programs') }}" :active="request()->is('admin/programs')">
@@ -240,7 +249,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/payment') }}" :active="request()->is('admin/payment')">
+                                    <x-admin-nav-link href="{{ url('/admin/payments') }}" :active="request()->is('admin/payment')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
@@ -279,7 +288,7 @@
                                     </x-admin-nav-link>
                                 </li>
                                 <li>
-                                    <x-admin-nav-link href="{{ url('/admin/report') }}" :active="request()->is('admin/report')">
+                                    <x-admin-nav-link href="{{ url('/admin/users') }}" :active="request()->is('admin/users')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
@@ -288,7 +297,20 @@
                                                     d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
                                             </svg>
                                         </x-slot:icon>
-                                        Report
+                                        Users
+                                    </x-admin-nav-link>
+                                </li>
+                                <li>
+                                    <x-admin-nav-link href="{{ url('/admin/reports') }}" :active="request()->is('admin/report')">
+                                        <x-slot:icon>
+                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
+                                                data-slot="icon">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                                            </svg>
+                                        </x-slot:icon>
+                                        etoo
                                     </x-admin-nav-link>
                                 </li>
 

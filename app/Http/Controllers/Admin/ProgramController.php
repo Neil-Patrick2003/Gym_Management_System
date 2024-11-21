@@ -2,31 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\DailyExercises;
-use App\Models\Exercises;
-use App\Models\Programs;
+use App\Models\Program;
+use App\Models\Exercise;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ProgramController extends Controller
 {
 
     public function index()
     {
-
-        $programs = Programs::with('user')->paginate(15);
+        //fetch
+        $programs = Program::with('user')->paginate(15);
 
         return view('admin/programs/index', [
-            'programs' => $programs,
+            'programs' => $programs
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('admin/program/create');
     }
 
     /**
@@ -34,6 +26,7 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
+        //validate
         $request->validate([
             'name' => 'required|string|max:255',
             'photo_link' => 'required|file|mimes:jpg,png,svg,pdf|max:2048',
@@ -58,9 +51,9 @@ class ProgramController extends Controller
             $input['photo_link'] = $path;
         }
 
-        Programs::create($input);
+        $program = Program::create($input);
 
-        return redirect('admin/programs');
+        return redirect('admin/programs')->with('success', $program->name . ' added.');
     }
 
     /**
@@ -69,47 +62,28 @@ class ProgramController extends Controller
     public function show($id)
     {
 
-        $program = Programs::with(['program_schedule'])->findOrFail($id);
-        dd($program->program_schedule->first()->exercises()->toSql());
-        dd($program->toArray());
+        $program = Program::with(relations: ['program_schedules' => ['exercises']])
+            ->findOrFail($id);
 
-        $programs = Programs::with('program_schedule')->findOrFail($id);
-        $program_schedules = $program->program_schedule;
-        $exercises = Exercises::all();
 
-        // $daily_exercises = DailyExercises::with(   ['program_schedule' => ['exercise']])->findOrFail($id);
-        // dd($daily_exercises);
-
+        $exercises = Exercise::all();
 
         return view('admin.programs.show', [
             'program' => $program,
-            'program_schedules' => $program_schedules,
             'exercises' => $exercises,
-            // 'daily_exercises' => $daily_exercises,
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+
+    public function destroy(Program $program)
     {
-        //
+        $program->delete();
+
+        return redirect()->back();
     }
 }
+
+
+//validate

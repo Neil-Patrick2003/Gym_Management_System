@@ -29,10 +29,9 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $role = 'member';
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -40,16 +39,26 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => $role,
-            'about_me' => ""
+            'role' => "Member",
+            'about_me' => "",
         ]);
-
-
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        $role = $user->role;
+
+        if ($role === 'Member') {
+            return redirect()->intended(route('member_dashboard'));
+        } elseif ($role === 'Trainer') {
+            if ($request->user) {
+                return redirect()->intended(route('trainer_dashboard'));
+            }
+
+        }
+
+        return redirect()->intended(route('dashboard', absolute: false));
+
     }
 }

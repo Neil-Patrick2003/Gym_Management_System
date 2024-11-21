@@ -13,7 +13,9 @@ use Illuminate\View\View;
 class AdminController extends Controller
 {
     public function index(){
+        //fetch
         $user = Auth::user();
+
         return view('admin/index', [
             'user' => $user
         ]);

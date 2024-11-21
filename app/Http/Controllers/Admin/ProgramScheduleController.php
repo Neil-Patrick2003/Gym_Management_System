@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Programs;
+use App\Models\Program;
 use App\Models\ProgramSchedule;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -17,13 +17,6 @@ class ProgramScheduleController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -42,14 +35,14 @@ class ProgramScheduleController extends Controller
             'program_id' => $request->program_id,
         ]);
 
-        return redirect("/admin/programs/program{$program_schedule->program_id}");
+        return redirect()->back()->with('success', 'added');
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Programs $program, Request $request)
+    public function show(Program $program, Request $request)
     {
 
     }
