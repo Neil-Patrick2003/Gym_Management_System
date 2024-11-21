@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Member\MemberController;
 use App\Http\Controllers\Admin\FeedbackController;
 use App\Http\Controllers\Admin\ExercisesController;
-use App\Http\Controllers\Trainer\ProgramController;
+use App\Http\Controllers\Member\FeedbackController as MemberFeedbackController;
 use App\Http\Controllers\Trainer\TrainerController;
 use App\Http\Controllers\Member\AppointmentController;
 use App\Http\Controllers\Member\UserProgramController;
@@ -26,6 +26,7 @@ use App\Http\Controllers\Trainer\RecommendationController;
 
 use App\Http\Controllers\Member\UserProgramDailyExerciseController;
 use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
+use App\Http\Controllers\Admin\FeedbackController as AdminFeedbackController;
 use App\Http\Controllers\Member\ProgramController as MemberProgramController;
 use App\Http\Controllers\Trainer\AppointmentController as TrainerAppointmentController;
 use App\Http\Controllers\Trainer\TrainerProgramController as TrainerProgramsController;
@@ -99,7 +100,11 @@ Route::patch('/admin/users/{member}', [UserController::class, 'edit'] )->middlew
 Route::post('admin/payments', [PaymentController::class, 'store']);
 
 //feedback
+<<<<<<< Updated upstream
 Route::get('/admin/feedbacks', [FeedbackController::class, 'index']);
+=======
+Route::get('/admin/feedbacks', [AdminFeedbackController::class, 'index']);
+>>>>>>> Stashed changes
 
 
 
@@ -151,6 +156,9 @@ Route::post('/member/appointments', [AppointmentController::class, 'store']);
 //recommendation-tab
 Route::get('/member/recommendations', [MemberRecommendationController::class, 'index']);
 
+
+//feedback
+Route::get('member/feedback', [MemberFeedbackController::class, 'index']);
 
 
 
