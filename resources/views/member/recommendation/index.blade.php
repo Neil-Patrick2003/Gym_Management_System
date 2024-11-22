@@ -1,7 +1,6 @@
 <x-member-layout>
-    recommendation
 
-    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg">
+    <div class="max-w-full mx-auto bg-white rounded-lg shadow-lg">
         <!-- Tabs Navigation -->
         <div class="border-b border-gray-200">
             <nav class="flex space-x-4 p-4">
@@ -46,6 +45,12 @@
         </div>
     </div>
 
+    <form method="POST" >
+        @csrf
+        <textarea name="content" id="editor"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+
 
     <script>
         function switchTab(tabName) {
@@ -61,6 +66,12 @@
             document.getElementById(tabName).classList.remove('hidden');
             document.getElementById(`${tabName}-tab`).classList.add('border-indigo-500', 'text-indigo-600');
         }
+
+        tinymce.init({
+            selector: '#editor',
+            plugins: 'advlist autolink lists link image charmap print preview anchor',
+            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat'
+        });
     </script>
 
 </x-member-layout>
