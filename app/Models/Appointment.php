@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Appoinment extends Model
+class Appointment extends Model
 {
     use HasFactory;
+
+    protected $table = "appoinments";
     protected $fillable = ['user_id', 'trainer_id', 'start_time', 'end_date', 'status'];
 
     public function user()

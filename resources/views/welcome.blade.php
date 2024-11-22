@@ -19,4 +19,6 @@
         </div>
     </div>
 
+    <div>footer</div>
+
 </x-layout>

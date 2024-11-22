@@ -1,13 +1,12 @@
 @props(['active'])
 
 @php
-$classes = ($active ?? false)
-            ? 'group flex gap-x-3 rounded-lg bg-white py-2 px-6 text-sm/6 font-semibold text-red-600'
-            : 'group flex gap-x-3 rounded-lg p-2 text-sm/6 font-semibold text-white  hover:text-indigo-600 hover:bg-white';
+    $classes =
+        $active ?? false
+            ? 'group flex gap-x-3  bg-gradient-to-r from-[#ff0000] from-20% to-[#000000] p-2 px-6 text-sm/6 font-semibold text-white'
+            : 'group flex gap-x-3 p-2 px-6 text-sm/6 font-semibold text-white  hover:text-white hover:bg-gradient-to-r from-[#ff0000] from-20% to-[#000000]';
 
-$iconColor = ($active ?? false)
-            ? 'text-red-600'
-            : 'text-white';
+    $iconColor = $active ?? false ? 'text-white' : 'text-white';
 @endphp
 
 <a {{ $attributes->merge(['class' => $classes]) }}>
