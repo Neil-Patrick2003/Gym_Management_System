@@ -12,6 +12,8 @@
     <link rel="shortcut icon" href="{{ asset('images/workout.png') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('images/workout.png') }}" type="image/png" sizes="114x114">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="{{ asset('js/modal.js') }}"></script>
+
 
     <style>
         #offCanvasMenu {
@@ -185,7 +187,7 @@
         <!-- Static sidebar for desktop -->
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
             <!-- Sidebar component, swap this element with another sidebar if you like -->
-            <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-red-700 px-6 pb-4">
+            <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-neutral-800 pr-6 pb-12">
                 <div class="flex h-16 shrink-0 items-center">
                     <img class="h-8 w-auto"
                         src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
