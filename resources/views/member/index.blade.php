@@ -1,6 +1,6 @@
 <x-member-layout>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-        <div class="h-24 bg-orange-400 rounded-lg w-full p-4">
+    <div class="">
+        <div class="h-36 bg-red-600 rounded-b-2xl w-full p-4">
             <h1 class="text-white text-2xl md:text-3xl font-bold mb-4">
                 Hello, {{ Auth::user()->name }}!
             </h1>

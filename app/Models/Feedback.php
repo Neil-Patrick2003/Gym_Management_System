@@ -9,9 +9,12 @@ class Feedback extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'trainer_id', 'content', 'created_at', 'rating' ];
+    protected $table = 'feedbacks';
 
-    public function user(){
+    protected $fillable = ['user_id', 'trainer_id', 'content', 'rating'];
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

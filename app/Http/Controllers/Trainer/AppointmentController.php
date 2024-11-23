@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Trainer;
 
 use App\Models\Appoinment;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class AppointmentController extends Controller
     public function index()
     {
         $id =Auth::id();
-        $appointments = Appoinment::with('user')
+        $appointments = Appointment::with('user')
         ->where('trainer_id', '=', $id)
         ->get();
 
@@ -62,7 +63,7 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $appointment = Appoinment::findOrFail($id);
+        $appointment = Appointment::findOrFail($id);
         $appointment->status = $request->status;
         $appointment->save();
 
