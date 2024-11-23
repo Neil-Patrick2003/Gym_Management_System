@@ -63,6 +63,28 @@
                 </div>
             </section>
         </div>
+    </div>
+
+    <div id="conform" class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full lg:w-1/2">
+    <h2 class="text-2xl font-semibold text-black mb-4 text-center">You Can Directly Send a Message via Mobile Number</h2>
+    <form action="#" method="POST" class="space-y-4">
+        <div>
+            <label for="name" class="text-black">Name</label>
+            <input type="text" id="name" name="name" required class="w-full p-2 mt-1 bg-gray-700 text-black rounded">
+        </div>
+        <div>
+            <label for="email" class="text-black">Mobile Number</label>
+            <input type="email" id="email" name="email" required class="w-full p-2 mt-1 bg-gray-700 text-black rounded">
+        </div>
+        <div>
+            <label for="message" class="text-black">Message</label>
+            <textarea id="message" name="message" rows="4" required class="w-full p-2 mt-1 bg-gray-700 text-black rounded"></textarea>
+        </div>
+        <button type="submit" class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 w-full">Send Message</button>
+    </form>
+</div>
+</section>
+        </div>
 
         <section id="Footlong" class="bg-black text-white py-6">
             <footer class="max-w-7xl mx-auto text-center">

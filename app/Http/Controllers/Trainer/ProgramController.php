@@ -1,23 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Trainer;
 
 use App\Models\Program;
 use App\Models\Exercise;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Routing\Controller;
 
 class ProgramController extends Controller
 {
-
     public function index()
     {
         //fetch
         $programs = Program::with('user')->paginate(15);
 
-        return view('admin/programs/index', [
-            'programs' => $programs
+        return view('trainer/program/index', [
+            'programs' => $programs,
         ]);
     }
 
@@ -53,7 +51,7 @@ class ProgramController extends Controller
 
         $program = Program::create($input);
 
-        return redirect('admin/programs')->with('success', $program->name . ' added.');
+        return redirect('member/programs')->with('success', $program->name . ' added.');
     }
 
     /**
@@ -65,17 +63,13 @@ class ProgramController extends Controller
         $program = Program::with(relations: ['program_schedules' => ['exercises']])
             ->findOrFail($id);
 
-
         $exercises = Exercise::all();
 
-        return view('admin.programs.show', [
+        return view('trainer.program.show', [
             'program' => $program,
             'exercises' => $exercises,
         ]);
     }
-
-
-
 
     public function destroy(Program $program)
     {
@@ -84,6 +78,3 @@ class ProgramController extends Controller
         return redirect()->back();
     }
 }
-
-
-//validate

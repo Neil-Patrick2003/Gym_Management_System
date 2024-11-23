@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Trainer;
 
-use App\Models\Recommendation;
 use App\Models\User;
-use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
+use App\Models\Recommendation;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\Auth;
 
 class RecommendationController extends Controller
 {
@@ -44,15 +43,17 @@ class RecommendationController extends Controller
     public function store(Request $request, $id)
     {
 
-        $trainerId = FacadesAuth::id(); // or $user->id
+        $trainerId = Auth::id(); // or $user->id
+
         $request->validate([
-            'user_id' => 'required',
-            'trainer_id' => 'required',
-            'content' => 'required|max:9999|min:20',
-            'type' => 'required'
+            'content' => 'required|min:20',
         ]);
 
-        $recommendations = Recommendation::create([
+
+            $editorContent = $request->input('content');
+
+
+        Recommendation::create([
             'user_id' => $id,
             'trainer_id' => $trainerId,
             'content' => $request->content,
@@ -60,7 +61,7 @@ class RecommendationController extends Controller
 
         ]);
 
-        return redirect('/trainer/recommendations')->back();
+        return redirect()->back()->with('sucess', 'sucessfully');
     }
 
     /**

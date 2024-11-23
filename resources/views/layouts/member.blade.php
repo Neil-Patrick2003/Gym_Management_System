@@ -9,6 +9,11 @@
     <title>Fitnes Hub</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+
+
     <link rel="shortcut icon" href="{{ asset('images/workout.png') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('images/workout.png') }}" type="image/png" sizes="114x114">
 
@@ -51,15 +56,15 @@
                     </div>
 
                     <div
-                        class="flex grow flex-col gap-y-5 overflow-y-auto  px-6 pb-4 ring-1 ring-white/10 border border-solid">
+                        class="flex grow flex-col gap-y-5 overflow-y-auto px-6 pb-4 ring-1 ring-white/10 border border-solid">
                         <div class="flex h-16 shrink-0 items-center">
                             <img class="h-8 w-auto"
                                 src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
                                 alt="Your Company">
                         </div>
 
-                        <nav class="flex flex-1 flex-col ">
-                            <ul role="list" class="flex flex-1 flex-col gap-y-7">
+                        <nav class="flex flex-1 flex-col py-4">
+                            <ul role="list" class="flex flex-1 flex-col gap-y-7 p3">
                                 <li>
                                     <x-member-nav-link href="{{ url('/home') }}" :active="request()->is('home')">
                                         <x-slot:icon>
@@ -98,7 +103,7 @@
                                     </x-member-nav-link>
                                 </li>
                                 <li>
-                                    <x-member-nav-link href="{{ url('/member/appointments') }}" :active="request()->is('member/appoinments')">
+                                    <x-member-nav-link href="{{ url('/member/appointments') }}" :active="request()->is('member/appointments')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                                 stroke="currentColor" aria-hidden="true">
@@ -116,14 +121,22 @@
             </div>
         </div>
 
-        <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+        <div class="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:w-60 lg:flex-col">
             <div class="flex grow flex-col overflow-y-auto">
-                <div class="h-full p-6 bg-red-600">
-                    <nav class="flex flex-1 flex-col">
-                        <ul role="list" class="flex flex-1 flex-col gap-y-7">
+<<<<<<< HEAD
+                <div class="h-full p-0 bg-red-700">
+                    <nav class="flex flex-1
+                    flex-col">
+                        <ul role="list" class="flex flex-1 flex-col gap-y-6 px-4 ">
+=======
+                <div class="h-full p-0 bg-neutral-800">
+                    <nav class="flex flex-1
+                    flex-col">
+                        <ul role="list" class="flex flex-1 flex-col gap-y-6 ">
+>>>>>>> origin/develop
                             <li>
-                                <ul role="list" class="-mx-2 space-y-1 ">
-                                    <li class="pt-6">
+                                <ul role="list" class=" space-y-1 ">
+                                    <li class="pt-24">
                                         <x-member-nav-link href="{{ url('/home') }}" :active="request()->is('home')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -160,6 +173,21 @@
                                         </x-member-nav-link>
                                     </li>
                                     <li>
+<<<<<<< HEAD
+                                        <x-member-nav-link href="{{ url('/member/tutorials') }}" :active="request()->is('member/tutorials')">
+                                            <x-slot:icon>
+                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                                    stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                                                </svg>
+                                            </x-slot:icon>
+                                            Tutorials
+                                        </x-member-nav-link>
+                                    </li>
+                                    <li>
+=======
+>>>>>>> origin/develop
                                         <x-member-nav-link href="{{ url('/member/appointments') }}" :active="request()->is('member/appoinments')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -172,7 +200,8 @@
                                         </x-member-nav-link>
                                     </li>
                                     <li>
-                                        <x-member-nav-link href="{{ url('/member/recommendations') }}" :active="request()->is('member/recommendations')">
+                                        <x-member-nav-link href="{{ url('/member/recommendations') }}"
+                                            :active="request()->is('member/recommendations')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -180,26 +209,38 @@
                                                         d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
                                                 </svg>
                                             </x-slot:icon>
-                                            recommendations
+                                            Recommendations
+                                        </x-member-nav-link>
+                                    </li>
+                                    <li>
+                                        <x-member-nav-link href="{{ url('/member/feedback') }}" :active="request()->is('member/feedback')">
+                                            <x-slot:icon>
+                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                                    stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                                                </svg>
+                                            </x-slot:icon>
+                                            Feedback
                                         </x-member-nav-link>
                                     </li>
                                 </ul>
                             </li>
+
                         </ul>
+
                     </nav>
-                    <form method="POST" action="/logout" class="inline-block text-center mx-auto">
-                        @csrf
-                        <button type="submit"
-                            class="flex items-center bg-gray-50 text-slate-950 px-4 py-2 rounded-md hover:bg-gray-200 transition duration-150 ease-in-out">
-                            Logout
-                        </button>
-                    </form>
+
                 </div>
             </div>
         </div>
 
-        <div class="lg:pl-72 bg-white">
-            <div class="lg:pl-72 bg-white">
+        <div class="lg:pl-60 bg-white">
+<<<<<<< HEAD
+            <div class="lg:pl-60 bg-stone-800">
+=======
+            <div class="lg:pl-60 bg-white">
+>>>>>>> origin/develop
                 <div class="sticky top-0 z-40 flex h-14 shrink-0 items-center gap-x-4 px-4 shadow-sm sm:px-6 lg:px-8">
                     <button id="menuButton" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
                         <span class="sr-only">Open sidebar</span>
@@ -209,19 +250,40 @@
                                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
                     </button>
-                    <div class="flex flex-1 justify-center sm:justify-start">
-                        <input type="text" placeholder="Search..."
-                            class="w-full h-8 px-4 py-2 border-2 border-red-600 bg-transparent text-gray-700 placeholder-gray-500 rounded-full focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-300">
-                    </div>
                     <div class="flex flex-1 justify-end gap-x-4 lg:gap-x-6 p-4">
-                        <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
-                            <span class="sr-only">View notifications</span>
+<<<<<<< HEAD
+                        <button type="button" class="-m-2.5 p-2.5 text-white hover:text-gray-500"
+=======
+                        <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"
+>>>>>>> origin/develop
+                            id="dropdownButton">
+                            <span class="sr-only">View profile</span>
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-6 2.69-6 6v1h12v-1c0-3.31-2.69-6-6-6z" />
                             </svg>
                         </button>
+<<<<<<< HEAD
+                        <div class="absolute right-0 hidden mt-2 w-48 rounded-md  bg-white  shadow-lg"
+=======
+                        <div class="absolute right-0 hidden mt-2 w-48 rounded-md bg-white shadow-lg"
+>>>>>>> origin/develop
+                            id="dropdownMenu">
+                            <ul class="py-1">
+                                <li>
+                                    <form method="POST" action="/logout" class="inline-block text-center mx-auto">
+                                        @csrf
+                                        <button type="submit"
+                                            class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100">Logout</button>
+                                    </form>
+                                </li>
+                                <li>
+                                    <a href="/profile"
+                                        class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100">Profile</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -238,6 +300,8 @@
         const menuButton = document.getElementById('menuButton');
         const closeMenuButton = document.getElementById('closeMenuButton');
         const offCanvasMenu = document.getElementById('offCanvasMenu');
+        const dropdownButton = document.getElementById('dropdownButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
 
         menuButton.addEventListener('click', () => {
             offCanvasMenu.classList.add('show');
@@ -252,8 +316,19 @@
                 offCanvasMenu.classList.remove('show');
             }
         });
+        dropdownButton.addEventListener('click', function() {
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Close dropdown if clicked outside
+        window.addEventListener('click', function(event) {
+            if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
     </script>
 
+    @stack('scripts')
 </body>
 
 </html>

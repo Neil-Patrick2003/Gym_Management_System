@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class PaymentController extends Controller
 {
@@ -11,7 +14,15 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return view('admin.payment.index');
+
+        $transactions = Transaction::with('user')
+        ->get();
+
+        $members = User::where('role', '=', 'Member')->get();
+        return view('admin.payment.index', [
+            'members' => $members,
+            'transactions' => $transactions
+        ]);
     }
 
     /**
@@ -27,7 +38,38 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $isStudent = filter_var($request->input('is_student'), FILTER_VALIDATE_BOOLEAN);
+
+        $request->merge([
+            'is_student' => $isStudent,
+        ]);
+
+        $request->validate([
+            'user_id' => 'required',
+            'plan' => 'required|in:daily,weekly,monthly',
+            'is_student' => 'required|boolean',
+            'amount' => 'required|regex:/^\d+(\.\d{2})$/',
+            'start' => 'required|date',
+            'end' => 'required|date|after_or_equal:start',
+
+        ]);
+
+        $status = "paid";
+
+        Transaction::create([
+            'user_id' => $request->user_id,
+            'amount' => $request->amount,
+            'plan' => $request->plan,
+            'status' => $status,
+            'startDate' => $request->start,
+            'end_date' => $request->end,
+            'is_student' => $request->is_student
+        ]);
+
+
+        return redirect()->back();
+
     }
 
     /**

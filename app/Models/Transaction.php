@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Feedback extends Model
+class Transaction extends Model
 {
     use HasFactory;
 
-    protected $table = 'feedbacks';
+    protected $fillable = ['user_id', 'amount', 'plan', 'status', 'startDate', 'end_date', 'is_student'];
 
-    protected $fillable = ['user_id', 'trainer_id', 'content', 'rating'];
-
-    public function user()
-    {
+    public function user(){
         return $this->belongsTo(User::class);
     }
 }
