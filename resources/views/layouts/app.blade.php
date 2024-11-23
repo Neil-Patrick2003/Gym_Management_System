@@ -332,11 +332,7 @@
                 <div class="h-6 w-px bg-stone-900
                  lg:hidden" aria-hidden="true"></div>
 
-<<<<<<< HEAD
                 <div class="flex flex-1 justify-end gap-x-4 lg:gap-x-6 p-4 bg-stone-800">
-=======
-                <div class="flex flex-1 justify-end gap-x-4 lg:gap-x-6 p-4 bg-stone-8   00">
->>>>>>> origin/develop
                     <!-- Notification Button -->
                     <button type="button" class="-m-2.5 p-2.5 text-gray-200 hover:text-gray-500">
                         <span class="sr-only">View notifications</span>

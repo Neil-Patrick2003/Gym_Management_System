@@ -9,8 +9,8 @@
     </div>
 
     <div class="flex justify-center pt-2">
-        <a href="/admin/exercises/create"
-            class=" inline-flex items-center px-6 py-3 bg-gradient-to-r from-yellow-600 to-red-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform transition-all hover:scale-105">
+        <a href="/trainer/exercises/create"
+            class=" inline-flex items-center px-6 py-3 bg-red-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform transition-all hover:scale-105">
             <i class="fas fa-plus me-2"></i> Add Exercise
         </a>
     </div>
@@ -29,5 +29,6 @@
                     class="w-16 h-16 rounded-full object-cover border border-gray-300">
             </div>
         </div>
-
+    @endforeach
+    
 </x-trainer-layout>

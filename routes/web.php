@@ -1,29 +1,31 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TutorialController;
+use App\Http\Controllers\TimeSheetController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\DailyExerciseController;
-use App\Http\Controllers\Admin\ExercisesController;
-use App\Http\Controllers\Admin\FeedbackController;
 use App\Http\Controllers\Admin\MembersController;
 use App\Http\Controllers\Admin\PaymentController;
-use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
-use App\Http\Controllers\Admin\ProgramScheduleController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Member\AppointmentController;
-use App\Http\Controllers\Member\FeedbackController as MemberFeedbackController;
 use App\Http\Controllers\Member\MemberController;
-use App\Http\Controllers\Member\ProgramController as MemberProgramController;
-use App\Http\Controllers\Member\RecommendationController as MemberRecommendationController;
-use App\Http\Controllers\Member\UserProgramController;
-use App\Http\Controllers\Member\UserProgramDailyExerciseController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TimeSheetController;
-use App\Http\Controllers\Trainer\AppointmentController as TrainerAppointmentController;
+use App\Http\Controllers\Admin\FeedbackController;
+use App\Http\Controllers\Admin\ExercisesController;
 use App\Http\Controllers\Trainer\ProgramController;
-use App\Http\Controllers\Trainer\RecommendationController;
 use App\Http\Controllers\Trainer\TrainerController;
-use App\Http\Controllers\TutorialController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Trainer\ExerciseController;
+use App\Http\Controllers\Member\AppointmentController;
+use App\Http\Controllers\Member\UserProgramController;
+use App\Http\Controllers\Admin\DailyExerciseController;
+use App\Http\Controllers\Admin\ProgramScheduleController;
+use App\Http\Controllers\Trainer\RecommendationController;
+use App\Http\Controllers\Member\UserProgramDailyExerciseController;
+use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
+use App\Http\Controllers\Member\ProgramController as MemberProgramController;
+use App\Http\Controllers\Member\FeedbackController as MemberFeedbackController;
+use App\Http\Controllers\Trainer\ExercisesController as TrainerExerciseController;
+use App\Http\Controllers\Trainer\AppointmentController as TrainerAppointmentController;
+use App\Http\Controllers\Member\RecommendationController as MemberRecommendationController;
 
 //guesst-viwers
 Route::get('/', function () {
@@ -103,18 +105,16 @@ Route::get('/trainer/home', [TrainerController::class, 'index'])->name('trainer_
 Route::get('/trainer/recommendations', [RecommendationController::class, 'index']);
 Route::get('/trainer/recommendations/create/{user}', [RecommendationController::class, 'create']);
 Route::post('/trainer/recommendations/create/{user}', [RecommendationController::class, 'store']);
-
-//program
 Route::get('/trainer/programs', [ProgramController::class, 'index']);
 Route::get('/trainer/programs/{program}', [ProgramController::class, 'show']);
 Route::post('/trainer/programs/program/{program}', [ProgramScheduleController::class, 'store'])->middleware(['auth', 'verified']);
 Route::post('/trainer/programs/program/{program}/add_exercise', [DailyExerciseController::class, 'store'])->middleware(['auth', 'verified']);
-
-//appointment
 Route::get('/trainer/appointments', [TrainerAppointmentController::class, 'index']);
-//update appointment (accpet/Reject)
 Route::patch('/trainer/appointments/{appointment}', [TrainerAppointmentController::class, 'update']);
-
+Route::get('/trainer/exercises', [TrainerExerciseController::class, 'index']);
+Route::get('/trainer/exercises/create', [TrainerExerciseController::class, 'create']);
+Route::get('/trainer/tutorials', [TutorialController::class, 'index']);
+Route::post('/trainer/tutorials/add_category', [TutorialController::class, 'store']);
 
 
 
@@ -146,6 +146,6 @@ Route::post('/member/appointments', [AppointmentController::class, 'store']);
 //recommendation-tab
 Route::get('/member/recommendations', [MemberRecommendationController::class, 'index']);
 
-//feedback  
+//feedback
 Route::get('member/feedback', [MemberFeedbackController::class, 'index']);
 Route::post('/member/feedback', [MemberFeedbackController::class, 'store']);

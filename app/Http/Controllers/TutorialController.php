@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class TutorialController extends Controller
@@ -11,7 +12,7 @@ class TutorialController extends Controller
      */
     public function index()
     {
-        return view('admin.tutorials.index');
+        return view('trainer.tutorials.index');
     }
 
     /**
@@ -27,7 +28,19 @@ class TutorialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+
+        //insert
+        Category::create([
+            'name' => $request->name
+        ]);
+
+        //redirect
+        return redirect()->back()->with('success', value: 'Category added sucessfully');
     }
 
     /**

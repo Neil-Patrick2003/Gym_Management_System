@@ -5,17 +5,12 @@
             <div class=" py-10">
                 <div class="px-4 sm:px-6 lg:px-8">
                     <div class="sm:flex sm:items-center">
-<<<<<<< HEAD
-
-=======
-                        
->>>>>>> origin/develop
                     </div>
                     <div class="mt-8 flow-root">
                         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                                 <table class="min-w-full divide-y divide-gray-700">
-                                    <thead>
+                                     <thead>
                                         <tr>
                                             <th scope="col"
                                                 class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-800 sm:pl-0">
