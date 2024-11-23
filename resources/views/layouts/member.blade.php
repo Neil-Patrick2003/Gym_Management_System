@@ -123,10 +123,17 @@
 
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:w-60 lg:flex-col">
             <div class="flex grow flex-col overflow-y-auto">
+<<<<<<< HEAD
                 <div class="h-full p-0 bg-red-700">
                     <nav class="flex flex-1
                     flex-col">
                         <ul role="list" class="flex flex-1 flex-col gap-y-6 px-4 ">
+=======
+                <div class="h-full p-0 bg-neutral-800">
+                    <nav class="flex flex-1
+                    flex-col">
+                        <ul role="list" class="flex flex-1 flex-col gap-y-6 ">
+>>>>>>> origin/develop
                             <li>
                                 <ul role="list" class=" space-y-1 ">
                                     <li class="pt-24">
@@ -166,6 +173,7 @@
                                         </x-member-nav-link>
                                     </li>
                                     <li>
+<<<<<<< HEAD
                                         <x-member-nav-link href="{{ url('/member/tutorials') }}" :active="request()->is('member/tutorials')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -178,6 +186,8 @@
                                         </x-member-nav-link>
                                     </li>
                                     <li>
+=======
+>>>>>>> origin/develop
                                         <x-member-nav-link href="{{ url('/member/appointments') }}" :active="request()->is('member/appoinments')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -226,7 +236,11 @@
         </div>
 
         <div class="lg:pl-60 bg-white">
+<<<<<<< HEAD
             <div class="lg:pl-60 bg-stone-800">
+=======
+            <div class="lg:pl-60 bg-white">
+>>>>>>> origin/develop
                 <div class="sticky top-0 z-40 flex h-14 shrink-0 items-center gap-x-4 px-4 shadow-sm sm:px-6 lg:px-8">
                     <button id="menuButton" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
                         <span class="sr-only">Open sidebar</span>
@@ -237,7 +251,11 @@
                         </svg>
                     </button>
                     <div class="flex flex-1 justify-end gap-x-4 lg:gap-x-6 p-4">
+<<<<<<< HEAD
                         <button type="button" class="-m-2.5 p-2.5 text-white hover:text-gray-500"
+=======
+                        <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"
+>>>>>>> origin/develop
                             id="dropdownButton">
                             <span class="sr-only">View profile</span>
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -246,7 +264,11 @@
                                     d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-6 2.69-6 6v1h12v-1c0-3.31-2.69-6-6-6z" />
                             </svg>
                         </button>
+<<<<<<< HEAD
                         <div class="absolute right-0 hidden mt-2 w-48 rounded-md  bg-white  shadow-lg"
+=======
+                        <div class="absolute right-0 hidden mt-2 w-48 rounded-md bg-white shadow-lg"
+>>>>>>> origin/develop
                             id="dropdownMenu">
                             <ul class="py-1">
                                 <li>

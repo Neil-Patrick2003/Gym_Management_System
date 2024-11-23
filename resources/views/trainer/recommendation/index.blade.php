@@ -5,7 +5,11 @@
             <div class=" py-10">
                 <div class="px-4 sm:px-6 lg:px-8">
                     <div class="sm:flex sm:items-center">
+<<<<<<< HEAD
 
+=======
+                        
+>>>>>>> origin/develop
                     </div>
                     <div class="mt-8 flow-root">
                         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

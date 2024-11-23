@@ -24,5 +24,9 @@
         </div>
     </div>
 
+<<<<<<< HEAD
+=======
+    <div>footer</div>
+>>>>>>> origin/develop
 
 </x-layout>
