@@ -163,18 +163,15 @@
         </div>
 
         <!--idebar for desktop -->
-        <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col  bg-red-700">
+        <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col  bg-red-500">
             <!-- Sidebar component, home, projects, exercises ....-->
             <div class="flex grow flex-col overflow-y-auto pb-4">
-                <div class="flex h-16 shrink-0 items-center">
-                    <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                        alt="Your Company">
-                </div>
+                
                 <div class="pt-16 h-full ">
                     <nav class="flex flex-1 flex-col">
                         <ul role="list" class="flex flex-1 flex-col gap-y-7">
                             <li>
-                                <ul role="list" class="px-4 space-y-1">
+                                <ul role="list" class="pl-4 space-y-1">
                                     <li>
                                         <x-member-nav-link href="{{ url('/trainer/home') }}" :active="request()->is('trainer/home')">
                                             <x-slot:icon>
@@ -239,7 +236,7 @@
                                     </li>
                                     <li>
                                         <x-member-nav-link href="{{ url('/trainer/recommendations') }}"
-                                            :active="request()->is('member/appoinments')">
+                                            :active="request()->is('trainer/recommendations')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -259,8 +256,8 @@
             </div>
         </div>
 
-        <div class="lg:pl-72">
-            <div class="sticky top-0 z-40 flex  h-12 shrink-0 items-center gap-x-4   px-4 shadow-sm sm:px-6 lg:px-8">
+        <div class="lg:pl-72 ">
+            <div class="sticky  top-0 z-40 flex bg-blue h-12 shrink-0 items-center gap-x-4 px-4 shadow-sm sm:px-6 lg:px-8">
                 <button id="menuButton" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
                     <span class="sr-only">Open sidebar</span>
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -276,12 +273,16 @@
                 <div class="flex flex-1 justify-end gap-x-4 lg:gap-x-6 p-4">
                     <div class="relative inline-block text-left">
                         <div x-data="{ dropdownOpen: false }">
-                            <button type="button" class="inline-flex w-full justify-center pt-2" id="menu-button"
-                                aria-expanded="true" aria-haspopup="true" @click="dropdownOpen = !dropdownOpen">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-8">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            <button type="button"
+                                class="inline-flex w-full justify-center rounded-lg hover:rouned-4xl p-2 rouned-lg hover:text-red-700 "
+                                id="menu-button" aria-expanded="true" aria-haspopup="true"
+                                @click="dropdownOpen = !dropdownOpen">
+                                <span>{{ Auth::user()->name }}</span>
+                                <svg class="w-[20px] h-[20px] text-zinc-800 pt-2 dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="black" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m19 9-7 7-7-7" />
                                 </svg>
 
 

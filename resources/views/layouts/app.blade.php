@@ -322,16 +322,7 @@
                                 </li>
                             </ul>
                         </li>
-
                     </ul>
-                    {{-- <form method="POST" action="/logout" class="inline-block text-center mx-auto">
-                        @csrf
-                        <button type="submit"
-                            class="flex items-center bg-gray-50 text-slate-950 px-4 py-2 rounded-md hover:bg-gray-200 transition duration-150 ease-in-out">
-                            Logout
-                        </button>
-                    </form> --}}
-
                 </nav>
             </div>
         </div>

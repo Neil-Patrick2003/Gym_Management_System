@@ -10,6 +10,8 @@
         <div class="px-4 py-5 sm:p-6">
             <h6 class="text-sm">Information</h6>
 
+            
+
         </div>
     </div>
 
