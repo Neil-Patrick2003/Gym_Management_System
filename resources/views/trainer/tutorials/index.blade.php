@@ -5,18 +5,30 @@
         </div>
     </div>
 
-    <div class="flex justify-end gap-4 mt-4">
+    {{-- add category && post tutorial --}}
+    <div class="flex justify-end gap-4 my-4">
         <button
-            class="open-modal-btn rounded-md bg-yellow-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-yellow-400"
-            data-target="myModal">
-            Add Category
+            class="open-modal-btn bg-transparent hover:bg-red-500 text-red-600 hover:text-white border border-red-500 font-bold py-2 px-4 rounded inline-flex items-center" data-target="myModal">
+            <svg class="w-[24px] h-[24px] text-red-500 hover:text-red mr-1.5" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                    d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z"
+                    clip-rule="evenodd" />
+            </svg>
+
+            <span>Add Category</span>
         </button>
 
-        <!-- Trigger Button to Open Modal 2 (Another Action) -->
         <button
-            class="open-modal-btn rounded-md bg-red-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-400"
-            data-target="myModal2">
-            Add Tutorials
+            class="open-modal-btn bg-red-500 hover:bg-red-600 text-white border border-red-500 font-bold py-2 px-4 rounded inline-flex items-center" data-target="myModal2">
+            <svg class="w-[24px] h-[24px] text-gray-800 dark:text-white mr-1.5" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                    d="M12 3a1 1 0 0 1 .78.375l4 5a1 1 0 1 1-1.56 1.25L13 6.85V14a1 1 0 1 1-2 0V6.85L8.78 9.626a1 1 0 1 1-1.56-1.25l4-5A1 1 0 0 1 12 3ZM9 14v-1H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-4v1a3 3 0 1 1-6 0Zm8 2a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z"
+                    clip-rule="evenodd" />
+            </svg>
+            <span>Add Category</span>
         </button>
     </div>
 
@@ -32,6 +44,48 @@
     @error('category_name')
         <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
     @enderror
+
+    <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+        <li class="relative">
+            <div
+                class="group overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80"
+                    alt="" class="pointer-events-none aspect-[10/7] object-cover group-hover:opacity-75">
+                <button type="button" class="absolute inset-0 focus:outline-none">
+                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                </button>
+            </div>
+            <p class="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">IMG_4985.HEIC</p>
+            <p class="pointer-events-none block text-sm font-medium text-gray-500">3.9 MB</p>
+        </li>
+        <li class="relative">
+            <div
+                class="group overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80"
+                    alt="" class="pointer-events-none aspect-[10/7] object-cover group-hover:opacity-75">
+                <button type="button" class="absolute inset-0 focus:outline-none">
+                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                </button>
+            </div>
+            <p class="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">IMG_4985.HEIC</p>
+            <p class="pointer-events-none block text-sm font-medium text-gray-500">3.9 MB</p>
+        </li>
+        <li class="relative">
+            <div
+                class="group overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80"
+                    alt="" class="pointer-events-none aspect-[10/7] object-cover group-hover:opacity-75">
+                <button type="button" class="absolute inset-0 focus:outline-none">
+                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                </button>
+            </div>
+            <p class="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">IMG_4985.HEIC</p>
+            <p class="pointer-events-none block text-sm font-medium text-gray-500">3.9 MB</p>
+        </li>
+
+        <!-- More files... -->
+    </ul>
+
 
 
     <!-- Modal 1 (Add Category) -->

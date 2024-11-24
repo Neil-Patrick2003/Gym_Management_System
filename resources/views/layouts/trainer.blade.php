@@ -13,13 +13,11 @@
     <link rel="icon" href="{{ asset('images/workout.png') }}" type="image/png" sizes="114x114">
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
+    @vite('resources/js/modal.js')
+
+
 
     @vite('resources/js/app.js')
-
-
-
-
-
 
     <style>
         #offCanvasMenu {
@@ -166,7 +164,7 @@
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col  bg-red-500">
             <!-- Sidebar component, home, projects, exercises ....-->
             <div class="flex grow flex-col overflow-y-auto pb-4">
-                
+
                 <div class="pt-16 h-full ">
                     <nav class="flex flex-1 flex-col">
                         <ul role="list" class="flex flex-1 flex-col gap-y-7">
