@@ -54,6 +54,7 @@ require __DIR__ . '/auth.php';
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 //member-index
 Route::get('/admin/members', [MembersController::class, 'index']);
+Route::get('/admin/members/details/{member}', [MembersController::class, 'show']);
 //update role
 Route::patch('/admin/members/{member}', [MembersController::class, 'edit'])->middleware(['auth', 'verified']);
 

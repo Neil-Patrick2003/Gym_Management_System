@@ -19,6 +19,15 @@ class MembersController extends Controller
         ]);
     }
 
+    public function show($id){
+
+        $member = User::findOrFail($id);
+
+        return view('admin.member.show', [
+            'member' => $member
+        ]);
+    }
+
     public function edit(string $id)
     {
 

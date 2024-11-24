@@ -53,7 +53,7 @@
                                 </svg>
                                 Email
                             </a>
-                            <a href="mailto:{{ $member->email }}"
+                            <a href="/admin/members/details/{{$member->id}}"
                                 class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3  border border-transparent py-4 text-sm font-semibold text-white tracking-widest hover:bg-red-700">
                                 <svg class="w-[22px] h-[22px] text-gray-800 dark:text-white" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
