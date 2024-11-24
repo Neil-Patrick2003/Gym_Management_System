@@ -13,5 +13,3 @@ function autoSubmitForm(selectId, formId) {
 
 // Call the function with the specific select and form IDs
 autoSubmitForm('categories', 'filterForm');
-
-
