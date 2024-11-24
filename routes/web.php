@@ -23,6 +23,7 @@ use App\Http\Controllers\Member\UserProgramDailyExerciseController;
 use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
 use App\Http\Controllers\Member\ProgramController as MemberProgramController;
 use App\Http\Controllers\Member\FeedbackController as MemberFeedbackController;
+use App\Http\Controllers\Trainer\TutorialController as TrainerTutorialController;
 use App\Http\Controllers\Trainer\ExercisesController as TrainerExerciseController;
 use App\Http\Controllers\Trainer\AppointmentController as TrainerAppointmentController;
 use App\Http\Controllers\Member\RecommendationController as MemberRecommendationController;
@@ -84,7 +85,7 @@ Route::post('/admin/programs/program/{program}/add_exercise', [DailyExerciseCont
 Route::get('/admin/payments', [PaymentController::class, 'index']);
 
 //tutorials
-Route::get('/admin/tutorials', [TutorialController::class, 'index'])->middleware(['auth', 'verified']);
+Route::get('/admin/tutorials', [TrainerTutorialController::class, 'index'])->middleware(['auth', 'verified']);
 
 //user-update-roles
 Route::get('/admin/users', [UserController::class, 'index']);
@@ -114,8 +115,9 @@ Route::get('/trainer/appointments', [TrainerAppointmentController::class, 'index
 Route::patch('/trainer/appointments/{appointment}', [TrainerAppointmentController::class, 'update']);
 Route::get('/trainer/exercises', [TrainerExerciseController::class, 'index']);
 Route::get('/trainer/exercises/create', [TrainerExerciseController::class, 'create']);
-Route::get('/trainer/tutorials', [TutorialController::class, 'index']);
-Route::post('/trainer/tutorials/add_category', [TutorialController::class, 'store']);
+Route::get('/trainer/tutorials', [TrainerTutorialController::class, 'index']);
+Route::post('/trainer/tutorials/add_category', [TrainerTutorialController::class, 'store']);
+Route::post('/trainer/tutorials/filter', [TrainerTutorialController::class, 'filter']);
 
 
 

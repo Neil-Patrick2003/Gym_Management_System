@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Trainer;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class TutorialController extends Controller
 {
@@ -12,7 +13,10 @@ class TutorialController extends Controller
      */
     public function index()
     {
-        return view('trainer.tutorials.index');
+        $categories = Category::all();
+        return view('trainer.tutorials.index', [
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -43,13 +47,10 @@ class TutorialController extends Controller
         return redirect()->back()->with('success', value: 'Category added sucessfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+    public function filter(){
+        return redirect()->back();
     }
+
 
     /**
      * Show the form for editing the specified resource.

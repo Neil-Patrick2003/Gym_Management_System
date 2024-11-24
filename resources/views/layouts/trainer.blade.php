@@ -14,6 +14,7 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     @vite('resources/js/modal.js')
+    @vite('resources/js/filter.js')
 
 
 

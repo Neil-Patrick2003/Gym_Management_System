@@ -7,10 +7,24 @@
 
     {{-- add category && post tutorial --}}
     <div class="flex justify-end gap-4 my-4">
+        {{-- category --}}
+        <form action="/trainer/tutorials/filter" method="POST" id="filterForm">
+            @csrf
+            <select id="categories"  name="category_id"
+                class="px-4 py-2 bg-white text-red-500 border border-red-500 rounded shadow-sm focus:ring-red-500 focus:border-red-500 hover:">
+                <option value="All">All</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </form>
+
         <button
-            class="open-modal-btn bg-transparent hover:bg-red-500 text-red-600 hover:text-white border border-red-500 font-bold py-2 px-4 rounded inline-flex items-center" data-target="myModal">
+            class="open-modal-btn bg-transparent hover:bg-red-500 text-red-600 hover:text-white border border-red-500 font-bold py-2 px-4 rounded inline-flex items-center transition duration-300 ease-in-out"
+            data-target="myModal">
             <svg class="w-[24px] h-[24px] text-red-500 hover:text-red mr-1.5" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                viewBox="0 0 24 24">
                 <path fill-rule="evenodd"
                     d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z"
                     clip-rule="evenodd" />
@@ -20,7 +34,8 @@
         </button>
 
         <button
-            class="open-modal-btn bg-red-500 hover:bg-red-600 text-white border border-red-500 font-bold py-2 px-4 rounded inline-flex items-center" data-target="myModal2">
+            class="open-modal-btn bg-red-500 hover:bg-red-600 text-white border border-red-500 font-bold py-2 px-4 rounded inline-flex items-center transition duration-300 ease-in-out"
+            data-target="myModal2">
             <svg class="w-[24px] h-[24px] text-gray-800 dark:text-white mr-1.5" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                 viewBox="0 0 24 24">
@@ -28,7 +43,7 @@
                     d="M12 3a1 1 0 0 1 .78.375l4 5a1 1 0 1 1-1.56 1.25L13 6.85V14a1 1 0 1 1-2 0V6.85L8.78 9.626a1 1 0 1 1-1.56-1.25l4-5A1 1 0 0 1 12 3ZM9 14v-1H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-4v1a3 3 0 1 1-6 0Zm8 2a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z"
                     clip-rule="evenodd" />
             </svg>
-            <span>Add Category</span>
+            <span>Upload Tutorials</span>
         </button>
     </div>
 
@@ -38,9 +53,7 @@
             {{ session('success') }}
         </div>
     @endif
-
-    {{-- error message from validation --}}
-
+    {{-- error message --}}
     @error('category_name')
         <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
     @enderror
