@@ -1,9 +1,12 @@
 <x-app-layout>
-    <div class="mb-3">
-        <h1>All Members</h1>
+    <div class="overflow-hidden rounded-lg bg-white shadow mb-4">
+        <div class="px-4 py-5 sm:p-6">
+            <h1>All Members</h1>
+        </div>
     </div>
 
-    <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+    <ul role="list" class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
         @foreach ($members as $member)
             <li class="col-span-1 divide-y divide-gray-200 border rounded-lg bg-white shadow">
                 <div class="flex w-full items-center justify-between space-x-6 p-6">
@@ -17,7 +20,7 @@
 
                                 @if ($member->days_since_joined >= 1 && $member->days_since_joined <= 7)
                                     Joined {{ round($member->days_since_joined, 0) }} days ago
-                                @elseif ($member->days_since_joined >= 7 )
+                                @elseif ($member->days_since_joined >= 7)
                                     Old Member
                                 @else
                                     New member
@@ -40,7 +43,7 @@
                     <div class="-mt-px flex divide-x divide-gray-200 bg-red-600 shadow">
                         <div class="flex w-0 flex-1">
                             <a href="mailto:{{ $member->email }}"
-                                class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-white tracking-widest">
+                                class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-white tracking-widest hover:bg-red-700">
                                 <svg class="size-5 text-white" viewBox="0 0 20 20" fill="currentColor"
                                     aria-hidden="true" data-slot="icon">
                                     <path
@@ -49,6 +52,17 @@
                                         d="m19 8.839-7.77 3.885a2.75 2.75 0 0 1-2.46 0L1 8.839V14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.839Z" />
                                 </svg>
                                 Email
+                            </a>
+                            <a href="mailto:{{ $member->email }}"
+                                class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3  border border-transparent py-4 text-sm font-semibold text-white tracking-widest hover:bg-red-700">
+                                <svg class="w-[22px] h-[22px] text-gray-800 dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd"
+                                        d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm9.408-5.5a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM10 10a1 1 0 1 0 0 2h1v3h-1a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2h-1v-4a1 1 0 0 0-1-1h-2Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                Details
                             </a>
                         </div>
                     </div>
