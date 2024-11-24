@@ -19,12 +19,6 @@ class TrainerController extends Controller
         ]);
     }
 
-<<<<<<< Updated upstream
-    /**
-     * Show the form for creating a new resource.
-     */
-=======
->>>>>>> Stashed changes
     public function tutorials()
     {
 

@@ -5,24 +5,7 @@
         </div>
     </div>
 
-    {{-- add category && post tutorial --}}
-    <div class="flex justify-end gap-4 my-4">
-        {{-- category --}}
-        <form action="/trainer/tutorials/filter" method="POST" id="filterForm">
             @csrf
-<<<<<<< Updated upstream
-            <select id="categories"  name="category_id"
-=======
-            <select id="categories" name="category_id"
->>>>>>> Stashed changes
-                class="px-4 py-2 bg-white text-red-500 border border-red-500 rounded shadow-sm focus:ring-red-500 focus:border-red-500 hover:">
-                <option value="All">All</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </select>
-        </form>
-
         <button
             class="open-modal-btn bg-transparent hover:bg-red-500 text-red-600 hover:text-white border border-red-500 font-bold py-2 px-4 rounded inline-flex items-center transition duration-300 ease-in-out"
             data-target="myModal">
@@ -99,11 +82,6 @@
             <p class="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">IMG_4985.HEIC</p>
             <p class="pointer-events-none block text-sm font-medium text-gray-500">3.9 MB</p>
         </li>
-<<<<<<< Updated upstream
-
-        <!-- More files... -->
-=======
->>>>>>> Stashed changes
     </ul>
 
 
