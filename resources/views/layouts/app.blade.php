@@ -344,46 +344,46 @@
                  lg:hidden" aria-hidden="true"></div>
 
                 <div class="flex flex-1 justify-end gap-x-4 lg:gap-x-6 p-4 bg-white-800">
-                    <div class="relative inline-block text-left">
-                        <div x-data="{ dropdownOpen: false }">
-                            <button type="button"
+                    </div>
+                <div class="relative inline-block text-left">
+                    <div x-data="{ dropdownOpen: false }">
+                        <button type="button"
                                 class="inline-flex w-full justify-center rounded-lg hover:rouned-4xl p-2 rouned-lg hover:bg-red-700"
                                 id="menu-button" aria-expanded="true" aria-haspopup="true"
                                 @click="dropdownOpen = !dropdownOpen">
-                                <span>{{ Auth::user()->name }}</span>
-                                <svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                    viewBox="0 0 24 24">
-                                    <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="m19 9-7 7-7-7" />
-                                </svg>
+                            <span>{{ Auth::user()->name }}</span>
+                            <svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true"
+                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                 viewBox="0 0 24 24">
+                                <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                      stroke-width="2" d="m19 9-7 7-7-7" />
+                            </svg>
 
 
-                            </button>
+                        </button>
 
-                            <!-- Dropdown menu, show/hide based on dropdownOpen state -->
-                            <div x-show="dropdownOpen" x-cloak
-                                class="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
-                                role="menu" aria-orientation="vertical" aria-labelledby="menu-button"
-                                tabindex="-1" x-transition:enter="transition ease-out duration-100"
-                                x-transition:enter-start="transform opacity-0 scale-95"
-                                x-transition:enter-end="transform opacity-100 scale-100"
-                                x-transition:leave="transition ease-in duration-75"
-                                x-transition:leave-start="transform opacity-100 scale-100"
-                                x-transition:leave-end="transform opacity-0 scale-95">
-                                <div
-                                    class="flex items-center w-full text-slate-950 px-4 py-2 rounded-md hover:bg-gray-200 transition duration-150 ease-in-out">
-                                    <a href="/profile">Profile</a>
-                                </div>
-                                <div class="py-1 w-full" role="none">
-                                    <form method="POST" action="/logout">
-                                        @csrf
-                                        <button type="submit"
+                        <!-- Dropdown menu, show/hide based on dropdownOpen state -->
+                        <div x-show="dropdownOpen" x-cloak
+                             class="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
+                             role="menu" aria-orientation="vertical" aria-labelledby="menu-button"
+                             tabindex="-1" x-transition:enter="transition ease-out duration-100"
+                             x-transition:enter-start="transform opacity-0 scale-95"
+                             x-transition:enter-end="transform opacity-100 scale-100"
+                             x-transition:leave="transition ease-in duration-75"
+                             x-transition:leave-start="transform opacity-100 scale-100"
+                             x-transition:leave-end="transform opacity-0 scale-95">
+                            <div
+                                class="flex items-center w-full text-slate-950 px-4 py-2 rounded-md hover:bg-gray-200 transition duration-150 ease-in-out">
+                                <a href="/profile">Profile</a>
+                            </div>
+                            <div class="py-1 w-full" role="none">
+                                <form method="POST" action="/logout">
+                                    @csrf
+                                    <button type="submit"
                                             class="flex items-center w-full text-slate-950 px-4 py-2 rounded-md hover:bg-gray-200 transition duration-150 ease-in-out">
-                                            Logout
-                                        </button>
-                                    </form>
-                                </div>
+                                        Logout
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -392,7 +392,7 @@
                         <span>{{ Auth::user()->name }}</span>
                         <svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="red" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
-                          </svg>                          
+                          </svg>
                     </button> --}}
                 </div>
 

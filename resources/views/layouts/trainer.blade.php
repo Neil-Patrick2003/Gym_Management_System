@@ -13,6 +13,8 @@
     <link rel="icon" href="{{ asset('images/workout.png') }}" type="image/png" sizes="114x114">
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
+
     @vite('resources/js/modal.js')
     @vite('resources/js/filters.js')
 

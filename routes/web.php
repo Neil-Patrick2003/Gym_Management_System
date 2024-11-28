@@ -116,7 +116,8 @@ Route::patch('/trainer/appointments/{appointment}', [TrainerAppointmentControlle
 Route::get('/trainer/exercises', [TrainerExerciseController::class, 'index']);
 Route::get('/trainer/exercises/create', [TrainerExerciseController::class, 'create']);
 Route::get('/trainer/tutorials', [TrainerTutorialController::class, 'index']);
-Route::post('/trainer/tutorials/add_category', [TrainerTutorialController::class, 'store']);
+Route::post('/trainer/tutorials/add_category', [TrainerTutorialController::class, 'add_category']);
+Route::post('/trainer/tutorials/create', [TrainerTutorialController::class, 'store']);
 Route::post('/trainer/tutorials/filter', [TrainerTutorialController::class, 'filter']);
 
 
