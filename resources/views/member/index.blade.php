@@ -2,15 +2,23 @@
 
     <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="col-span-3 gap-y-4">
-            <div class="">
-                <div class="h-36 bg-gradient-to-r from-red-500 via-red-400 to-red-200 rounded-lg w-full p-4 mb-4">
-                    <div class="flex flex-col justify-center text-neutral-100  h-full">
-                        <h1 class="text-xl text-neutral-50 font-bold">Keep on Track on you journey</h1>
-                        <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-                            velit..."
-                        </p>
+            <div class="overflow-hidden">
+                <div class="h-36 bg-none border bg-center rounded-lg w-full p-4 mb-4"
+                    style="background-image: url('{{ asset('images/final.1.png') }}');">
+                    <div class="flex flex-row space-between text-neutral-100 h-full">
+                        <div class="flex-col">
+                            <h1 class="text-xl text-neutral-50 font-bold">Keep on Track on your journey</h1>
+                            <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
+                                velit..."</p>
+                        </div>
+                        <div>
+                            <img src="{{ asset('images/header-bg.png') }}" alt="" class="h-32 w-56 object-cover">
+                        </div>
+
                     </div>
                 </div>
+
+
             </div>
             <div class="flex flex-row space-between w-full gap-x-4 mb-4">
                 <div class="overflow-hidden rounded-lg bg-white w-1/3 shadow">
@@ -37,6 +45,11 @@
                 </div>
             </div>
 
+        </div>
+        <div class="overflow-hidden rounded-lg bg-white w-full shadow">
+            <div class="px-4 py-5 sm:p-6">
+                hi
+            </div>
         </div>
 
     </div>

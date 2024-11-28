@@ -7,13 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Fitnes Hub</title>
-    <script src="https://cdn.tiny.cloud/1/cj49s9h77h05p1buusbutuvy3liy5et1s1yjjbsq8mjv6cj9/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="shortcut icon" href="{{ asset('images/workout.png') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('images/workout.png') }}" type="image/png" sizes="114x114">
-    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
 

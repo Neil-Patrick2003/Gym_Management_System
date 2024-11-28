@@ -6,7 +6,7 @@ use App\Http\Controllers\TutorialController;
 use App\Http\Controllers\TimeSheetController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\MembersController;
+use App\Http\Controllers\Admin\MembersController as AdminMemberController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Member\MemberController;
 use App\Http\Controllers\Admin\FeedbackController;
@@ -54,10 +54,10 @@ require __DIR__ . '/auth.php';
 //admin-side
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 //member-index
-Route::get('/admin/members', [MembersController::class, 'index']);
-Route::get('/admin/members/details/{member}', [MembersController::class, 'show']);
+Route::get('/admin/members', [AdminMemberController::class, 'index']);
+Route::get('/admin/members/details/{member}', [AdminMemberController::class, 'show']);
 //update role
-Route::patch('/admin/members/{member}', [MembersController::class, 'edit'])->middleware(['auth', 'verified']);
+Route::patch('/admin/members/{member}', [AdminMemberController::class, 'edit'])->middleware(['auth', 'verified']);
 
 //programs
 //index
@@ -146,6 +146,9 @@ Route::patch('/member/myprogram/program/schedules/{user_program_schedule}/daily-
 //appointment tab
 Route::get('/member/appointments', [AppointmentController::class, 'index']);
 Route::post('/member/appointments', [AppointmentController::class, 'store']);
+
+//tutorials
+Route::get('/member/tutorials', [MemberController::class, 'tutorials']);
 
 //recommendation-tab
 Route::get('/member/recommendations', [MemberRecommendationController::class, 'index']);

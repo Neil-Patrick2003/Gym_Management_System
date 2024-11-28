@@ -57,7 +57,7 @@ class User extends Authenticatable
 
     public function appointment()
     {
-        return $this->hasMany(Appoinment::class);
+        return $this->hasMany(Appointment::class);
     }
 
     public function Recommendation()
@@ -72,7 +72,7 @@ class User extends Authenticatable
 
     public function timesheet()
     {
-        return $this->hasMany(Appoinment::class);
+        return $this->hasMany(Appointment::class);
     }
 
     public function transaction()
@@ -83,6 +83,10 @@ class User extends Authenticatable
     public function getDaysSinceJoinedAttribute()
     {
         return Carbon::parse($this->created_at)->diffInDays(Carbon::now());
+    }
+
+    public function tutorial(){
+        return $this->hasMany(Tutorial::class);
     }
 
 }

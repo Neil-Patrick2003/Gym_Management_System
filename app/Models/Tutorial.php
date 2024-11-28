@@ -14,4 +14,8 @@ class Tutorial extends Model
     public function category(){
         return $this->hasOne(Category::class);
     }
+
+    public function trainer(){
+        return $this->belongsTo(User::class);
+    }
 }
