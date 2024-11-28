@@ -27,7 +27,7 @@
 
                     <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                         message</label>
-                    <textarea id="editor" name="content" rows="4"
+                    <textarea name="content" rows="4"
                         class="block p-2.5 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Write your recommendation here..." required></textarea>
                     @error('content')
@@ -46,31 +46,6 @@
         </div>
     </div>
 
-
-
-    <form action="/submit" method="POST">
-        <!-- CSRF token if using Laravel or other frameworks -->
-        @csrf
-
-        <!-- WYSIWYG Editor textarea -->
-        <label for="editor">Edit Your Content</label>
-        <textarea id="editor" name="content"></textarea>
-
-        <!-- Submit Button -->
-        <button type="submit">Submit</button>
-    </form>
-    <script>
-        // Initialize TinyMCE
-        tinymce.init({
-            selector: '#editor', // This targets the textarea with the ID 'editor'
-            height: 300, // Height of the editor
-            menubar: false, // Hide menu bar
-            plugins: ['lists', 'link', 'image'], // Include plugins for list, link, image, etc.
-            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | link image', // Toolbar buttons
-        });
-    </script>
-
-
-
+    
 
 </x-trainer-layout>
