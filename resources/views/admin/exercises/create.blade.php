@@ -93,7 +93,7 @@
             </div>
         </div>
         <button type="submit"
-            class="mt-4 w-full inline-flex items-center justify-center rounded-md bg-gradient-to-r from-yellow-600 to-red-600 text-white px-4 py-2 text-sm font-medium shadow-sm transition duration-300 ease-in-out hover:from-red-600 hover:to-yellow-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+            class="mt-4 w-full inline-flex items-center justify-center rounded-md bg-red-600 text-white px-4 py-2 text-sm font-medium shadow-sm transition duration-300 ease-in-out hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
             Create
         </button>
     </form>

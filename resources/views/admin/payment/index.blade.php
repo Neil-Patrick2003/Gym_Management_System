@@ -11,7 +11,7 @@
                     {{-- user_id --}}
                     <label for="user_id" class="block mb-2 text-sm font-medium text-white">Select Member</label>
                     <select id="user_id" name="user_id"
-                        class="block w-full p-2 mb-6 text-sm text-red-600 border border-white rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="block w-full p-2 mb-6 text-sm text-gray-600 border border-white rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 ">
                         @foreach ($members as $member)
                             <option value="{{ $member->id }}">{{ $member->name }}</option>
                         @endforeach
@@ -23,11 +23,11 @@
                     @enderror
 
                     {{-- session plan --}}
-                    <label for="plan" class="block mb-2 text-sm font-medium text-white">Default select</label>
+                    <label for="plan" class="block mb-2 text-sm font-medium text-white">Session Plan</label>
                     <select id="plan" name="plan"
-                        class="bg-white border border-gray-300 text-thite mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Choose a sesssion plan</option>
-                        <option value="daily">Daily</option>
+                        class="bg-white border text-gray-600 border-gray-300 text-thite mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                        onchange="calculateTotal()">
+                        <option selected value="daily">Daily</option>
                         <option value="weekly">Weekly</option>
                         <option value="monthly">Monthly</option>
                     </select>
@@ -38,15 +38,13 @@
                         </div>
                     @enderror
 
-
                     {{-- is_student --}}
-
                     <label for="is_student" class="block mb-2 text-base font-medium text-white">Select Discount</label>
                     <select id="is_student" name="is_student"
-                        class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>None</option>
+                        class="block w-full text-gray-600 px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
+                        onchange="calculateTotal()">
+                        <option value="false" selected>None</option>
                         <option value="true">Student Discount</option>
-                        <option value="false">None</option>
                     </select>
 
                     @error('is_student')
@@ -55,13 +53,27 @@
                         </div>
                     @enderror
 
+                    {{-- is_trainer --}}
+                    <label for="is_trainer" class="block mb-2 text-base font-medium text-white">Trainer Present</label>
+                    <select id="is_trainer" name="is_trainer"
+                        class="block w-full text-gray-600 px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
+                        onchange="calculateTotal()">
+                        <option value="false" selected>No</option>
+                        <option value="true">Yes</option>
+                    </select>
+
+                    @error('is_trainer')
+                        <div class=" mb-4 text-sm text-white rounded-lg " role="alert">
+                            <span class="font-sm italic">{{ $message }}</span>
+                        </div>
+                    @enderror
 
                     <div>
                         <label for="amount"
                             class="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-white">Amount</label>
                         <input type="text" id="amount" name="amount"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="00.00" required />
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="00.00" required readonly />
                     </div>
 
                     @error('amount')
@@ -70,18 +82,17 @@
                         </div>
                     @enderror
 
-
                     <div id="date-range-picker" class="flex items-center mt-4">
                         <div class="relative">
                             <label for="start_date" class="block mb-2 text-sm font-medium text-white">Start Date</label>
                             <input id="start_date" name="start" type="date"
-                                class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                class="bg-white text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         </div>
                         <span class=" text-red-600">-</span>
                         <div class="relative">
                             <label for="end_date" class="block mb-2 text-sm font-medium text-white">End Date</label>
                             <input id="end_date" name="end" type="date"
-                                class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                class="bg-white text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         </div>
                     </div>
 
@@ -91,13 +102,12 @@
                         </div>
                     @enderror
 
-
                     <button type="submit"
-                        class="text-white mt-4 w-full bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2">
+                        class="text-white mt-4 w-full bg-gray-800 hover:bg-500 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2">
                         Confirm Payment
                     </button>
-
                 </form>
+
             </div>
         </div>
 
@@ -107,7 +117,7 @@
             <div class="px-4 sm:px-6 lg:px-8">
                 <div class="sm:flex sm:items-center">
                     <div class="sm:flex-auto">
-                        <h1 class="text-base font-semibold text-gray-900">All Payments</h1>
+                        <h1 class="text-base font-semibold text-gray-900">Recent Transactions</h1>
                     </div>
                 </div>
                 <div class="mt-8 flow-root">
@@ -167,7 +177,7 @@
                                             </td>
                                             <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
                                                 <span
-                                                    class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">{{$transaction->status}}</span>
+                                                    class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">{{ $transaction->status }}</span>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -180,6 +190,38 @@
 
         </div>
     </div>
+
+
+    <script>
+        function calculateTotal() {
+            let baseAmount = 40; // Base amount for daily session
+            let totalAmount = baseAmount;
+
+            // Check if the session is daily
+            let sessionPlan = document.getElementById('plan').value;
+            if (sessionPlan !== 'daily') {
+                totalAmount = 0; // Change this if you have different pricing for weekly/monthly
+            }
+
+            // Check if a trainer is present
+            let isTrainer = document.getElementById('is_trainer').value;
+            if (isTrainer === 'true') {
+                totalAmount += 30; // Add 30 pesos if trainer is present
+            }
+
+            // Check if student discount is applied
+            let isStudent = document.getElementById('is_student').value;
+            if (isStudent === 'true') {
+                totalAmount -= 5; // Apply 5 pesos discount for students
+            }
+
+            // Set the total amount in the input field
+            document.getElementById('amount').value = totalAmount.toFixed(2); // Format the amount to 2 decimal places
+        }
+
+        // Call the function once to set the initial value
+        calculateTotal();
+    </script>
 
 
 

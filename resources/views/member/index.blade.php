@@ -1,11 +1,49 @@
 <x-member-layout>
-    <div class="">
-        <div class="h-36 bg-red-600 rounded-b-2xl w-full p-4">
-            <h1 class="text-white text-2xl md:text-3xl font-bold mb-4">
-                Hello, {{ Auth::user()->name }}!
-            </h1>
+
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="col-span-3 gap-y-4">
+            <div class="">
+                <div class="h-36 bg-gradient-to-r from-red-500 via-red-400 to-red-200 rounded-lg w-full p-4 mb-4">
+                    <div class="flex flex-col justify-center text-neutral-100  h-full">
+                        <h1 class="text-xl text-neutral-50 font-bold">Keep on Track on you journey</h1>
+                        <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
+                            velit..."
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-row space-between w-full gap-x-4 mb-4">
+                <div class="overflow-hidden rounded-lg bg-white w-1/3 shadow">
+                    <div class="px-4 py-5 sm:p-6">
+                        hi
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-lg bg-white w-1/3 shadow">
+                    <div class="px-4 py-5 sm:p-6">
+                        hi
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-lg bg-white w-1/3 shadow">
+                    <div class="px-4 py-5 sm:p-6">
+                        hi
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="overflow-hidden rounded-lg bg-white shadow">
+                    <div class="px-4 py-5 sm:p-6">
+                        <!-- Content goes here -->
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </div>
+
+
+
+
 
     {{-- Programs sample list --}}
     {{-- <div class="flex flex-col bg-zinc-800 m-auto p-auto">

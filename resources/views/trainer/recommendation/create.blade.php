@@ -46,30 +46,31 @@
         </div>
     </div>
 
+
+
+    <form action="/submit" method="POST">
+        <!-- CSRF token if using Laravel or other frameworks -->
+        @csrf
+
+        <!-- WYSIWYG Editor textarea -->
+        <label for="editor">Edit Your Content</label>
+        <textarea id="editor" name="content"></textarea>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+    </form>
     <script>
-        let editor;
-
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .then(newEditor => {
-                editor = newEditor;
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
-        // Ensure the textarea is updated with CKEditor content on form submit
-        document.querySelector('form').addEventListener('submit', function(event) {
-            // Prevent default form submission
-            event.preventDefault();
-
-            // Manually set the content from CKEditor to the textarea
-            document.querySelector('textarea[name="content"]').value = editor.getData();
-
-            // Now submit the form
-            this.submit();
+        // Initialize TinyMCE
+        tinymce.init({
+            selector: '#editor', // This targets the textarea with the ID 'editor'
+            height: 300, // Height of the editor
+            menubar: false, // Hide menu bar
+            plugins: ['lists', 'link', 'image'], // Include plugins for list, link, image, etc.
+            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | link image', // Toolbar buttons
         });
     </script>
+
+
 
 
 </x-trainer-layout>

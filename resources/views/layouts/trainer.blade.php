@@ -72,7 +72,7 @@
                         <nav class="flex flex-1 flex-col ">
                             <ul role="list" class="flex flex-1 flex-col gap-y-7">
                                 <li>
-                                    <x-member-nav-link href="{{ url('/trainer/home') }}" :active="request()->is('trainer/home')">
+                                    <x-trainer-nav-link href="{{ url('/trainer/home') }}" :active="request()->is('trainer/home')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                                 stroke="currentColor" aria-hidden="true">
@@ -82,10 +82,10 @@
                                             </svg>
                                         </x-slot:icon>
                                         Home
-                                    </x-member-nav-link>
+                                    </x-trainer-nav-link>
                                 </li>
                                 <li>
-                                    <x-member-nav-link href="{{ url('/trainer/programs') }}" :active="request()->is('trainer/programs')">
+                                    <x-trainer-nav-link href="{{ url('/trainer/programs') }}" :active="request()->is('trainer/programs')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                                 stroke="currentColor" aria-hidden="true">
@@ -94,10 +94,10 @@
                                             </svg>
                                         </x-slot:icon>
                                         Programs
-                                    </x-member-nav-link>
+                                    </x-trainer-nav-link>
                                 </li>
                                 <li>
-                                    <x-member-nav-link href="{{ url('/trainer/exercises') }}" :active="request()->is('trainer/exercises')">
+                                    <x-trainer-nav-link href="{{ url('/trainer/exercises') }}" :active="request()->is('trainer/exercises')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                                 stroke="currentColor" aria-hidden="true">
@@ -106,10 +106,10 @@
                                             </svg>
                                         </x-slot:icon>
                                         Exercises
-                                    </x-member-nav-link>
+                                    </x-trainer-nav-link>
                                 </li>
                                 <li>
-                                    <x-member-nav-link href="{{ url('/trainer/appointments') }}" :active="request()->is('trainer/appointments')">
+                                    <x-trainer-nav-link href="{{ url('/trainer/appointments') }}" :active="request()->is('trainer/appointments')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                                 stroke="currentColor" aria-hidden="true">
@@ -118,10 +118,10 @@
                                             </svg>
                                         </x-slot:icon>
                                         Appointments
-                                    </x-member-nav-link>
+                                    </x-trainer-nav-link>
                                 </li>
                                 <li>
-                                    <x-member-nav-link href="{{ url('/trainer/tutorials') }}" :active="request()->is('trainer/tutorials')">
+                                    <x-trainer-nav-link href="{{ url('/trainer/tutorials') }}" :active="request()->is('trainer/tutorials')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                                 stroke="currentColor" aria-hidden="true">
@@ -130,10 +130,10 @@
                                             </svg>
                                         </x-slot:icon>
                                         Tutorials
-                                    </x-member-nav-link>
+                                    </x-trainer-nav-link>
                                 </li>
                                 <li>
-                                    <x-member-nav-link href="{{ url('/trainer/recommendations') }}" :active="request()->is('member/appoinments')">
+                                    <x-trainer-nav-link href="{{ url('/trainer/recommendations') }}" :active="request()->is('member/appoinments')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                                 stroke="currentColor" aria-hidden="true">
@@ -142,10 +142,10 @@
                                             </svg>
                                         </x-slot:icon>
                                         Recommendations
-                                    </x-member-nav-link>
+                                    </x-trainer-nav-link>
                                 </li>
                                 <li>
-                                    <x-member-nav-link href="{{ url('/trainer/recommendations') }}" :active="request()->is('member/appoinments')">
+                                    <x-trainer-nav-link href="{{ url('/trainer/recommendations') }}" :active="request()->is('member/appoinments')">
                                         <x-slot:icon>
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                                 stroke="currentColor" aria-hidden="true">
@@ -154,7 +154,7 @@
                                             </svg>
                                         </x-slot:icon>
                                         Tutorials
-                                    </x-member-nav-link>
+                                    </x-trainer-nav-link>
                                 </li>
                             </ul>
                         </nav>
@@ -174,7 +174,7 @@
                             <li>
                                 <ul role="list" class="pl-4 space-y-1">
                                     <li>
-                                        <x-member-nav-link href="{{ url('/trainer/home') }}" :active="request()->is('trainer/home')">
+                                        <x-trainer-nav-link href="{{ url('/trainer/home') }}" :active="request()->is('trainer/home')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -184,10 +184,10 @@
                                                 </svg>
                                             </x-slot:icon>
                                             Home
-                                        </x-member-nav-link>
+                                        </x-trainer-nav-link>
                                     </li>
                                     <li>
-                                        <x-member-nav-link href="{{ url('/trainer/programs') }}" :active="request()->is('trainer/programs')">
+                                        <x-trainer-nav-link href="{{ url('/trainer/programs') }}" :active="request()->is('trainer/programs')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -196,10 +196,10 @@
                                                 </svg>
                                             </x-slot:icon>
                                             Programs
-                                        </x-member-nav-link>
+                                        </x-trainer-nav-link>
                                     </li>
                                     <li>
-                                        <x-member-nav-link href="{{ url('/trainer/exercises') }}" :active="request()->is('trainer/exercises')">
+                                        <x-trainer-nav-link href="{{ url('/trainer/exercises') }}" :active="request()->is('trainer/exercises')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -208,10 +208,10 @@
                                                 </svg>
                                             </x-slot:icon>
                                             Exercises
-                                        </x-member-nav-link>
+                                        </x-trainer-nav-link>
                                     </li>
                                     <li>
-                                        <x-member-nav-link href="{{ url('/trainer/appointments') }}"
+                                        <x-trainer-nav-link href="{{ url('/trainer/appointments') }}"
                                             :active="request()->is('trainer/appointments')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -221,10 +221,10 @@
                                                 </svg>
                                             </x-slot:icon>
                                             Appointments
-                                        </x-member-nav-link>
+                                        </x-trainer-nav-link>
                                     </li>
                                     <li>
-                                        <x-member-nav-link href="{{ url('/trainer/tutorials') }}" :active="request()->is('trainer/tutorials')">
+                                        <x-trainer-nav-link href="{{ url('/trainer/tutorials') }}" :active="request()->is('trainer/tutorials')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -233,10 +233,10 @@
                                                 </svg>
                                             </x-slot:icon>
                                             Tutorials
-                                        </x-member-nav-link>
+                                        </x-trainer-nav-link>
                                     </li>
                                     <li>
-                                        <x-member-nav-link href="{{ url('/trainer/recommendations') }}"
+                                        <x-trainer-nav-link href="{{ url('/trainer/recommendations') }}"
                                             :active="request()->is('trainer/recommendations')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -246,7 +246,7 @@
                                                 </svg>
                                             </x-slot:icon>
                                             Recommendations
-                                        </x-member-nav-link>
+                                        </x-trainer-nav-link>
                                     </li>
                                 </ul>
                             </li>

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -16,12 +16,13 @@ class PaymentController extends Controller
     {
 
         $transactions = Transaction::with('user')
-        ->get();
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         $members = User::where('role', '=', 'Member')->get();
         return view('admin.payment.index', [
             'members' => $members,
-            'transactions' => $transactions
+            'transactions' => $transactions,
         ]);
     }
 
@@ -64,9 +65,8 @@ class PaymentController extends Controller
             'status' => $status,
             'startDate' => $request->start,
             'end_date' => $request->end,
-            'is_student' => $request->is_student
+            'is_student' => $request->is_student,
         ]);
-
 
         return redirect()->back();
 
