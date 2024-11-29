@@ -79,153 +79,17 @@
                                         </x-slot:icon>
                                         Home
                                     </x-admin-nav-link>
-                                </li>
-                                <li>
-                                    <x-admin-nav-link href="{{ url('/admin/members') }}" :active="request()->is('admin/members')">
-                                        <x-slot:icon>
-                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
-                                                data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-                                            </svg>
-                                        </x-slot:icon>
-                                        Member
-                                    </x-admin-nav-link>
-                                </li>
-                                <li>
-                                    <x-admin-nav-link href="{{ url('/admin/programs') }}" :active="request()->is('admin/programs')">
-                                        <x-slot:icon>
-                                            
-
-                                        </x-slot:icon>
-                                        Programs
-                                    </x-admin-nav-link>
-                                </li>
-                                <li>
-                                    <x-admin-nav-link href="{{ url('/admin/exercises') }}" :active="request()->is('admin/exercises')">
-                                        <x-slot:icon>
-                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
-                                                data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-                                            </svg>
-                                        </x-slot:icon>
-                                        Exercises
-                                    </x-admin-nav-link>
-                                </li>
-                                <li>
-                                    <x-admin-nav-link href="{{ url('/admin/payments') }}" :active="request()->is('admin/payments')">
-                                        <x-slot:icon>
-                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
-                                                data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-                                            </svg>
-                                        </x-slot:icon>
-                                        Payments
-                                    </x-admin-nav-link>
-                                </li>
-                                <li>
-                                    <x-admin-nav-link href="{{ url('/admin/tutorials') }}" :active="request()->is('admin/tutorials')">
-                                        <x-slot:icon>
-                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
-                                                data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-                                            </svg>
-                                        </x-slot:icon>
-                                        Tutorials
-                                    </x-admin-nav-link>
-                                </li>
-                                <li>
-                                    <x-admin-nav-link href="{{ url('/admin/feedback') }}" :active="request()->is('admin/feedback')">
-                                        <x-slot:icon>
-                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
-                                                data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-                                            </svg>
-                                        </x-slot:icon>
-                                        Feedback
-                                    </x-admin-nav-link>
-                                </li>
-                                <li>
-                                    <x-admin-nav-link href="{{ url('/admin/report') }}" :active="request()->is('admin/report')">
-                                        <x-slot:icon>
-                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
-                                                data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-                                            </svg>
-                                        </x-slot:icon>
-                                        Report
-                                    </x-admin-nav-link>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Static sidebar for desktop -->
-        <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-            <!-- Sidebar component, swap this element with another sidebar if you like -->
-            <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-neutral-800 pr-6 pb-12">
-                <div class="flex h-16 shrink-0 items-center">
-                    <a href="/profile" class="group block shrink-0 mt-12">
-                        <div class="flex items-center">
-                            <div class="p-4">
-                                <img class="inline-block size-10 rounded-full"
-                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                    alt="">
-                            </div>
-                            <div class="">
-                                <p class="text-sm font-large text-gray-100 group-hover:text-gray-600">
-                                    {{Auth::user()->name}}</p>
-                                <p class="text-xs font-medium text-gray-500 group-hover:text-gray-600">
-                                    {{Auth::user()->role}}</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <nav class="flex flex-1 flex-col">
-                    <ul role="list" class="flex flex-1 flex-col gap-y-7">
-                        <li>
-                            <ul role="list" class="-mx-2 space-y-1">
-                                <li class="py-2 px-8 mt-4">
-                                    <p class="text-sm font-medium text-gray-400 group-hover:text-gray-900 tracking-wide leading-relaxed">navigation
-                                    </p>
-                                </li>
-                                <li>
-                                    <x-admin-nav-link href="{{ url('/dashboard') }}" :active="request()->is('dashboard')">
-                                        <x-slot:icon>
-                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
-                                                data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                                            </svg>
-                                        </x-slot:icon>
-                                        Home
-                                    </x-admin-nav-link>
 
                                 </li>
                                 <li>
                                     <x-admin-nav-link href="{{ url('/admin/members') }}" :active="request()->is('admin/members')">
                                         <x-slot:icon>
-                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
-                                                data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                                            <svg class="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                                    d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
                                             </svg>
+
                                         </x-slot:icon>
                                         Member
                                         </x-admin-navx-link>
@@ -259,26 +123,33 @@
                                 <li>
                                     <x-admin-nav-link href="{{ url('/admin/payments') }}" :active="request()->is('admin/payment')">
                                         <x-slot:icon>
-                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
-                                                data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                                            <svg class="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd"
+                                                    d="M7 6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-2v-4a3 3 0 0 0-3-3H7V6Z"
+                                                    clip-rule="evenodd" />
+                                                <path fill-rule="evenodd"
+                                                    d="M2 11a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7Zm7.5 1a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z"
+                                                    clip-rule="evenodd" />
+                                                <path d="M10.5 14.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" />
                                             </svg>
+
                                         </x-slot:icon>
                                         Payments
                                     </x-admin-nav-link>
                                 </li>
-                                
+
                                 <li>
                                     <x-admin-nav-link href="{{ url('/admin/feedbacks') }}" :active="request()->is('admin/feedbacks')">
                                         <x-slot:icon>
-                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
-                                                data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                                            <svg class="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                width="24" height="24" fill="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd"
+                                                    d="M3.559 4.544c.355-.35.834-.544 1.33-.544H19.11c.496 0 .975.194 1.33.544.356.35.559.829.559 1.331v9.25c0 .502-.203.981-.559 1.331-.355.35-.834.544-1.33.544H15.5l-2.7 3.6a1 1 0 0 1-1.6 0L8.5 17H4.889c-.496 0-.975-.194-1.33-.544A1.868 1.868 0 0 1 3 15.125v-9.25c0-.502.203-.981.559-1.331ZM7.556 7.5a1 1 0 1 0 0 2h8a1 1 0 0 0 0-2h-8Zm0 3.5a1 1 0 1 0 0 2H12a1 1 0 1 0 0-2H7.556Z"
+                                                    clip-rule="evenodd" />
                                             </svg>
+
                                         </x-slot:icon>
                                         Feedback
                                     </x-admin-nav-link>
@@ -286,12 +157,156 @@
                                 <li>
                                     <x-admin-nav-link href="{{ url('/admin/users') }}" :active="request()->is('admin/users')">
                                         <x-slot:icon>
+                                            <svg class="w-6 h-6" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                fill="none" viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-linecap="square"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="M10 19H5a1 1 0 0 1-1-1v-1a3 3 0 0 1 3-3h2m10 1a3 3 0 0 1-3 3m3-3a3 3 0 0 0-3-3m3 3h1m-4 3a3 3 0 0 1-3-3m3 3v1m-3-4a3 3 0 0 1 3-3m-3 3h-1m4-3v-1m-2.121 1.879-.707-.707m5.656 5.656-.707-.707m-4.242 0-.707.707m5.656-5.656-.707.707M12 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
+
+                                        </x-slot:icon>
+                                        Users
+                                    </x-admin-nav-link>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Static sidebar for desktop -->
+        <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+            <!-- Sidebar component, swap this element with another sidebar if you like -->
+            <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-neutral-800 pr-6 pb-12">
+                <div class="flex h-16 shrink-0 items-center">
+                    <a href="/profile" class="group block shrink-0 mt-12">
+                        <div class="flex items-center">
+                            <div class="p-4">
+                                <img class="inline-block size-10 rounded-full"
+                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                    alt="">
+                            </div>
+                            <div class="">
+                                <p class="text-sm font-large text-gray-100 group-hover:text-gray-600">
+                                    {{ Auth::user()->name }}</p>
+                                <p class="text-xs font-medium text-gray-500 group-hover:text-gray-600">
+                                    {{ Auth::user()->role }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <nav class="flex flex-1 flex-col">
+                    <ul role="list" class="flex flex-1 flex-col gap-y-7">
+                        <li>
+                            <ul role="list" class="-mx-2 space-y-1">
+                                <li class="py-2 px-8 mt-4">
+                                    <p
+                                        class="text-sm font-medium text-gray-400 group-hover:text-gray-900 tracking-wide leading-relaxed">
+                                        navigation
+                                    </p>
+                                </li>
+                                <li>
+                                    <x-admin-nav-link href="{{ url('/dashboard') }}" :active="request()->is('dashboard')">
+                                        <x-slot:icon>
+                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
+                                                data-slot="icon">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                            </svg>
+                                        </x-slot:icon>
+                                        Home
+                                    </x-admin-nav-link>
+
+                                </li>
+                                <li>
+                                    <x-admin-nav-link href="{{ url('/admin/members') }}" :active="request()->is('admin/members')">
+                                        <x-slot:icon>
+                                            <svg class="w-6 h-6 " aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                fill="none" viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                                    d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                                            </svg>
+
+                                        </x-slot:icon>
+                                        Member
+                                        </x-admin-navx-link>
+                                </li>
+                                <li>
+                                    <x-admin-nav-link href="{{ url('/admin/programs') }}" :active="request()->is('admin/programs')">
+                                        <x-slot:icon>
                                             <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
                                                 data-slot="icon">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
                                             </svg>
+                                        </x-slot:icon>
+                                        Programs
+                                    </x-admin-nav-link>
+                                </li>
+                                <li>
+                                    <x-admin-nav-link href="{{ url('/admin/exercises') }}" :active="request()->is('admin/exercises')">
+                                        <x-slot:icon>
+                                            <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" aria-hidden="true"
+                                                data-slot="icon">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                                            </svg>
+                                        </x-slot:icon>
+                                        Exercises
+                                    </x-admin-nav-link>
+                                </li>
+                                <li>
+                                    <x-admin-nav-link href="{{ url('/admin/payments') }}" :active="request()->is('admin/payment')">
+                                        <x-slot:icon>
+                                            <svg class="w-6 h-6 " aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                fill="currentColor" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd"
+                                                    d="M7 6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-2v-4a3 3 0 0 0-3-3H7V6Z"
+                                                    clip-rule="evenodd" />
+                                                <path fill-rule="evenodd"
+                                                    d="M2 11a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7Zm7.5 1a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z"
+                                                    clip-rule="evenodd" />
+                                                <path d="M10.5 14.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" />
+                                            </svg>
+
+                                        </x-slot:icon>
+                                        Payments
+                                    </x-admin-nav-link>
+                                </li>
+
+                                <li>
+                                    <x-admin-nav-link href="{{ url('/admin/feedbacks') }}" :active="request()->is('admin/feedbacks')">
+                                        <x-slot:icon>
+                                            <svg class="w-6 h-6 " aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                fill="currentColor" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd"
+                                                    d="M3.559 4.544c.355-.35.834-.544 1.33-.544H19.11c.496 0 .975.194 1.33.544.356.35.559.829.559 1.331v9.25c0 .502-.203.981-.559 1.331-.355.35-.834.544-1.33.544H15.5l-2.7 3.6a1 1 0 0 1-1.6 0L8.5 17H4.889c-.496 0-.975-.194-1.33-.544A1.868 1.868 0 0 1 3 15.125v-9.25c0-.502.203-.981.559-1.331ZM7.556 7.5a1 1 0 1 0 0 2h8a1 1 0 0 0 0-2h-8Zm0 3.5a1 1 0 1 0 0 2H12a1 1 0 1 0 0-2H7.556Z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+
+                                        </x-slot:icon>
+                                        Feedback
+                                    </x-admin-nav-link>
+                                </li>
+                                <li>
+                                    <x-admin-nav-link href="{{ url('/admin/users') }}" :active="request()->is('admin/users')">
+                                        <x-slot:icon>
+                                            <svg class="w-6 h-6" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                fill="none" viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-linecap="square"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="M10 19H5a1 1 0 0 1-1-1v-1a3 3 0 0 1 3-3h2m10 1a3 3 0 0 1-3 3m3-3a3 3 0 0 0-3-3m3 3h1m-4 3a3 3 0 0 1-3-3m3 3v1m-3-4a3 3 0 0 1 3-3m-3 3h-1m4-3v-1m-2.121 1.879-.707-.707m5.656 5.656-.707-.707m-4.242 0-.707.707m5.656-5.656-.707.707M12 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
+
                                         </x-slot:icon>
                                         Users
                                     </x-admin-nav-link>
@@ -320,19 +335,19 @@
                  lg:hidden" aria-hidden="true"></div>
 
                 <div class="flex flex-1 justify-end gap-x-4 lg:gap-x-6 p-4 bg-white-800">
-                    </div>
+                </div>
                 <div class="relative inline-block text-left">
                     <div x-data="{ dropdownOpen: false }">
                         <button type="button"
-                                class="inline-flex w-full justify-center rounded-lg hover:rouned-4xl p-2 rouned-lg hover:bg-red-700"
-                                id="menu-button" aria-expanded="true" aria-haspopup="true"
-                                @click="dropdownOpen = !dropdownOpen">
+                            class="inline-flex w-full justify-center rounded-lg hover:rouned-4xl p-2 rouned-lg hover:bg-red-700"
+                            id="menu-button" aria-expanded="true" aria-haspopup="true"
+                            @click="dropdownOpen = !dropdownOpen">
                             <span>{{ Auth::user()->name }}</span>
                             <svg class="w-[20px] h-[20px] text-gray-800 dark:text-white" aria-hidden="true"
-                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                 viewBox="0 0 24 24">
-                                <path stroke="white" stroke-linecap="round" stroke-linejoin="round"
-                                      stroke-width="2" d="m19 9-7 7-7-7" />
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m19 9-7 7-7-7" />
                             </svg>
 
 
@@ -340,14 +355,14 @@
 
                         <!-- Dropdown menu, show/hide based on dropdownOpen state -->
                         <div x-show="dropdownOpen" x-cloak
-                             class="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
-                             role="menu" aria-orientation="vertical" aria-labelledby="menu-button"
-                             tabindex="-1" x-transition:enter="transition ease-out duration-100"
-                             x-transition:enter-start="transform opacity-0 scale-95"
-                             x-transition:enter-end="transform opacity-100 scale-100"
-                             x-transition:leave="transition ease-in duration-75"
-                             x-transition:leave-start="transform opacity-100 scale-100"
-                             x-transition:leave-end="transform opacity-0 scale-95">
+                            class="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
+                            role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1"
+                            x-transition:enter="transition ease-out duration-100"
+                            x-transition:enter-start="transform opacity-0 scale-95"
+                            x-transition:enter-end="transform opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-75"
+                            x-transition:leave-start="transform opacity-100 scale-100"
+                            x-transition:leave-end="transform opacity-0 scale-95">
                             <div
                                 class="flex items-center w-full text-slate-950 px-4 py-2 rounded-md hover:bg-gray-200 transition duration-150 ease-in-out">
                                 <a href="/profile">Profile</a>
@@ -356,7 +371,7 @@
                                 <form method="POST" action="/logout">
                                     @csrf
                                     <button type="submit"
-                                            class="flex items-center w-full text-slate-950 px-4 py-2 rounded-md hover:bg-gray-200 transition duration-150 ease-in-out">
+                                        class="flex items-center w-full text-slate-950 px-4 py-2 rounded-md hover:bg-gray-200 transition duration-150 ease-in-out">
                                         Logout
                                     </button>
                                 </form>

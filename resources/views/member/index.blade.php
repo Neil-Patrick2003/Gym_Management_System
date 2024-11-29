@@ -27,12 +27,12 @@
                 </div>
                 <div class="overflow-hidden rounded-lg bg-white w-1/3 shadow">
                     <div class="px-4 py-5 sm:p-6 h-72">
-                        
+
                     </div>
                 </div>
                 <div class="overflow-hidden rounded-lg bg-white w-1/3 shadow">
                     <div class="px-4 py-5 sm:p-6">
-                        
+
                     </div>
                 </div>
             </div>
@@ -54,32 +54,29 @@
     </div>
 
 
-        <div class="snap-x flex overflow-x-auto space-x-4 py-4 scrollbar-none">
-            <div class="snap-center flex-shrink-0 w-80">
-                <img src="https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
-                    alt="Image 1" class="w-full h-auto rounded-lg" />
-            </div>
-            <div class="snap-center flex-shrink-0 w-80">
-                <img src="https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
-                    alt="Image 2" class="w-full h-auto rounded-lg" />
-            </div>
-            <div class="snap-center flex-shrink-0 w-80">
-                <img src="https://images.unsplash.com/photo-1622890806166-111d7f6c7c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
-                    alt="Image 3" class="w-full h-auto rounded-lg" />
-            </div>
-            <div class="snap-center flex-shrink-0 w-80">
-                <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
-                    alt="Image 4" class="w-full h-auto rounded-lg" />
-            </div>
-            <div class="snap-center flex-shrink-0 w-80">
-                <img src="https://images.unsplash.com/photo-1575424909138-46b05e5919ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
-                    alt="Image 5" class="w-full h-auto rounded-lg" />
-            </div>
-            <div class="snap-center flex-shrink-0 w-80">
-                <img src="https://images.unsplash.com/photo-1559333086-b0a56225a93c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
-                    alt="Image 6" class="w-full h-auto rounded-lg" />
-            </div>
+    <div class="flex justify-between w-full border mt-6">
+        <div>
+            <H3 class=" text-lg font-bold text-gray-600">Programs</H3>
         </div>
+        <div>
+            <a href="/member/programs" class="text-sm text-gray-600">
+                See all.
+            </a>
+        </div>
+    </div>
+    <div class="snap-x flex overflow-x-auto space-x-4 py-4 scrollbar-none">
+
+
+
+        @foreach ($programs as $program)
+            <div class="snap-center flex-shrink-0 w-80">
+                <img src="{{ asset('storage/' . $program->photo_link) }}" alt="Program Image"
+                    class="w-full h-auto rounded-lg" />
+            </div>
+        @endforeach
+
+
+    </div>
 
 
 
@@ -129,6 +126,10 @@
             <!-- Horizontal Scrollable Content Area without Scrollbar -->
             <div class="modal-body max-h-96 overflow-y-auto mt-4">
                 <div class="flex space-x-4 overflow-x-auto p-4  hide-scroll-bar">
+                    <button type="submit"
+                        class=" h-40 flex-shrink-0 bg-blue-500 hover:bg-blue-600 text-white rounded-lg p-4 w-40 text-center font-semibold focus:outline-none">
+                        None
+                    </button>
                     @foreach ($trainers as $trainer)
                         <form action="/home" method="POST">
                             @csrf
