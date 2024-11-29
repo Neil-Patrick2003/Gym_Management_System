@@ -30,9 +30,14 @@
         @endif
 
 
-        {{-- <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed pointer-events-none">
-            Disabled Button
-        </button> --}}
+
+        @php
+            $previousExerciseCompleted = true; // Initialize as true so the first exercise button is always enabled
+        @endphp
+
+        @php
+            $previousExerciseCompleted = true; // Initialize as true so the first exercise button is always enabled
+        @endphp
 
         @foreach ($program_schedule->exercises as $exercise)
             <div class="grid grid-cols-3 gap-4 border border-solid mb-4 p-4">
@@ -44,16 +49,14 @@
                     <div class="content-center">
                         {{ $exercise->name }}
                     </div>
-
-
                 </div>
+
                 <div class="content-center">
-                    <p><span class="bg-red-300 px-2 rounded">No.reps: {{ $exercise->no_of_reps }}</span>
-                    </p>
+                    <p><span class="bg-red-300 px-2 rounded">No.reps: {{ $exercise->no_of_reps }}</span></p>
                 </div>
+
                 <div class="flex content-center justify-between mt-6">
-                    <p><span class="bg-red-300 px-2 rounded">No.sets: {{ $exercise->no_of_sets }}</span>
-                    </p>
+                    <p><span class="bg-red-300 px-2 rounded">No.sets: {{ $exercise->no_of_sets }}</span></p>
                     <div>
                         @if ($exercise->pivot->is_complete)
                             <button
@@ -67,17 +70,35 @@
                                 @csrf
                                 @method('PATCH')
                                 <input type="hidden" name="exercise_id" value="{{ $exercise->id }}">
+
+                                <!-- Conditional Button Styling Based on Previous Exercise Completion -->
                                 <button type="submit"
-                                    class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-200 ease-in-out">
-                                    Complete
+                                    class="font-bold py-2 px-4 rounded-lg shadow-md transition duration-200 ease-in-out 
+                                   @if (!$previousExerciseCompleted) bg-gray-400 text-gray-600 cursor-not-allowed pointer-events-none @else bg-green-500 hover:bg-green-600 text-white @endif">
+                                    @if (!$previousExerciseCompleted)
+                                        Complete
+                                    @else
+                                        Complete
+                                    @endif
                                 </button>
                             </form>
                         @endif
                     </div>
                 </div>
 
+                <!-- Optional: Display a message if the previous exercise wasn't completed -->
+                @if (!$previousExerciseCompleted)
+                    <p class="text-red-500 text-sm mt-2">Complete the previous exercise first!</p>
+                @endif
+
+                @php
+                    // Update the previous exercise's completion status after each iteration
+                    $previousExerciseCompleted = $exercise->pivot->is_complete;
+                @endphp
             </div>
         @endforeach
+
+
 
     </div>
 

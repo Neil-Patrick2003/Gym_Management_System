@@ -23,17 +23,16 @@
             <div class="flex flex-row space-between w-full gap-x-4 mb-4">
                 <div class="overflow-hidden rounded-lg bg-white w-1/3 shadow">
                     <div class="px-4 py-5 sm:p-6">
-                        hi
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-lg bg-white w-1/3 shadow">
+                    <div class="px-4 py-5 sm:p-6 h-72">
+                        
                     </div>
                 </div>
                 <div class="overflow-hidden rounded-lg bg-white w-1/3 shadow">
                     <div class="px-4 py-5 sm:p-6">
-                        hi
-                    </div>
-                </div>
-                <div class="overflow-hidden rounded-lg bg-white w-1/3 shadow">
-                    <div class="px-4 py-5 sm:p-6">
-                        hi
+                        
                     </div>
                 </div>
             </div>
@@ -48,17 +47,50 @@
         </div>
         <div class="overflow-hidden rounded-lg bg-white w-full shadow">
             <div class="px-4 py-5 sm:p-6">
-                hi
+                Today Schedules
             </div>
         </div>
 
     </div>
 
 
+        <div class="snap-x flex overflow-x-auto space-x-4 py-4 scrollbar-none">
+            <div class="snap-center flex-shrink-0 w-80">
+                <img src="https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
+                    alt="Image 1" class="w-full h-auto rounded-lg" />
+            </div>
+            <div class="snap-center flex-shrink-0 w-80">
+                <img src="https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
+                    alt="Image 2" class="w-full h-auto rounded-lg" />
+            </div>
+            <div class="snap-center flex-shrink-0 w-80">
+                <img src="https://images.unsplash.com/photo-1622890806166-111d7f6c7c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
+                    alt="Image 3" class="w-full h-auto rounded-lg" />
+            </div>
+            <div class="snap-center flex-shrink-0 w-80">
+                <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
+                    alt="Image 4" class="w-full h-auto rounded-lg" />
+            </div>
+            <div class="snap-center flex-shrink-0 w-80">
+                <img src="https://images.unsplash.com/photo-1575424909138-46b05e5919ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
+                    alt="Image 5" class="w-full h-auto rounded-lg" />
+            </div>
+            <div class="snap-center flex-shrink-0 w-80">
+                <img src="https://images.unsplash.com/photo-1559333086-b0a56225a93c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
+                    alt="Image 6" class="w-full h-auto rounded-lg" />
+            </div>
+        </div>
 
 
 
-    {{-- Programs sample list --}}
+
+
+
+
+
+
+
+
     {{-- <div class="flex flex-col bg-zinc-800 m-auto p-auto">
         <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-white">
             Programs
@@ -73,8 +105,8 @@
                     </div>
                 @endforeach
             </div>
-        </div>
-    </div> --}}
+        </div> --}}
+
 
     <!-- Fixed Check-in Button -->
     <div class="fixed bottom-4 right-4 z-50">
@@ -111,40 +143,26 @@
                 </div>
             </div>
 
-            <!-- Additional Button or Actions -->
         </div>
     </div>
 
-    ksaljdddalkadsadlkadadlksajdsaddklj
 
-    <style>
-        .hide-scroll-bar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
 
-        .hide-scroll-bar::-webkit-scrollbar {
-            display: none;
-        }
-    </style>
+
 
     <script>
-        // Get modal and button elements
         const modal = document.getElementById("myModal");
         const openModalBtn = document.getElementById("openModal");
         const closeModalBtn = document.getElementById("closeModal");
 
-        // Open modal when the button is clicked
         openModalBtn.onclick = () => {
             modal.classList.remove("hidden");
         };
 
-        // Close modal when the close button (×) is clicked
         closeModalBtn.onclick = () => {
             modal.classList.add("hidden");
         };
 
-        // Close modal when clicking outside of it
         window.onclick = (event) => {
             if (event.target === modal) {
                 modal.classList.add("hidden");

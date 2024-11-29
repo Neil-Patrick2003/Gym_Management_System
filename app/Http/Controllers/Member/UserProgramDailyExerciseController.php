@@ -17,10 +17,13 @@ class UserProgramDailyExerciseController extends Controller
 
         $program_schedule = UserProgramSchedule::with('exercises')->find($id);
 
+        
+
+
+
         return view('member.user_program_daily_exercise.index', [
             'program_schedule' => $program_schedule,
         ]);
-
 
     }
 
@@ -60,16 +63,13 @@ class UserProgramDailyExerciseController extends Controller
     {
 
         $user_program_daily_exercise = UserProgramDailyExercise::where('user_program_schedule_id', '=', $user_program_schedule_id)
-        ->where('exercise_id', $exercise_id)
-        ->first();
+            ->where('exercise_id', $exercise_id)
+            ->first();
 
         $user_program_daily_exercise->is_complete = true;
         $user_program_daily_exercise->save();
 
-
-
         return redirect()->back()->with('success', 'Completed!');
-
 
     }
 

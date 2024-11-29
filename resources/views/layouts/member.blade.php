@@ -259,30 +259,43 @@
                         </svg>
                     </button>
                     <div class="flex flex-1 justify-end gap-x-4 lg:gap-x-6 p-4">
-                        <button type="button" class="-m-2.5 p-2.5 text-white hover:text-gray-500"
-                            id="dropdownButton">
-                            <span class="sr-only">View profile</span>
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-6 2.69-6 6v1h12v-1c0-3.31-2.69-6-6-6z" />
-                            </svg>
-                        </button>
-                        <div class="absolute right-0 hidden mt-2 w-48 rounded-md  bg-white  shadow-lg"
-                            id="dropdownMenu">
-                            <ul class="py-1">
-                                <li>
+                        <div class="relative inline-block text-left">
+                            <div>
+                                <button type="button" id="dropdownButton"
+                                    class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                                    id="menu-button" aria-expanded="true" aria-haspopup="true">
+                                    Options
+                                    <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true" data-slot="icon">
+                                        <path fill-rule="evenodd"
+                                            d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+
+
+                            <div class="absolute hidden  right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
+                                id="dropdownMenu" role="menu" aria-orientation="vertical"
+                                aria-labelledby="menu-button" tabindex="-1">
+                                <div class="py-1" role="none">
+                                    <!-- Active: "bg-gray-100 text-gray-900 outline-none", Not Active: "text-gray-700" -->
                                     <form method="POST" action="/logout" class="inline-block text-center mx-auto">
                                         @csrf
                                         <button type="submit"
-                                            class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100">Logout</button>
+                                            class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-500">Logout</button>
                                     </form>
-                                </li>
-                                <li>
-                                    <a href="/profile"
-                                        class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100">Profile</a>
-                                </li>
-                            </ul>
+                                    <a href="/proflie" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                        tabindex="-1" id="menu-item-1">Support</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                        tabindex="-1" id="menu-item-2">License</a>
+                                    <form method="POST" action="#" role="none">
+                                        <button type="submit"
+                                            class="block w-full px-4 py-2 text-left text-sm text-gray-700"
+                                            role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

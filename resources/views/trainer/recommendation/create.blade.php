@@ -19,7 +19,7 @@
                     <select id="category" name="category"
                         class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm/6">
                         <option>Suplement Recommendation</option>
-                        <option selected>Food Recommmendations</option>
+                        <option selected>Food Recommendations</option>
                     </select>
                     @error('category')
                         <div class="text-red-500 text-sm mt-2">{{ $message }}</div>
