@@ -63,7 +63,7 @@ class AppointmentController extends Controller
             'status' => 'Pending',
         ]);
 
-        return redirect()->back()->withMessage(['message' => 'Appointment completed.']);
+        return redirect()->back()->with(['message' => 'Appointment completed.']);
     }
 
 }
