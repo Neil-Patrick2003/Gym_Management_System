@@ -19,8 +19,11 @@ class UserProgramController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $user_programs = UserProgram::with('program', 'user')->where('user_id', '=', $user_id)->get();
 
+        $user_programs = UserProgram::with('program', 'user')
+            ->appendCompletionPercentage()
+            ->where('user_id', '=', $user_id)
+            ->get();
 
         return view('member.myprogram.index', [
             'user_programs' => $user_programs
@@ -32,7 +35,7 @@ class UserProgramController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     public function store(Request $request)
@@ -70,6 +73,7 @@ class UserProgramController extends Controller
     public function show(string $id)
     {
         $user_program = UserProgram::with(relations: ['program', 'program_schedules' => ['exercises']])
+            ->appendCompletionPercentage()
             ->findOrFail($id);
 
         $exercises = Exercise::all();

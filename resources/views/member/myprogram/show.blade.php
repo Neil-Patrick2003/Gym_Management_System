@@ -10,6 +10,7 @@
         <div class="absolute px-4 py-4 inset-0 bg-black/50 flex items-end justify-between">
             <div>
                 <h2 class="text-white text-xl font-bold">{{ $user_program->program->name }}</h2>
+                <h2 class="text-white text-xl font-bold">{{ $user_program->completion_percentage ?? 0 }}%</h2>
             </div>
         </div>
     </div>
