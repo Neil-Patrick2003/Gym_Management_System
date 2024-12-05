@@ -33,6 +33,9 @@
                 <div class="absolute px-4 py-4 inset-0 bg-black/50 flex items-end justify-between">
                     <div>
                         <h2 class="text-white text-2xl sm:text-4xl md:text-6xl font-bold">{{ $program->name }}</h2>
+                        haaaa
+                        <h2 class="text-white text-2xl sm:text-4xl md:text-6xl font-bold">{{ $program->level }}</h2>
+
                         <p class="text-white text-sm sm:text-base md:text-lg">Created by: {{ $program->created_by }}</p>
 
                     </div>
@@ -60,47 +63,101 @@
     <div>
         {{ $programs->links() }}
     </div>
-    <div class="overflow-hidden rounded-lg bg-white shadow-lg mb-8">
-        <div class="px-6 py-8 sm:p-10">
 
-            <form action="/admin/programs" method="POST" enctype="multipart/form-data"
-                class="space-y-8 max-w-lg mx-auto p-6 bg-gray-50 rounded-lg shadow-sm">
-                @csrf
 
-                <input type="hidden" name="created_by" value="{{ Auth::user()->name }}">
 
-                <div class="flex flex-col">
-                    <label for="name" class="mb-2 text-base font-semibold text-gray-600">Program Name</label>
-                    <input type="text" id="name" name="name"
-                        class="w-full h-12 px-4 text-sm border border-gray-300 rounded-lg bg-white focus:bg-gray-50 hover:border-gray-400 focus:border-indigo-500 focus:outline-none transition duration-200"
-                        placeholder="Enter program name" required />
-                </div>
 
-                <div class="flex flex-col">
-                    <label class="block mt-2" for="photo_link_file">
-                        <span class="sr-only">Choose Exercise photo</span>
-                        <input type="file" name="photo_link" id="photo_link_file" required
-                            class="block w-full text-sm text-slate-500
+    <button onclick="openModal()" class="bg-blue-500 text-white px-4 py-2 rounded-md">
+        Open Modal
+    </button>
+
+    <div class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="myModal">
+        <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <div
+                    class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mt-3 w-full text-center sm:ml-4 sm:mt-0 sm:text-left">
+                            <h3 class="text-base font-semibold text-gray-900" id="modal-title">Create Program</h3>
+                            <form action="/trainer/programs/create" method="POST" enctype="multipart/form-data"
+                                class="w-full border">
+                                @csrf
+
+                                <input type="hidden" name="created_by" value="{{ Auth::user()->name }}">
+
+                                <div class="flex flex-col">
+                                    <label for="name" class="mb-2 text-base font-semibold text-gray-600">Program
+                                        Name</label>
+                                    <input type="text" id="name" name="name"
+                                        class="w-full h-12 px-4 text-sm border border-gray-300 rounded-lg bg-white focus:bg-gray-50 hover:border-gray-400 focus:border-indigo-500 focus:outline-none transition duration-200"
+                                        placeholder="Enter program name" required />
+                                </div>
+
+                                <div>
+                                    <label for="location"
+                                        class="block text-sm/6 font-medium text-gray-900">Level</label>
+                                    <div class="mt-2 grid grid-cols-1">
+                                        <select id="location" name="level"
+                                            class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                            <option value="Biginner">Biginner</option>
+                                            <option value="Intermidiate">Intermidiate</option>
+                                            <option value="Advance">Advance</option>
+                                        </select>
+                                        <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
+                                            viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                            <path fill-rule="evenodd"
+                                                d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </div>
+
+
+                                <div class="flex flex-col">
+                                    <label class="block mt-2" for="photo_link_file">
+                                        <span class="sr-only">Choose Exercise photo</span>
+                                        <input type="file" name="photo_link" id="photo_link_file" required
+                                            class="block w-full text-sm text-slate-500
                                     file:mr-4 file:py-2 file:px-4
                                     file:rounded-full file:border-0
                                     file:text-sm file:font-semibold
                                     file:bg-violet-50 file:text-violet-700
                                     hover:file:bg-violet-100" />
-                    </label>
+                                    </label>
 
+                                </div>
+                                <div class="flex justify-center mt-2">
+                                    <button type="submit"
+                                        class="w-full h-12 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 transition duration-200">
+                                        Add Program
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+                        <button type="button"
+                            class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Cancel</button>
+                        <button onclick="closeModal()" type="button"
+                            class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Add</button>
+                    </div>
                 </div>
-                <div class="flex justify-center">
-                    <button type="submit"
-                        class="w-full h-12 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 transition duration-200">
-                        Add Program
-                    </button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
+    {{-- 
+    <div id="myModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center hidden">
+        <div class="bg-white rounded-lg shadow-lg w-1/3 p-6">
+            <h2 class="text-xl font-semibold mb-4">Modal Title</h2>
+            <p class="mb-4">This is a simple modal. You can add any content here!</p>
 
-
-
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="bg-red-500 text-red-900 px-4 py-2 rounded-md">
+                Close
+            </button>
+        </div>
+    </div> --}}
 
 
 
@@ -121,6 +178,15 @@
     <script>
         function confirmDelete() {
             return confirm('Are you sure want to remove this program?');
+        }
+
+        function openModal() {
+            document.getElementById('myModal').classList.remove('hidden');
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById('myModal').classList.add('hidden');
         }
     </script>
 

@@ -122,7 +122,7 @@ Route::get('/trainer/tutorials', [TrainerTutorialController::class, 'index']);
 Route::post('/trainer/tutorials/add_category', [TrainerTutorialController::class, 'add_category']);
 Route::post('/trainer/tutorials/create', [TrainerTutorialController::class, 'store']);
 Route::post('/trainer/tutorials/filter', [TrainerTutorialController::class, 'filter']);
-
+Route::post('/trainer/programs/create', [ProgramController::class, 'store']);    
 
 
 
