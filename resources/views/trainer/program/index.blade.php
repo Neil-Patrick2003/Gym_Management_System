@@ -53,7 +53,7 @@
                                     Remove
                                 </button>
                             </form>
-    
+
                         </div> --}}
                 </div>
             </div>
@@ -81,7 +81,7 @@
                         <div class="mt-3 w-full text-center sm:ml-4 sm:mt-0 sm:text-left">
                             <h3 class="text-base font-semibold text-gray-900" id="modal-title">Create Program</h3>
                             <form action="/trainer/programs/create" method="POST" enctype="multipart/form-data"
-                                class="w-full border">
+                                class="w-full mt-4">
                                 @csrf
 
                                 <input type="hidden" name="created_by" value="{{ Auth::user()->name }}">
@@ -127,26 +127,21 @@
                                     </label>
 
                                 </div>
-                                <div class="flex justify-center mt-2">
+                                <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                                     <button type="submit"
-                                        class="w-full h-12 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 transition duration-200">
-                                        Add Program
-                                    </button>
+                                        class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Cancel</button>
+                                    <button onclick="closeModal()" type="button"
+                                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Add</button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                        <button type="button"
-                            class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Cancel</button>
-                        <button onclick="closeModal()" type="button"
-                            class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Add</button>
-                    </div>
+
                 </div>
             </div>
         </div>
     </div>
-    {{-- 
+    {{--
     <div id="myModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center hidden">
         <div class="bg-white rounded-lg shadow-lg w-1/3 p-6">
             <h2 class="text-xl font-semibold mb-4">Modal Title</h2>
