@@ -4,7 +4,6 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Attribute;
 use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,7 +24,11 @@ class User extends Authenticatable
         'password',
         'role',
         'about_me',
+        'paid_until'
     ];
+
+
+    protected $appends = ['is_paid_today'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -87,6 +90,21 @@ class User extends Authenticatable
 
     public function tutorial(){
         return $this->hasMany(Tutorial::class);
+    }
+
+    public function getIsPaidTodayAttribute()
+    {
+        return $this->paid_until
+            && Carbon::parse($this->paid_until)
+                ->greaterThanOrEqualTo(Carbon::now());
+    }
+
+    public function setAdditionalPaidUntil(int $days)
+    {
+        $paid_until = $this->paid_until ? Carbon::parse($this->paid_until) : Carbon::now();
+
+        $this->paid_until = $paid_until->add($days - 1, 'days');
+        $this->save();
     }
 
 }
