@@ -37,6 +37,9 @@ class AdminController extends Controller
         $user_enrolled_programs = UserProgram::count();
         $total_sales = TransactionItem::sum('sub_total');
 
+        $logged_timesheet->total_hours = $logged_timesheet->total_hours ?? 0;
+        $logged_timesheet->total_minutes = $logged_timesheet->total_minutes ?? 0;
+
         $stats = [
             [
                 "title" => "Total Sales",

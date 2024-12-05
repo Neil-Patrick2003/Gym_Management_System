@@ -16,8 +16,8 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
 
 
-    @vite('resources/js/modal.js')
-    @vite('resources/js/filters.js')
+    <script src="{{ asset('js/modal.js') }}"></script>
+{{--    @vite('resources/js/filters.js')--}}
 
 
 
