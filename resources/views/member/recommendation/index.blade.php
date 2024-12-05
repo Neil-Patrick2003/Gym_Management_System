@@ -45,11 +45,7 @@
         </div>
     </div>
 
-    <form method="POST" >
-        @csrf
-        <textarea name="content" id="editor"></textarea>
-        <button type="submit">Submit</button>
-    </form>
+
 
 
     <script>
@@ -70,7 +66,13 @@
         tinymce.init({
             selector: '#editor',
             plugins: 'advlist autolink lists link image charmap print preview anchor',
-            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat'
+            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat',
+            setup: function(editor) {
+                // This ensures the content from TinyMCE gets saved back into the textarea before form submission
+                editor.on('change', function() {
+                    tinymce.triggerSave();
+                });
+            }
         });
     </script>
 

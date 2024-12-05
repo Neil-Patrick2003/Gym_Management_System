@@ -14,6 +14,7 @@
                         <div>
                             <h2 class="text-white text-xl font-bold">{{ $user_program->program->name }}</h2>
                             <p class="text-white">Created by: {{ $user_program->program->created_by }}</p>
+                            <p class="text-white">Completion Percentage: {{ $user_program->completion_percentage ?? 0 }}%</p>
                         </div>
                         <div>
                             <label class="text-green-600 text-sm">In Progress</label>

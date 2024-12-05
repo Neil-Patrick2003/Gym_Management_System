@@ -1,20 +1,113 @@
 <x-trainer-layout>
-    
-
-
-
-
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
-                <h1 class="text-base font-semibold text-gray-900">Users</h1>
+                <h1 class="text-base font-semibold text-gray-900">Appointments</h1>
             </div>
         </div>
+
+        <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+            <div class="px-4 py-5 sm:px-6">
+                Schedules
+            </div>
+            <div class="px-4 py-5 sm:p-6">
+
+
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Member Name
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    <div class="flex items-center">
+                                        Date
+                                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                                            </svg></a>
+                                    </div>
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    <div class="flex items-center">
+                                        Duration
+                                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                                            </svg></a>
+                                    </div>
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    <div class="flex items-center">
+                                        Status
+                                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                                            </svg></a>
+                                    </div>
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    <span class="sr-only"></span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($appointments as $appointment)
+                                @if ($appointment->status == 'Accepted')
+                                    <tr class="bg-white border">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                            {{ $appointment->user->name }}
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            {{-- Format the start time --}}
+                                            {{ \Carbon\Carbon::parse($appointment->start_time)->format('F j, Y') }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{-- Calculate the duration --}}
+                                            @php
+                                                $start_time = \Carbon\Carbon::parse($appointment->start_time);
+                                                $end_time = \Carbon\Carbon::parse($appointment->end_time);
+                                                $duration = $start_time->diff($end_time);
+
+                                                // Get total hours and minutes
+                                                $hours = $duration->h;
+                                                $minutes = $duration->i;
+
+                                                // Create the duration string
+                                                $duration_text = "{$hours} hours {$minutes} minutes";
+                                            @endphp
+                                            {{ $duration_text }}
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <a href="#"
+                                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
         <div class="mt-8 flow-root">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
 
-                    {{-- alert message --}}
                     @if (session('success'))
                         <div id="success-alert"
                             class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
@@ -33,112 +126,160 @@
                             </span>
                         </div>
                     @endif
-                    <table class="min-w-full divide-y divide-gray-300">
-                        <thead>
-                            <tr>
-                                <th scope="col"
-                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
-                                    Member
-                                    Name
-                                </th>
-                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                    Start Time</th>
-                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                    End Time</th>
-                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                    Status</th>
-                                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
-                                    <span class="sr-only">Action</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200 bg-white">
-                            @foreach ($appointments as $appointment)
+                    <div class="flex p-px lg:col-span-4 px-4 border rounded-lg ring-1 ring-white/15 lg:rounded-[2rem]">
+                        <table class="w-full  divide-y divide-gray-300 rounded-lg bg-white ring-1 ring-white/15 mr-6">
+                            <thead>
                                 <tr>
-                                    <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
-                                        <div class="flex items-center">
-                                            <div class="size-11 shrink-0">
-                                                <img class="size-11 rounded-full"
-                                                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                                    alt="">
-                                            </div>
-                                            <div class="ml-4">
-                                                <div class="font-medium text-gray-900">{{ $appointment->user->name }}
-                                                </div>
-                                                <div class="mt-1 text-gray-500">{{ $appointment->user->email }}</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                                        <div class="text-gray-900">
-                                            {{ \Carbon\Carbon::parse($appointment->start_time)->format(' jS F Y h:i:s A') }}
-                                        </div>
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                                        <div class="text-gray-900">
-                                            {{ \Carbon\Carbon::parse($appointment->end_time)->format(' jS F Y h:i:s A') }}
-                                        </div>
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                                        @if ($appointment->status === 'Pending')
-                                            <span
-                                                class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-600/20">
-                                                Waiting for Approval
-                                            </span>
-                                        @elseif ($appointment->status === 'Accepted')
-                                            <span
-                                                class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20">
-                                                Approved
-                                            </span>
-                                        @elseif ($appointment->status === 'Denied')
-                                            <span
-                                                class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20">
-                                                Denied
-                                            </span>
-                                        @elseif ($appointment->status === 'Completed')
-                                            <span
-                                                class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                                                Completed
-                                            </span>
-                                        @elseif ($appointment->status === 'Expired')
-                                            <span
-                                                class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-600/20">
-                                                Expired
-                                            </span>
-                                        @else
-                                            <span
-                                                class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-500 ring-1 ring-inset ring-gray-400/20">
-                                                Unknown Status
-                                            </span>
-                                        @endif
-                                    </td>
-                                    <td
-                                        class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                                        <form action="/trainer/appointments/{{ $appointment->id }}" method="POST">
-                                            @csrf
-                                            @method('PATCH')
-                                            <input type="hidden" name="apointment_id" value="{{ $appointment->id }}">
-                                            <input type="hidden" name="status" value="Accepted">
-                                            <button type="submit"
-                                                class="rounded bg-red-50 px-2 py-1 text-xs font-semibold text-indigo-600 shadow-sm hover:bg-red-100">Accept</button>
-                                        </form>
-
-                                        <form action="/trainer/appointments/{{ $appointment->id }}" method="POST">
-                                            @csrf
-                                            @method('PATCH')
-                                            <input type="hidden" name="apointment_id" value="{{ $appointment->id }}">
-                                            <input type="hidden" name="status" value="Denied">
-                                            <button type="submit"
-                                                class="rounded bg-red-50 px-2 py-1 text-xs font-semibold text-indigo-600 shadow-sm hover:bg-red-100">Rejected</button>
-                                        </form>
-                                    </td>
+                                    <th scope="col"
+                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+                                        Member
+                                        Name
+                                    </th>
+                                    <th scope="col"
+                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        Start Time</th>
+                                    <th scope="col"
+                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        End Time</th>
+                                    <th scope="col"
+                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        Status</th>
+                                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
+                                        Action
+                                        <span class="sr-only">Action</span>
+                                    </th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 bg-white">
+                                @foreach ($appointments as $appointment)
+                                    @if ($appointment->status == 'Pending' || $appointment->status == 'Denied')
+                                        <tr>
+                                            <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
+                                                <div class="flex items-center">
+                                                    <div class="size-11 shrink-0">
+                                                        <img class="size-11 rounded-full"
+                                                            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="ml-4">
+                                                        <div class="font-medium text-gray-900">
+                                                            {{ $appointment->user->name }}
+                                                        </div>
+                                                        <div class="mt-1 text-gray-500">{{ $appointment->user->email }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                                                <div class="text-gray-900">
+
+                                                    <div class="text-sm font-medium">
+                                                        <div class="mb-1">
+                                                            {{ \Carbon\Carbon::parse($appointment->start_time)->format('jS F Y') }}
+                                                        </div>
+                                                        <hr class="my-2">
+
+                                                        <div>
+                                                            {{ \Carbon\Carbon::parse($appointment->start_time)->format('h:i:s A') }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                                                <div class="text-gray-900">
+                                                    <div class="text-sm font-medium">
+                                                        <div class="mb-1">
+                                                            {{ \Carbon\Carbon::parse($appointment->end_time)->format('jS F Y') }}
+                                                        </div>
+                                                        <hr class="my-2">
+                                                        <div>
+                                                            {{ \Carbon\Carbon::parse($appointment->end_time)->format('h:i:s A') }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                                                @if ($appointment->status === 'Pending')
+                                                    <span
+                                                        class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-600/20">
+                                                        Waiting for Approval
+                                                    </span>
+                                                @elseif ($appointment->status === 'Accepted')
+                                                    <span
+                                                        class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20">
+                                                        Accepted
+                                                    </span>
+                                                @elseif ($appointment->status === 'Denied')
+                                                    <span
+                                                        class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20">
+                                                        Rejected
+                                                    </span>
+                                                @elseif ($appointment->status === 'Completed')
+                                                    <span
+                                                        class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                                                        Completed
+                                                    </span>
+                                                @else
+                                                    <span
+                                                        class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-500 ring-1 ring-inset ring-gray-400/20">
+                                                        Expired
+                                                    </span>
+                                                @endif
+                                            </td>
+                                            <td
+                                                class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                                                @if ($appointment->status !== 'Accepted' && $appointment->status !== 'Denied')
+                                                    <!-- Accept Button Form -->
+                                                    <form action="/trainer/appointments/{{ $appointment->id }}"
+                                                        method="POST" class="mb-2">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <input type="hidden" name="apointment_id"
+                                                            value="{{ $appointment->id }}">
+                                                        <input type="hidden" name="status" value="Accepted">
+                                                        <button type="submit"
+                                                            class="w-full rounded bg-green-100 px-2 py-1 text-xs font-semibold text-green-600 shadow-sm hover:bg-green-200"
+                                                            {{ $appointment->status === 'Accepted' ? 'disabled' : '' }}>
+                                                            Accept
+                                                        </button>
+                                                    </form>
+
+                                                    <form action="/trainer/appointments/{{ $appointment->id }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <input type="hidden" name="apointment_id"
+                                                            value="{{ $appointment->id }}">
+                                                        <input type="hidden" name="status" value="Denied">
+                                                        <button type="submit"
+                                                            class="w-full rounded bg-red-100 px-2 py-1 text-xs font-semibold text-red-600 shadow-sm hover:bg-red-200"
+                                                            {{ $appointment->status === 'Denied' ? 'disabled' : '' }}>
+                                                            Reject
+                                                        </button>
+                                                    </form>
+                                                @else
+                                                    <span class="text-gray-500 text-xs">
+                                                        {{ $appointment->status === 'Accepted' ? 'Accepted' : 'Rejected' }}
+                                                    </span>
+                                                @endif
+                                            </td>
+
+
+
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
                 </div>
             </div>
         </div>
     </div>
+
+
 
 </x-trainer-layout>

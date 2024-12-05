@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
+use App\Http\Requests\PaymentRequest;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -14,14 +15,17 @@ class PaymentController extends Controller
      */
     public function index()
     {
-
-        $transactions = Transaction::with('user')
-        ->get();
+        $transactions = Transaction::with(['user', 'items'])
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         $members = User::where('role', '=', 'Member')->get();
+        $trainers = User::where('role', '=', 'Trainer')->get();
+
         return view('admin.payment.index', [
             'members' => $members,
-            'transactions' => $transactions
+            'trainers' => $trainers,
+            'transactions' => $transactions,
         ]);
     }
 
@@ -36,36 +40,75 @@ class PaymentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PaymentRequest $request)
     {
-
-        $isStudent = filter_var($request->input('is_student'), FILTER_VALIDATE_BOOLEAN);
-
-        $request->merge([
-            'is_student' => $isStudent,
+        $plans = collect([
+            [
+                "name" => "Daily",
+                "days" => 1,
+                "price" => 40,
+                "discounted_price" => 35
+            ],
+            [
+                "name" => "Weekly",
+                "days" => 7,
+                "price" => 200,
+                "discounted_price" => 200
+            ],
+            [
+                "name" => "Monthly",
+                "days" => 30,
+                "price" => 700,
+                "discounted_price" => 600
+            ]
         ]);
 
-        $request->validate([
-            'user_id' => 'required',
-            'plan' => 'required|in:daily,weekly,monthly',
-            'is_student' => 'required|boolean',
-            'amount' => 'required|regex:/^\d+(\.\d{2})$/',
-            'start' => 'required|date',
-            'end' => 'required|date|after_or_equal:start',
-
+        $transaction = Transaction::create([
+            'status' => 'Paid',
+            'user_id' => $request->post('user_id'),
+            'is_student' => $request->has('student_discount')
         ]);
 
-        $status = "paid";
+        $total = 0;
 
-        Transaction::create([
-            'user_id' => $request->user_id,
-            'amount' => $request->amount,
-            'plan' => $request->plan,
-            'status' => $status,
-            'startDate' => $request->start,
-            'end_date' => $request->end,
-            'is_student' => $request->is_student
-        ]);
+        if ($request->post('trainer_hours', 0) > 0 && $request->post('trainer_id')) {
+            $subTotal = ($request->post('trainer_hours', 0) * 30);
+
+            $total =  $total + $subTotal;
+
+            $transaction->items()->create([
+                'trainer_id' => $request->post('trainer_id'),
+                'amount' => 30,
+                'description' => 'Payment for Trainer for ' . $request->post('trainer_hours', 0) . ' hours',
+                'quantity' => $request->post('trainer_hours', 0),
+                'sub_total' => $subTotal
+            ]);
+
+        }
+
+        if ($request->post('plan')) {
+            $plan = $plans->where('name', $request->post('plan'))->first();
+
+            if ($plan) {
+                $subTotal = $request->has('student_discount') ? $plan['discounted_price'] : $plan['price'];
+
+                $user = User::find($request->post('user_id'));
+
+                $user->setAdditionalPaidUntil($plan['days']);
+
+                $total =  $total + $subTotal;
+
+                $transaction->items()->create([
+                    'amount' => $subTotal,
+                    'quantity' => 1,
+                    'description' => 'Gym session for ' . $request->post('plan'),
+                    'sub_total' => $subTotal
+                ]);
+            }
+        }
+
+
+        $transaction->update(['amount' => $total]);
 
 
         return redirect()->back();

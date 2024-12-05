@@ -27,7 +27,7 @@
 
                     <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                         message</label>
-                    <textarea id="editor" name="content" rows="4"
+                    <textarea name="content" rows="4"
                         class="block p-2.5 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Write your recommendation here..." required></textarea>
                     @error('content')
@@ -46,30 +46,6 @@
         </div>
     </div>
 
-    <script>
-        let editor;
-
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .then(newEditor => {
-                editor = newEditor;
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
-        // Ensure the textarea is updated with CKEditor content on form submit
-        document.querySelector('form').addEventListener('submit', function(event) {
-            // Prevent default form submission
-            event.preventDefault();
-
-            // Manually set the content from CKEditor to the textarea
-            document.querySelector('textarea[name="content"]').value = editor.getData();
-
-            // Now submit the form
-            this.submit();
-        });
-    </script>
-
+    
 
 </x-trainer-layout>

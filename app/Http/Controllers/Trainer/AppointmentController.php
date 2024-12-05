@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Trainer;
 
-use App\Models\Appoinment;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -15,14 +14,15 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $id =Auth::id();
+        $id = Auth::id();
         $appointments = Appointment::with('user')
-        ->where('trainer_id', '=', $id)
-        ->get();
-
+            ->where('trainer_id', '=', $id)
+            ->orderByRaw("FIELD(status, 'Pending') DESC") // Sort 'Pending' appointments first
+            ->get();
+        
 
         return view('trainer.appointment.index', [
-            'appointments' => $appointments
+            'appointments' => $appointments,
         ]);
     }
 
@@ -67,14 +67,11 @@ class AppointmentController extends Controller
         $appointment->status = $request->status;
         $appointment->save();
 
-        if($request->status === 'Accepted'){
+        if ($request->status === 'Accepted') {
             return redirect()->back()->with('success', 'Appointment accepted');
-        }
-        else{
+        } else {
             return redirect()->back()->with('success', 'Status updated sucessfully');
         }
-
-
 
     }
 

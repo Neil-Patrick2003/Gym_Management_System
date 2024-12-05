@@ -1,4 +1,3 @@
-// Function to open and close modals
 function handleModalActions() {
     // Open Modal: Find all open modal buttons
     document.querySelectorAll('.open-modal-btn').forEach(button => {
@@ -6,7 +5,8 @@ function handleModalActions() {
             const targetModalId = this.getAttribute('data-target');
             const targetModal = document.getElementById(targetModalId);
             if (targetModal) {
-                targetModal.classList.remove('hidden'); // Show modal
+                targetModal.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+                targetModal.classList.add('opacity-100', 'pointer-events-auto', 'transition-opacity', 'transition-transform', 'transform', 'scale-120');
             }
         });
     });
@@ -17,7 +17,8 @@ function handleModalActions() {
             const targetModalId = this.getAttribute('data-target');
             const targetModal = document.getElementById(targetModalId);
             if (targetModal) {
-                targetModal.classList.add('hidden'); // Hide modal
+                targetModal.classList.add('hidden', 'opacity-0', 'pointer-events-none', 'scale-95');
+                targetModal.classList.remove('opacity-100', 'pointer-events-auto');
             }
         });
     });
@@ -26,7 +27,8 @@ function handleModalActions() {
     document.querySelectorAll('.fixed').forEach(modal => {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                modal.classList.add('hidden');
+                modal.classList.add('hidden', 'opacity-0', 'pointer-events-none', 'scale-95');
+                modal.classList.remove('opacity-100', 'pointer-events-auto');
             }
         });
     });

@@ -12,6 +12,8 @@
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
 
 
     <link rel="shortcut icon" href="{{ asset('images/workout.png') }}" type="image/x-icon">
@@ -123,17 +125,10 @@
 
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:w-60 lg:flex-col">
             <div class="flex grow flex-col overflow-y-auto">
-<<<<<<< HEAD
-                <div class="h-full p-0 bg-red-700">
+                <div class="h-full p-0 bg-white border">
                     <nav class="flex flex-1
                     flex-col">
                         <ul role="list" class="flex flex-1 flex-col gap-y-6 px-4 ">
-=======
-                <div class="h-full p-0 bg-neutral-800">
-                    <nav class="flex flex-1
-                    flex-col">
-                        <ul role="list" class="flex flex-1 flex-col gap-y-6 ">
->>>>>>> origin/develop
                             <li>
                                 <ul role="list" class=" space-y-1 ">
                                     <li class="pt-24">
@@ -151,10 +146,30 @@
                                     <li>
                                         <x-member-nav-link href="{{ url('/member/programs') }}" :active="request()->is('member/programs')">
                                             <x-slot:icon>
-                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                                                <svg class="w-8 h-8 ml--2" viewBox="0 0 45 45" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg" stroke="#fffafa">
+                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                        stroke-linejoin="round"></g>
+                                                    <g id="SVGRepo_iconCarrier">
+                                                        <path
+                                                            d="M33 16.5H35C35.552 16.5 36 16.948 36 17.5V27.5C36 28.052 35.552 28.5 35 28.5H33C32.448 28.5 32 28.052 32 27.5V17.5C32 16.948 32.448 16.5 33 16.5Z"
+                                                            stroke="#3C3C3C" stroke-width="2"></path>
+                                                        <path
+                                                            d="M29 12.5H31C31.552 12.5 32 12.948 32 13.5V31.5C32 32.052 31.552 32.5 31 32.5H29C28.448 32.5 28 32.052 28 31.5V13.5C28 12.948 28.448 12.5 29 12.5Z"
+                                                            stroke="#3C3C3C" stroke-width="2"></path>
+                                                        <path
+                                                            d="M15 12.5H17C17.552 12.5 18 12.948 18 13.5V31.5C18 32.052 17.552 32.5 17 32.5H15C14.448 32.5 14 32.052 14 31.5V13.5C14 12.948 14.448 12.5 15 12.5Z"
+                                                            stroke="#3C3C3C" stroke-width="2"></path>
+                                                        <path
+                                                            d="M11 16.5H13C13.552 16.5 14 16.948 14 17.5V27.5C14 28.052 13.552 28.5 13 28.5H11C10.448 28.5 10 28.052 10 27.5V17.5C10 16.948 10.448 16.5 11 16.5Z"
+                                                            stroke="#3C3C3C" stroke-width="2"></path>
+                                                        <path d="M36 22.5H39" stroke="#3C3C3C" stroke-width="2">
+                                                        </path>
+                                                        <path d="M18 22.5H28" stroke="#3C3C3C" stroke-width="2">
+                                                        </path>
+                                                        <path d="M7 22.5H10" stroke="#3C3C3C" stroke-width="2"></path>
+                                                    </g>
                                                 </svg>
                                             </x-slot:icon>
                                             Programs
@@ -173,7 +188,6 @@
                                         </x-member-nav-link>
                                     </li>
                                     <li>
-<<<<<<< HEAD
                                         <x-member-nav-link href="{{ url('/member/tutorials') }}" :active="request()->is('member/tutorials')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -186,8 +200,6 @@
                                         </x-member-nav-link>
                                     </li>
                                     <li>
-=======
->>>>>>> origin/develop
                                         <x-member-nav-link href="{{ url('/member/appointments') }}" :active="request()->is('member/appoinments')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -236,11 +248,7 @@
         </div>
 
         <div class="lg:pl-60 bg-white">
-<<<<<<< HEAD
-            <div class="lg:pl-60 bg-stone-800">
-=======
             <div class="lg:pl-60 bg-white">
->>>>>>> origin/develop
                 <div class="sticky top-0 z-40 flex h-14 shrink-0 items-center gap-x-4 px-4 shadow-sm sm:px-6 lg:px-8">
                     <button id="menuButton" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
                         <span class="sr-only">Open sidebar</span>
@@ -251,11 +259,7 @@
                         </svg>
                     </button>
                     <div class="flex flex-1 justify-end gap-x-4 lg:gap-x-6 p-4">
-<<<<<<< HEAD
                         <button type="button" class="-m-2.5 p-2.5 text-white hover:text-gray-500"
-=======
-                        <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"
->>>>>>> origin/develop
                             id="dropdownButton">
                             <span class="sr-only">View profile</span>
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -264,11 +268,7 @@
                                     d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-6 2.69-6 6v1h12v-1c0-3.31-2.69-6-6-6z" />
                             </svg>
                         </button>
-<<<<<<< HEAD
                         <div class="absolute right-0 hidden mt-2 w-48 rounded-md  bg-white  shadow-lg"
-=======
-                        <div class="absolute right-0 hidden mt-2 w-48 rounded-md bg-white shadow-lg"
->>>>>>> origin/develop
                             id="dropdownMenu">
                             <ul class="py-1">
                                 <li>
