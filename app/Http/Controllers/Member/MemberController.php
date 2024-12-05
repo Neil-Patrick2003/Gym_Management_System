@@ -21,7 +21,7 @@ class MemberController extends Controller
     {
         $programs = Program::limit(10)->get();
 
-        $trainers = User::where('role', '=', 'Trainer')->get();
+        $trainers = User::availableTrainer()->get();
 
         $user = Auth::user();
 

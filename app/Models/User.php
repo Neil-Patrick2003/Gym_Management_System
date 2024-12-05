@@ -5,6 +5,8 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -59,9 +61,14 @@ class User extends Authenticatable
         return $this->hasMany(Feedback::class);
     }
 
-    public function appointment()
+    public function appointment(): HasMany
     {
         return $this->hasMany(Appointment::class);
+    }
+
+    public function trainingAppointment(): HasMany
+    {
+        return $this->hasMany(Appointment::class, 'user_id');
     }
 
     public function Recommendation()
@@ -106,6 +113,26 @@ class User extends Authenticatable
 
         $this->paid_until = $paid_until->add($days - 1, 'days');
         $this->save();
+    }
+
+    public function scopeAvailableTrainer(Builder $builder)
+    {
+        $now = Carbon::now();
+
+        $builder->where('role', 'Trainer')
+            ->whereDoesntHave('supervisingSessions', function (Builder $query) {
+                $query->whereNull('end_time');
+            })
+            ->whereDoesntHave('trainingAppointment', function (Builder $query) use ($now) {
+                $query->where('start_time', '<=', $now)
+                    ->where('end_date', '>=', $now)
+                    ->where('status', 'Accepted');
+            });
+    }
+
+    public function supervisingSessions(): HasMany
+    {
+        return $this->hasMany(Timesheet::class, 'trainer_id');
     }
 
 }
