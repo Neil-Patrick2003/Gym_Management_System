@@ -117,6 +117,9 @@
                         <x-nav-link href="{{ url('/contact') }}" :active="request()->is('contact')">
                             Contact Us
                         </x-nav-link>
+                        <x-nav-link href="{{ url('/calculator') }}" :active="request()->is('calculator')">
+                            Calculator
+                        </x-nav-link>
                     </ul>
                 </div>
                 <button
@@ -136,7 +139,7 @@
 
 
 
-    <div class="main flex justify-center align-center">
+    <div class="main">
         {{ $slot }}
     </div>
 

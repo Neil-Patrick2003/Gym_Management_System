@@ -10,10 +10,12 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
-    <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.css" rel="stylesheet" />
 
 
     <link rel="shortcut icon" href="{{ asset('images/workout.png') }}" type="image/x-icon">
@@ -125,13 +127,14 @@
 
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:w-60 lg:flex-col">
             <div class="flex grow flex-col overflow-y-auto">
-                <div class="h-full p-0 bg-white border">
+                <div class="h-full p-0 bg-white border border-red-500 border-lg">
                     <nav class="flex flex-1
                     flex-col">
                         <ul role="list" class="flex flex-1 flex-col gap-y-6 px-4 ">
                             <li>
+
                                 <ul role="list" class=" space-y-1 ">
-                                    <li class="pt-24">
+                                    <li class="pt-12">
                                         <x-member-nav-link href="{{ url('/home') }}" :active="request()->is('home')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -178,11 +181,14 @@
                                     <li>
                                         <x-member-nav-link href="{{ url('/member/myprogram') }}" :active="request()->is('member/myprogram')">
                                             <x-slot:icon>
-                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                                                <svg class="w-6 h-6" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="currentColor" viewBox="0 0 24 24">
+                                                    <path fill-rule="evenodd"
+                                                        d="M20.29 8.567c.133.323.334.613.59.85v.002a3.536 3.536 0 0 1 0 5.166 2.442 2.442 0 0 0-.776 1.868 3.534 3.534 0 0 1-3.651 3.653 2.483 2.483 0 0 0-1.87.776 3.537 3.537 0 0 1-5.164 0 2.44 2.44 0 0 0-1.87-.776 3.533 3.533 0 0 1-3.653-3.654 2.44 2.44 0 0 0-.775-1.868 3.537 3.537 0 0 1 0-5.166 2.44 2.44 0 0 0 .775-1.87 3.55 3.55 0 0 1 1.033-2.62 3.594 3.594 0 0 1 2.62-1.032 2.401 2.401 0 0 0 1.87-.775 3.535 3.535 0 0 1 5.165 0 2.444 2.444 0 0 0 1.869.775 3.532 3.532 0 0 1 3.652 3.652c-.012.35.051.697.184 1.02ZM9.927 7.371a1 1 0 1 0 0 2h.01a1 1 0 0 0 0-2h-.01Zm5.889 2.226a1 1 0 0 0-1.414-1.415L8.184 14.4a1 1 0 0 0 1.414 1.414l6.218-6.217Zm-2.79 5.028a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01Z"
+                                                        clip-rule="evenodd" />
                                                 </svg>
+
                                             </x-slot:icon>
                                             My Progress
                                         </x-member-nav-link>
@@ -190,11 +196,14 @@
                                     <li>
                                         <x-member-nav-link href="{{ url('/member/tutorials') }}" :active="request()->is('member/tutorials')">
                                             <x-slot:icon>
-                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                                                <svg class="w-6 h-6" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="currentColor" viewBox="0 0 24 24">
+                                                    <path fill-rule="evenodd"
+                                                        d="M19.003 3A2 2 0 0 1 21 5v2h-2V5.414L17.414 7h-2.828l2-2h-2.172l-2 2H9.586l2-2H9.414l-2 2H3V5a2 2 0 0 1 2-2h14.003ZM3 9v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9H3Zm2-2.414L6.586 5H5v1.586Zm4.553 4.52a1 1 0 0 1 1.047.094l4 3a1 1 0 0 1 0 1.6l-4 3A1 1 0 0 1 9 18v-6a1 1 0 0 1 .553-.894Z"
+                                                        clip-rule="evenodd" />
                                                 </svg>
+
                                             </x-slot:icon>
                                             Tutorials
                                         </x-member-nav-link>
@@ -202,11 +211,14 @@
                                     <li>
                                         <x-member-nav-link href="{{ url('/member/appointments') }}" :active="request()->is('member/appoinments')">
                                             <x-slot:icon>
-                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                                                <svg class="w-6 h-6" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="currentColor" viewBox="0 0 24 24">
+                                                    <path fill-rule="evenodd"
+                                                        d="M18 5.05h1a2 2 0 0 1 2 2v2H3v-2a2 2 0 0 1 2-2h1v-1a1 1 0 1 1 2 0v1h3v-1a1 1 0 1 1 2 0v1h3v-1a1 1 0 1 1 2 0v1Zm-15 6v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-8H3ZM11 18a1 1 0 1 0 2 0v-1h1a1 1 0 1 0 0-2h-1v-1a1 1 0 1 0-2 0v1h-1a1 1 0 1 0 0 2h1v1Z"
+                                                        clip-rule="evenodd" />
                                                 </svg>
+
                                             </x-slot:icon>
                                             Appointment
                                         </x-member-nav-link>
@@ -215,11 +227,14 @@
                                         <x-member-nav-link href="{{ url('/member/recommendations') }}"
                                             :active="request()->is('member/recommendations')">
                                             <x-slot:icon>
-                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                                                <svg class="w-6 h-6" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="currentColor" viewBox="0 0 24 24">
+                                                    <path fill-rule="evenodd"
+                                                        d="M3.559 4.544c.355-.35.834-.544 1.33-.544H19.11c.496 0 .975.194 1.33.544.356.35.559.829.559 1.331v9.25c0 .502-.203.981-.559 1.331-.355.35-.834.544-1.33.544H15.5l-2.7 3.6a1 1 0 0 1-1.6 0L8.5 17H4.889c-.496 0-.975-.194-1.33-.544A1.868 1.868 0 0 1 3 15.125v-9.25c0-.502.203-.981.559-1.331ZM7.556 7.5a1 1 0 1 0 0 2h8a1 1 0 0 0 0-2h-8Zm0 3.5a1 1 0 1 0 0 2H12a1 1 0 1 0 0-2H7.556Z"
+                                                        clip-rule="evenodd" />
                                                 </svg>
+
                                             </x-slot:icon>
                                             Recommendations
                                         </x-member-nav-link>
@@ -227,16 +242,48 @@
                                     <li>
                                         <x-member-nav-link href="{{ url('/member/feedback') }}" :active="request()->is('member/feedback')">
                                             <x-slot:icon>
-                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                                                <svg class="w-6 h-6" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="none" viewBox="0 0 24 24">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="M7.556 8.5h8m-8 3.5H12m7.111-7H4.89a.896.896 0 0 0-.629.256.868.868 0 0 0-.26.619v9.25c0 .232.094.455.26.619A.896.896 0 0 0 4.89 16H9l3 4 3-4h4.111a.896.896 0 0 0 .629-.256.868.868 0 0 0 .26-.619v-9.25a.868.868 0 0 0-.26-.619.896.896 0 0 0-.63-.256Z" />
                                                 </svg>
+
                                             </x-slot:icon>
                                             Feedback
                                         </x-member-nav-link>
                                     </li>
                                 </ul>
+                            </li>
+                            <li class="mt-32">
+                                <center>
+                                    <img class="inline-block size-14 rounded-full"
+                                        src="{{ asset('storage/' . Auth::user()->photo_url) }}" alt="">
+                                </center>
+                                <h1 class="text-md font-bold text-center">{{ Auth::user()->name }}</h1>
+                                <center>
+                                    <form action="/member/update/photo" method="POST" enctype="multipart/form-data"
+                                        id="upload-form">
+                                        @csrf
+                                        @method('Patch')
+                                        <div class="flex flex-col items-center">
+                                            <input type="file" id="file-input" name="profile_photo"
+                                                accept="image/*" onchange="handleFileSelect(event)" class="hidden" />
+
+                                            <button type="button" id="file-button"
+                                                onclick="document.getElementById('file-input').click()"
+                                                class="rounded bg-red-500 w-32 px-4 py-1 text-sm font-semibold text-white shadow-md hover:bg-red-600 transition-all duration-300 ease-in-out">
+                                                Change Photo
+                                            </button>
+                                            <button type="submit" id="submit-button"
+                                                class="border border-red-600  w-32 mt-2 hidden py-1 text-sm font-semibold text-red-600 hover:bg-red-600 hover:text-white transition-all duration-300 ease-in-out">
+                                                Submit
+                                            </button>
+                                        </div>
+
+                                    </form>
+                                </center>
                             </li>
 
                         </ul>
@@ -259,31 +306,18 @@
                         </svg>
                     </button>
                     <div class="flex flex-1 justify-end gap-x-4 lg:gap-x-6 p-4">
-                        <button type="button" class="-m-2.5 p-2.5 text-white hover:text-gray-500"
-                            id="dropdownButton">
-                            <span class="sr-only">View profile</span>
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-6 2.69-6 6v1h12v-1c0-3.31-2.69-6-6-6z" />
-                            </svg>
-                        </button>
-                        <div class="absolute right-0 hidden mt-2 w-48 rounded-md  bg-white  shadow-lg"
-                            id="dropdownMenu">
-                            <ul class="py-1">
-                                <li>
-                                    <form method="POST" action="/logout" class="inline-block text-center mx-auto">
-                                        @csrf
-                                        <button type="submit"
-                                            class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100">Logout</button>
-                                    </form>
-                                </li>
-                                <li>
-                                    <a href="/profile"
-                                        class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100">Profile</a>
-                                </li>
-                            </ul>
+                        <div class="flex items-center space-x-4 hidden md:flex">
+                            <!-- Profile Link -->
+                            <a href="/profile" class="text-sm text-gray-700 hover:text-gray-900">Profile</a>
+
+                            <!-- Logout Form -->
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <button type="submit"
+                                    class="text-sm text-gray-700 hover:text-gray-900">Logout</button>
+                            </form>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -297,38 +331,20 @@
     </div>
 
     <script>
-        const menuButton = document.getElementById('menuButton');
-        const closeMenuButton = document.getElementById('closeMenuButton');
-        const offCanvasMenu = document.getElementById('offCanvasMenu');
-        const dropdownButton = document.getElementById('dropdownButton');
-        const dropdownMenu = document.getElementById('dropdownMenu');
+        function handleFileSelect(event) {
+            var file = event.target.files[0];
 
-        menuButton.addEventListener('click', () => {
-            offCanvasMenu.classList.add('show');
-        });
-
-        closeMenuButton.addEventListener('click', () => {
-            offCanvasMenu.classList.remove('show');
-        });
-
-        window.addEventListener('click', (event) => {
-            if (!offCanvasMenu.contains(event.target) && !menuButton.contains(event.target)) {
-                offCanvasMenu.classList.remove('show');
+            if (file) {
+                document.getElementById('file-button').textContent = 'Change Photo';
+                document.getElementById('submit-button').classList.remove('hidden');
             }
-        });
-        dropdownButton.addEventListener('click', function() {
-            dropdownMenu.classList.toggle('hidden');
-        });
-
-        // Close dropdown if clicked outside
-        window.addEventListener('click', function(event) {
-            if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                dropdownMenu.classList.add('hidden');
-            }
-        });
+        }
     </script>
 
+
+
     @stack('scripts')
+
 </body>
 
 </html>

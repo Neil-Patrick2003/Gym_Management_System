@@ -15,27 +15,25 @@ class AppointmentController extends Controller
 
     public function index()
     {
-        $events = [];
 
+        $events = [];
         $trainers = User::where('role', '=', 'Trainer')->get();
 
         $appointments = Appointment::with('trainer', 'user')
             ->where('user_id', '=', Auth::id())
             ->get();
 
+
         foreach ($appointments as $appointment) {
-            if ($appointment->status === 'Pending' && Carbon::now()->greaterThan(Carbon::parse($appointment->end_time))) {
-                $appointment->status = 'Expired';
-                $appointment->save();
-            }
-
-
             $events[] = [
-                'title' => $appointment->trainer->name . ' (' . $appointment->user->name . ')',
-                'start' => $appointment->start_time, // Assumes this is a datetime field
-                'end' => $appointment->finish_time, // Assumes this is a datetime field
+                'title' => $appointment->user->name,
+                'start' => $appointment->start_time,
+                'end' => $appointment->end_date,
             ];
         }
+
+
+
 
         return view('member.appoinment.index', [
             'trainers' => $trainers,

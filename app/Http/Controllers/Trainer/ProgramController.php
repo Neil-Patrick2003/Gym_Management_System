@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Trainer;
 
-use App\Models\Program;
 use App\Models\Exercise;
+use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -12,8 +12,9 @@ class ProgramController extends Controller
     public function index()
     {
         //fetch
-        $programs = Program::with('user')->paginate(15);
-
+        $programs = Program::with('user')
+            ->orderByRaw("FIELD(level, 'beginner', 'intermediate', 'advanced')")
+            ->paginate(15);
         return view('trainer/program/index', [
             'programs' => $programs,
         ]);
@@ -24,6 +25,7 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
+
         //validate
         $request->validate([
             'name' => 'required|string|max:255',
@@ -51,7 +53,7 @@ class ProgramController extends Controller
 
         $program = Program::create($input);
 
-        return redirect('member/programs')->with('success', $program->name . ' added.');
+        return redirect('/trainer/programs')->with('success', $program->name . ' added.');
     }
 
     /**

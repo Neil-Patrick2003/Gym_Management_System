@@ -12,6 +12,10 @@ class Recommendation extends Model
     protected $fillable =['user_id', 'trainer_id', 'content', 'created_at', 'type'];
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function trainer(){
+        return $this->belongsTo(User::class, 'trainer_id');
+    } 
 }

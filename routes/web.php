@@ -41,6 +41,9 @@ Route::get('/gallery', function () {
 Route::get('/contact', function () {
     return view('contact'); //contact
 });
+Route::get('/calculator', function () {
+    return view('calculator');//contact
+});
 
 //both-side
 Route::middleware('auth')->group(function () {
@@ -119,7 +122,7 @@ Route::get('/trainer/tutorials', [TrainerTutorialController::class, 'index']);
 Route::post('/trainer/tutorials/add_category', [TrainerTutorialController::class, 'add_category']);
 Route::post('/trainer/tutorials/create', [TrainerTutorialController::class, 'store']);
 Route::post('/trainer/tutorials/filter', [TrainerTutorialController::class, 'filter']);
-
+Route::post('/trainer/programs/create', [ProgramController::class, 'store']);    
 
 
 
@@ -156,3 +159,4 @@ Route::get('/member/recommendations', [MemberRecommendationController::class, 'i
 //feedback
 Route::get('member/feedback', [MemberFeedbackController::class, 'index']);
 Route::post('/member/feedback', [MemberFeedbackController::class, 'store']);
+Route::patch('/member/update/photo', [ProfileController::class, 'update_profile']);

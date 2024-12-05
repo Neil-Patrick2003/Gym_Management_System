@@ -11,7 +11,7 @@ class Program extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'created_by', 'photo_link'];
+    protected $fillable = ['name', 'created_by', 'photo_link', 'level'];
 
     public function daily_exercise(){
         return $this->hasMany(DailyExercise::class);

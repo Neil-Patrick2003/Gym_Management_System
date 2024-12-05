@@ -74,18 +74,41 @@
                                             {{-- Calculate the duration --}}
                                             @php
                                                 $start_time = \Carbon\Carbon::parse($appointment->start_time);
-                                                $end_time = \Carbon\Carbon::parse($appointment->end_time);
-                                                $duration = $start_time->diff($end_time);
+                                                $end_time = \Carbon\Carbon::parse($appointment->end_date);
 
-                                                // Get total hours and minutes
-                                                $hours = $duration->h;
-                                                $minutes = $duration->i;
+                                                // Calculate the total duration in minutes
+                                                $duration_in_minutes = $start_time->diffInMinutes($end_time);
+
+                                                // Get total hours and remaining minutes
+                                                $hours = floor($duration_in_minutes / 60);
+                                                $minutes = $duration_in_minutes % 60;
 
                                                 // Create the duration string
                                                 $duration_text = "{$hours} hours {$minutes} minutes";
                                             @endphp
                                             {{ $duration_text }}
                                         </td>
+                                        <td class="px-6 py-4">
+                                            @php
+
+                                                $currentTime = \Carbon\Carbon::now();
+                                                $startTime = \Carbon\Carbon::parse($appointment->start_time);
+                                                $endTime = \Carbon\Carbon::parse($appointment->end_date);
+                                                // Determine the status
+                                                if ($currentTime->lt($startTime)) {
+                                                    $status = 'Basta ikaw na bahala'; // before the appointment starts
+                                                } elseif ($currentTime->gt($endTime)) {
+                                                    $status = 'Completed'; // after the appointment ends
+                                                } elseif ($currentTime->between($startTime, $endTime)) {
+                                                    $status = 'Ongoing'; // appointment is currently ongoing
+                                                } else {
+                                                    $status = 'Unknown'; // fallback
+                                                }
+                                            @endphp
+
+                                            {{ $status }}
+                                        </td>
+
                                         <td class="px-6 py-4 text-right">
                                             <a href="#"
                                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
