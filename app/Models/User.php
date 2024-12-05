@@ -141,6 +141,11 @@ class User extends Authenticatable
         return $builder->where('role', 'Member');
     }
 
+    public function scopeTrainer(Builder $builder): Builder
+    {
+        return $builder->where('role', 'Trainer');
+    }
+
     public function scopeActive(Builder $builder): Builder
     {
         return $builder
