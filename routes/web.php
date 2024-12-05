@@ -122,14 +122,18 @@ Route::get('/trainer/tutorials', [TrainerTutorialController::class, 'index']);
 Route::post('/trainer/tutorials/add_category', [TrainerTutorialController::class, 'add_category']);
 Route::post('/trainer/tutorials/create', [TrainerTutorialController::class, 'store']);
 Route::post('/trainer/tutorials/filter', [TrainerTutorialController::class, 'filter']);
-Route::post('/trainer/programs/create', [ProgramController::class, 'store']);    
+Route::post('/trainer/programs/create', [ProgramController::class, 'store']);
 
 
 
 //user-side
 Route::get('/home', [MemberController::class, 'index'])->middleware(['auth', 'verified'])->name('member_dashboard');
 //form action to choose trainer
-Route::post('/home', [TimeSheetController::class, 'store']);
+Route::post('/timesheet/checkin', [TimeSheetController::class, 'checkin']);
+Route::post('/timesheet/{timesheet}/checkout', [TimeSheetController::class, 'checkout']);
+Route::post('/timesheet/{timesheet}/add-trainer', [TimeSheetController::class, 'addTrainer']);
+Route::post('/timesheet/{timesheet}/remove-trainer', [TimeSheetController::class, 'removeTrainer']);
+
 //user-program
 Route::get('/member/programs', [MemberProgramController::class, 'index']);
 //view-program
