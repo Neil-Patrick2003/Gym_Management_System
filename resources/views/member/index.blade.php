@@ -8,8 +8,7 @@
                     <div class="flex flex-row space-between text-neutral-100 h-full">
                         <div class="flex-col">
                             <h1 class="text-xl text-neutral-50 font-bold">Keep on Track on your journey</h1>
-                            <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-                                velit..."</p>
+                            <p>"SASHSJFBSHFG.."</p>
                         </div>
                         <div>
                             <img src="{{ asset('images/header-bg.png') }}" alt="" class="h-32 w-56 object-cover">
