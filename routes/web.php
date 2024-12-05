@@ -40,6 +40,9 @@ Route::get('/gallery', function () {
 Route::get('/contact', function () {
     return view('contact'); //contact
 });
+Route::get('/calculator', function () {
+    return view('calculator');//contact
+});
 
 //both-side
 Route::middleware('auth')->group(function () {
