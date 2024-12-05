@@ -83,7 +83,7 @@
             </div>
             <div class="px-4 py-4 sm:px-6 flex justify-center">
                 <button class="open-modal bg-green-500 text-white px-4 py-2 rounded" data-modal="modal2"
-                    data-id="{{ $program_schedule->id }}" data-name="{{ $program_schedule->name }}">
+                    data-id="{{ $program_schedule->id }}" data-name="{{ $program_schedule->name }}" data-exercises="{{join(',',$program_schedule->exercises->map(fn ($item) => $item->id)->toArray())}}">
                     Add Exercise
                 </button>
             </div>
@@ -143,7 +143,7 @@
             <div class="flex min-h-full items-center justify-center p-4 text-center">
                 <div
                     class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
-                    <h1 class="text-lg font-bold">Modal 2 Title</h1>
+                    <h1 class="text-lg font-bold" id="modal-program-name">Add exercise</h1>
                     <div class="mt-4">
                         <form action="/admin/programs/program/{{ $program->id }}/add_exercise" method="POST">
                             @csrf
@@ -159,7 +159,7 @@
                                         {{ $exercise->name }}
                                     </div>
                                     <div>
-                                        <input type="checkbox" name="exercise_ids[]" value="{{ $exercise->id }}"
+                                        <input id="exercise-{{$exercise->id}}" type="checkbox" name="exercise_ids[]" value="{{ $exercise->id }}"
                                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-full focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     </div>
                                 </div>
@@ -234,8 +234,19 @@
             document.querySelectorAll('.open-modal').forEach(button => {
                 button.addEventListener('click', function() {
                     const modal = document.getElementById(this.dataset.modal);
+
                     const programId = this.dataset.id;
                     const programName = this.dataset.name;
+
+                    if (this.dataset.exercises) {
+                        this.dataset.exercises.split(',').forEach(exerciseId => {
+                            const checkbox = document.getElementById(`exercise-${exerciseId}`)
+
+                            if (checkbox) {
+                                checkbox.checked = true
+                            }
+                        })
+                    }
 
                     // Populate modal fields
                     document.getElementById('program-schedule-id').value = programId;
