@@ -136,4 +136,29 @@ class User extends Authenticatable
         return $this->hasMany(Timesheet::class, 'trainer_id');
     }
 
+    public function scopeMember(Builder $builder): Builder
+    {
+        return $builder->where('role', 'Member');
+    }
+
+    public function scopeActive(Builder $builder): Builder
+    {
+        return $builder
+            ->whereNotNull('paid_until')
+            ->where('paid_until', '>=', Carbon::now());
+    }
+
+    public function scopeInactive(Builder $builder): Builder
+    {
+        return $builder->where(function (Builder $query) {
+            $query->whereNull('paid_until')
+                ->orWhere('paid_until', '<', Carbon::now());
+        });
+    }
+
+    public function scopeJoinedToday(Builder $builder): Builder
+    {
+        return $builder->whereDate('created_at', Carbon::now());
+    }
+
 }
