@@ -1,114 +1,135 @@
 <x-member-layout>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <p class="text-red-600">{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
+
+    @if (session('message'))
+        <div class="alert alert-success">
+            <p class="text-red-600">{{ session('message') }}</p>
+        </div>
+    @endif
+
+    <div class="mt-6" x-data="{ open: false }" x-init="open = false" x-cloak>
+        <!-- Button (blue) -->
+        <button class="px-4 py-2 text-white bg-blue-500 rounded select-none no-outline focus:shadow-outline"
+                @click="open = true">Book a Session</button>
+    
+        <!-- Dialog (Full screen) -->
+        <div class="absolute top-0 left-0 flex items-center justify-center w-full h-full"
+             style="background-color: rgba(0, 0, 0, .1); z-index: 9999; position: fixed; top: 0; left: 0;"
+             x-show="open" x-transition>
+    
+            <!-- A basic modal dialog with title, body, and close button -->
+            <div class="h-auto p-4 mx-2 text-left bg-white rounded shadow-xl md:max-w-xl lg:w-1/3 w-full md:p-6 lg:p-8 md:mx-0 overflow-auto"
+                 @click.away="open = false">
+                <form action="/member/appointments" method="POST">
+                    @csrf
+                    <div class="flex flex-col space-y-4">
+    
+                        <center>
+                            <h1 class="font-bold text-xl">Create Appointment</h1>
+                        </center>
+    
+                        <!-- Start Time Picker -->
+                        <div>
+                            <label for="start_time" class="block text-sm font-medium text-gray-700">Start Date & Time</label>
+                            <input type="datetime-local" id="start_time" name="start_time"
+                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                        </div>
+                        @error('start_time')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+    
+                        <!-- End Time Picker -->
+                        <div>
+                            <label for="end_time" class="block text-sm font-medium text-gray-700">End Date & Time</label>
+                            <input type="datetime-local" id="end_time" name="end_time"
+                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                        </div>
+                        @error('end_time')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+    
+                        <!-- Error message when duration is greater than 3 hours -->
+                        @if ($errors->has('error'))
+                            <div class="text-red-500 text-sm mb-4">
+                                {{ $errors->first('error') }}
+                            </div>
+                        @endif
+    
+                        <!-- Custom Dropdown for Trainers -->
+                        <div class="relative inline-block text-left" id="dropdown-container">
+                            <label for="trainer-dropdown" class="block text-sm font-medium text-gray-700">Select Trainer</label>
+                            <div>
+                                <button type="button" id="dropdown-button"
+                                        class="w-full flex items-center justify-between px-4 py-2 border border-gray-300 rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    Select a Trainer
+                                </button>
+    
+                                <!-- Dropdown Menu -->
+                                <div id="dropdown-menu"
+                                     class="hidden mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                                    @foreach ($trainers as $trainer)
+                                        <div data-id="{{ $trainer->id }}"
+                                             class="select-option flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 cursor-pointer">
+                                            <img src="https://randomuser.me/api/portraits/men/{{ $trainer->id }}.jpg"
+                                                 alt="{{ $trainer->name }}" class="h-6 w-6 rounded-full mr-3">
+                                            <span>{{ $trainer->name }}</span>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+    
+                            <!-- Hidden input for trainer_id -->
+                            <input type="hidden" name="trainer_id" id="trainer-id">
+                        </div>
+    
+                        @error('trainer_id')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+    
+                        <!-- Submit Button -->
+                        <div>
+                            <button type="submit"
+                                    class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+    
+                <!-- Close button -->
+                <div class="mt-5 sm:mt-6">
+                    <span class="flex w-full rounded-md shadow-sm">
+                        <button @click="open = false"
+                                class="inline-flex justify-center w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">
+                            Close this modal!
+                        </button>
+                    </span>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="overflow-scroll ...">
+        <div id="calendar"></div>
+    </div>
+
+
+
+
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
                 <h1 class="text-base font-semibold text-gray-900">My Appointment</h1>
             </div>
-            <div class="mt-6" x-data="{ open: false }" x-init="open = false" x-cloak>
 
-                <!-- Button (blue), duh! -->
-                <button class="px-4 py-2 text-white bg-blue-500 rounded select-none no-outline focus:shadow-outline"
-                    @click="open = true">Book a Session </button>
-
-                <!-- Dialog (full screen) -->
-                <div class="absolute top-0 left-0 flex items-center justify-center w-full h-full"
-                    style="background-color: rgba(0,0,0,.2);" x-show="open" x-transition>
-
-                    <!-- A basic modal dialog with title, body, and one button to close -->
-                    <div class="h-auto p-4 mx-2 text-left bg-white rounded shadow-xl md:max-w-xl lg:w-1/3 w-full md:p-6 lg:p-8 md:mx-0 overflow-auto"
-                        @click.away="open = false">
-                        <form action="/member/appointments" method="POST">
-                            @csrf
-                            <div class="flex flex-col space-y-4">
-
-                                <center>
-                                    <h1 class="font-bold text-xl">Create Appointment</h1>
-                                </center>
-
-                                <!-- Start Time Picker -->
-                                <div>
-                                    <label for="start_time" class="block text-sm font-medium text-gray-700">Start Date &
-                                        Time</label>
-                                    <input type="datetime-local" id="start_time" name="start_time"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                                </div>
-                                @error('start_time')
-                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-
-                                <!-- End Time Picker -->
-                                <div>
-                                    <label for="end_time" class="block text-sm font-medium text-gray-700">End Date &
-                                        Time</label>
-                                    <input type="datetime-local" id="end_time" name="end_time"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                                </div>
-                                @error('end_time')
-                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-
-                                {{-- Error message when duration is greater than 3 hrs --}}
-                                @if ($errors->has('error'))
-                                    <div class="text-red-500 text-sm mb-4">
-                                        {{ $errors->first('error') }}
-                                    </div>
-                                @endif
-
-                                <!-- Custom Dropdown for Trainers -->
-                                <div class="relative inline-block text-left" id="dropdown-container">
-                                    <label for="trainer-dropdown" class="block text-sm font-medium text-gray-700">Select
-                                        Trainer</label>
-                                    <div>
-                                        <button type="button" id="dropdown-button"
-                                            class="w-full flex items-center justify-between px-4 py-2 border border-gray-300 rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                            Select a Trainer
-                                        </button>
-
-                                        <!-- Dropdown Menu -->
-                                        <div id="dropdown-menu"
-                                            class="hidden mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                                            @foreach ($trainers as $trainer)
-                                                <div data-id="{{ $trainer->id }}"
-                                                    class="select-option flex items-center px-4 py-2 text-gray-700 hover:bg-blue-100 cursor-pointer">
-                                                    <img src="https://randomuser.me/api/portraits/men/{{ $trainer->id }}.jpg"
-                                                        alt="{{ $trainer->name }}" class="h-6 w-6 rounded-full mr-3">
-                                                    <span>{{ $trainer->name }}</span>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-
-                                    <!-- Hidden input for trainer_id -->
-                                    <input type="hidden" name="trainer_id" id="trainer-id">
-                                </div>
-
-                                @error('trainer_id')
-                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-
-                                <!-- Submit Button -->
-                                <div>
-                                    <button type="submit"
-                                        class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                        Submit
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-
-                        <!-- One big close button -->
-                        <div class="mt-5 sm:mt-6">
-                            <span class="flex w-full rounded-md shadow-sm">
-                                <button @click="open = false"
-                                    class="inline-flex justify-center w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">
-                                    Close this modal!
-                                </button>
-                            </span>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="mt-8 flow-root">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -142,9 +163,11 @@
                                                     alt="">
                                             </div>
                                             <div class="ml-4">
-                                                <div class="font-medium text-gray-900">{{ $appointment->trainer->name }}
+                                                <div class="font-medium text-gray-900">
+                                                    {{ $appointment->trainer->name }}
                                                 </div>
-                                                <div class="mt-1 text-gray-500">{{ $appointment->trainer->email }}</div>
+                                                <div class="mt-1 text-gray-500">{{ $appointment->trainer->email }}
+                                                </div>
                                             </div>
                                         </div>
                                     </td>
@@ -192,19 +215,7 @@
 
 
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <p>{{ $error }}</p>
-            @endforeach
-        </div>
-    @endif
 
-    @if (session('message'))
-        <div class="alert alert-success">
-            <p>{{ session('message') }}</p>
-        </div>
-    @endif
 
 
 
@@ -280,5 +291,23 @@
             });
         });
     </script>
+
+
+
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'timeGridWeek',
+                    slotMinTime: '7:00:00',
+                    slotMaxTime: '22:00:00',
+                    events: @json($events),
+                });
+                calendar.render();
+            });
+        </script>
+    @endpush
 
 </x-member-layout>

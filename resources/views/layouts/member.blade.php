@@ -10,11 +10,12 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css" rel="stylesheet">
 
-    <!-- FullCalendar JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.css" rel="stylesheet" />
 
 
     <link rel="shortcut icon" href="{{ asset('images/workout.png') }}" type="image/x-icon">
@@ -276,37 +277,18 @@
                         </svg>
                     </button>
                     <div class="flex flex-1 justify-end gap-x-4 lg:gap-x-6 p-4">
-                        <div class="relative inline-block text-left">
-                            <div>
-                                <button type="button" id="dropdownButton"
-                                    class="inline-flex w-full justify-center gap-x-1.5  bg-white px-3 py-2 text-sm font-semibold text-red-500 "
-                                    id="menu-button" aria-expanded="true" aria-haspopup="true">
-                                    {{ Auth::user()->name }}
-                                    <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
-                                        aria-hidden="true" data-slot="icon">
-                                        <path fill-rule="evenodd"
-                                            d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                            </div>
+                        <div class="flex items-center space-x-4 hidden md:flex">
+                            <!-- Profile Link -->
+                            <a href="/profile" class="text-sm text-gray-700 hover:text-gray-900">Profile</a>
 
-
-                            <div class="absolute hidden  right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
-                                id="dropdownMenu" role="menu" aria-orientation="vertical"
-                                aria-labelledby="menu-button" tabindex="-1">
-                                <div class="py-1" role="none">
-                                    <!-- Active: "bg-gray-100 text-gray-900 outline-none", Not Active: "text-gray-700" -->
-                                    <form method="POST" action="/logout" class="inline-block text-center mx-auto">
-                                        @csrf
-                                        <button type="submit"
-                                            class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-500">Logout</button>
-                                    </form>
-                                    <a href="/proflie" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                        tabindex="-1" id="menu-item-1">Profile</a>
-                                </div>
-                            </div>
+                            <!-- Logout Form -->
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <button type="submit"
+                                    class="text-sm text-gray-700 hover:text-gray-900">Logout</button>
+                            </form>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -319,39 +301,11 @@
         </div>
     </div>
 
-    <script>
-        const menuButton = document.getElementById('menuButton');
-        const closeMenuButton = document.getElementById('closeMenuButton');
-        const offCanvasMenu = document.getElementById('offCanvasMenu');
-        const dropdownButton = document.getElementById('dropdownButton');
-        const dropdownMenu = document.getElementById('dropdownMenu');
 
-        menuButton.addEventListener('click', () => {
-            offCanvasMenu.classList.add('show');
-        });
 
-        closeMenuButton.addEventListener('click', () => {
-            offCanvasMenu.classList.remove('show');
-        });
-
-        window.addEventListener('click', (event) => {
-            if (!offCanvasMenu.contains(event.target) && !menuButton.contains(event.target)) {
-                offCanvasMenu.classList.remove('show');
-            }
-        });
-        dropdownButton.addEventListener('click', function() {
-            dropdownMenu.classList.toggle('hidden');
-        });
-
-        // Close dropdown if clicked outside
-        window.addEventListener('click', function(event) {
-            if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                dropdownMenu.classList.add('hidden');
-            }
-        });
-    </script>
 
     @stack('scripts')
+
 </body>
 
 </html>
