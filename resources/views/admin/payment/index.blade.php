@@ -2,108 +2,94 @@
     <div class="grid grid-cols-1 p-2 gap-4 md:grid-cols-3">
 
         <div class="md:col-span-1 bg-red-700 rounded-lg p-4 text-white flex justify-center items-center">
-            <div class="w-full max-w-xs">
+            <div class="w-full max-w-xs" x-data="paymentForm()">
 
                 {{-- form --}}
                 <form action="/admin/payments" method="POST" class="max-w-sm mx-auto bg-red-700 p-4 rounded-lg">
                     @csrf
 
-                    {{-- user_id --}}
-                    <label for="user_id" class="block mb-2 text-sm font-medium text-white">Select Member</label>
-                    <select id="user_id" name="user_id"
-                        class="block w-full p-2 mb-6 text-sm text-gray-600 border border-white rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 ">
-                        @foreach ($members as $member)
-                            <option value="{{ $member->id }}">{{ $member->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('user_id')
-                        <div class=" mb-4 text-sm text-white rounded-lg " role="alert">
-                            <span class="font-sm italic">{{ $message }}</span>
-                        </div>
-                    @enderror
-
-                    {{-- session plan --}}
-                    <label for="plan" class="block mb-2 text-sm font-medium text-white">Session Plan</label>
-                    <select id="plan" name="plan"
-                        class="bg-white border text-gray-600 border-gray-300 text-thite mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                        onchange="calculateTotal()">
-                        <option selected value="daily">Daily</option>
-                        <option value="weekly">Weekly</option>
-                        <option value="monthly">Monthly</option>
-                    </select>
-
-                    @error('plan')
-                        <div class=" mb-4 text-sm text-white rounded-lg " role="alert">
-                            <span class="font-sm italic">{{ $message }}</span>
-                        </div>
-                    @enderror
-
-                    {{-- is_student --}}
-                    <label for="is_student" class="block mb-2 text-base font-medium text-white">Select Discount</label>
-                    <select id="is_student" name="is_student"
-                        class="block w-full text-gray-600 px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
-                        onchange="calculateTotal()">
-                        <option value="false" selected>None</option>
-                        <option value="true">Student Discount</option>
-                    </select>
-
-                    @error('is_student')
-                        <div class=" mb-4 text-sm text-white rounded-lg " role="alert">
-                            <span class="font-sm italic">{{ $message }}</span>
-                        </div>
-                    @enderror
-
-                    {{-- is_trainer --}}
-                    <label for="is_trainer" class="block mb-2 text-base font-medium text-white">Trainer Present</label>
-                    <select id="is_trainer" name="is_trainer"
-                        class="block w-full text-gray-600 px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
-                        onchange="calculateTotal()">
-                        <option value="false" selected>No</option>
-                        <option value="true">Yes</option>
-                    </select>
-
-                    @error('is_trainer')
-                        <div class=" mb-4 text-sm text-white rounded-lg " role="alert">
-                            <span class="font-sm italic">{{ $message }}</span>
-                        </div>
-                    @enderror
-
                     <div>
-                        <label for="amount"
-                            class="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-white">Amount</label>
-                        <input type="text" id="amount" name="amount"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="00.00" required readonly />
-                    </div>
+                        <label for="user_id" class="block mb-2 text-sm font-medium text-white">Select Member</label>
+                        <select id="user_id" name="user_id"
+                                x-model="selectedUserId"
+                                class="block w-full p-2 mb-6 text-sm text-gray-600 border border-white rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 ">
+                            <option value="">Select Member</option>
+                            @foreach ($members as $member)
+                                <option value="{{ $member->id }}">{{ $member->name }}</option>
+                            @endforeach
+                        </select>
 
-                    @error('amount')
+                        <p x-show="selectedUser && selectedUser?.is_paid_today">
+                            User is paid until: <span x-text="selectedUser?.paid_until"></span>
+                        </p>
+
+                        @error('user_id')
                         <div class=" mb-4 text-sm text-white rounded-lg " role="alert">
                             <span class="font-sm italic">{{ $message }}</span>
                         </div>
-                    @enderror
+                        @enderror
+                    </div>
 
-                    <div id="date-range-picker" class="flex items-center mt-4">
-                        <div class="relative">
-                            <label for="start_date" class="block mb-2 text-sm font-medium text-white">Start Date</label>
-                            <input id="start_date" name="start" type="date"
-                                class="bg-white text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    {{-- Trainer Payment--}}
+                    <div x-show="selectedUser" class="space-y-4">
+                        <div class="space-y-4" x-show="!selectedUser?.is_paid_today">
+                            <div>
+                                <fieldset class="space-y-4 p-0">
+                                    <template x-for="plan in plans" :key="plan.name">
+                                        <label class="flex items-center cursor-pointer p-2 bg-white border rounded-lg hover:bg-gray-100">
+                                            <input type="radio"
+                                                   name="plan"
+                                                   :value="plan.name"
+                                                   x-model="selectedPlanName"
+                                                   class="mr-3">
+                                            <div>
+                                                <span class="font-medium text-gray-900" x-text="plan.name"></span>
+                                                <p class="text-sm text-gray-500">
+                                                    Price: PHP <span x-text="studentDiscount ? plan.discounted_price : plan.price"></span>
+                                                </p>
+                                            </div>
+                                        </label>
+                                    </template>
+                                </fieldset>
+                            </div>
+
+                            <div class="flex items-center mb-4">
+                                <input type="checkbox"
+                                       id="student-discount"
+                                       name="student_discount"
+                                       x-model="studentDiscount"
+                                       class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+                                <label for="student-discount" class="ml-2 text-sm text-white">
+                                    Apply Student Discount
+                                </label>
+                            </div>
                         </div>
-                        <span class=" text-red-600">-</span>
-                        <div class="relative">
-                            <label for="end_date" class="block mb-2 text-sm font-medium text-white">End Date</label>
-                            <input id="end_date" name="end" type="date"
-                                class="bg-white text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+                        <div>
+                            <div>
+                                <select id="trainer_id" name="trainer_id" x-model="selectedTrainer"
+                                        class="block w-full p-2 mb-6 text-sm text-gray-600 border border-white rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 ">
+                                    <option value="">Select Trainer</option>
+                                    @foreach ($trainers as $trainer)
+                                        <option value="{{ $trainer->id }}">{{ $trainer->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div>
+                                <input id="trainer_hours" name="trainer_hours" type="number"
+                                       x-model="trainer_hours"
+                                       placeholder="No. of Hours"
+                                        class="block w-full p-2 mb-6 text-sm text-gray-600 border border-white rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 "/>
+                                <span>Trainer fee is Php 30.00 per hour</span>
+                            </div>
                         </div>
                     </div>
 
-                    @error('end')
-                        <div class=" mb-4 text-sm text-white rounded-lg " role="alert">
-                            <span class="font-sm italic">{{ $message }}</span>
-                        </div>
-                    @enderror
+                    <p>Total: <span x-text="total"></span></p>
 
                     <button type="submit"
-                        class="text-white mt-4 w-full bg-gray-800 hover:bg-500 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2">
+                            class="text-white mt-4 w-full bg-gray-800 hover:bg-500 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2">
                         Confirm Payment
                     </button>
                 </form>
@@ -112,117 +98,72 @@
         </div>
 
 
-
-        <div class="md:col-span-2 p-4 text-white">
-            <div class="px-4 sm:px-6 lg:px-8">
-                <div class="sm:flex sm:items-center">
-                    <div class="sm:flex-auto">
-                        <h1 class="text-base font-semibold text-gray-900">Recent Transactions</h1>
-                    </div>
-                </div>
-                <div class="mt-8 flow-root">
-                    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                            <table class="min-w-full divide-y divide-gray-300">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"
-                                            class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
-                                            Name</th>
-                                        <th scope="col"
-                                            class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Plan
-                                        </th>
-                                        <th scope="col"
-                                            class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Start Date
-                                        </th>
-                                        <th scope="col"
-                                            class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">End Date
-                                        </th>
-                                        <th scope="col"
-                                            class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-gray-200 bg-white">
-                                    @foreach ($transactions as $transaction)
-                                        <tr>
-                                            <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
-                                                <div class="flex items-center">
-                                                    <div class="size-11 shrink-0">
-                                                        <img class="size-11 rounded-full"
-                                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIEY21qcAFAMli4-I8OVcd9C-BmszpY1MqnA&s0"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="ml-4">
-                                                        <div class="font-medium text-gray-900">
-                                                            {{ $transaction->user->name }}</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                                                <div class="text-gray-900">
-                                                    {{ $transaction->plan }}
-                                                </div>
-                                            </td>
-                                            <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                                                <div class="text-gray-900">
-                                                    {{ \Carbon\Carbon::parse($transaction->start)->format('M d, Y') }}
-                                                </div>
-                                            </td>
-                                            <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                                                <div class="text-gray-900">
-                                                    {{ \Carbon\Carbon::parse($transaction->end)->format('M d, Y') }}
-                                                </div>
-
-                                            </td>
-                                            <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                                                <span
-                                                    class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">{{ $transaction->status }}</span>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        <x-transaction.list :transactions="$transactions"/>
     </div>
 
-
     <script>
-        function calculateTotal() {
-            let baseAmount = 40; // Base amount for daily session
-            let totalAmount = baseAmount;
+        function paymentForm() {
+            return {
+                users: @json($members),
+                selectedUserId: '',
+                selectedPlanName: null,
+                studentDiscount: false,
+                selectedTrainer: "",
+                trainer_hours: 0,
+                plans: [
+                    {
+                        name: "Daily",
+                        days: 1,
+                        price: 40,
+                        discounted_price: 35
+                    },
+                    {
+                        name: "Weekly",
+                        days: 7,
+                        price: 200,
+                        discounted_price: 200
+                    },
+                    {
+                        name: "Monthly",
+                        days: 30,
+                        price: 700,
+                        discounted_price: 600
+                    }
+                ],
+                get selectedUser() {
+                    return this.users.find(user => user.id == this.selectedUserId) || null;
+                },
+                get selectedPlan() {
+                    return this.plans.find(p => p.name === this.selectedPlanName)
+                },
+                get selectedUserHasSessionPaid() {
+                    return !!this.users.find(user => user.id == this.selectedUserId)?.paid_until;
+                },
+                get selectedUserPaidUntil() {
+                    const paid_until = this.users.find(user => user.id == this.selectedUserId)?.paid_until;
 
-            // Check if the session is daily
-            let sessionPlan = document.getElementById('plan').value;
-            if (sessionPlan !== 'daily') {
-                totalAmount = 0; // Change this if you have different pricing for weekly/monthly
-            }
+                    return paid_until ? `Paid until ${paid_until}` : 'No session paid';
+                },
+                get total() {
+                    let total = 0;
 
-            // Check if a trainer is present
-            let isTrainer = document.getElementById('is_trainer').value;
-            if (isTrainer === 'true') {
-                totalAmount += 30; // Add 30 pesos if trainer is present
-            }
+                    if (this.trainer_hours > 0 && this.selectedTrainer) {
+                        total = (this,this.trainer_hours * 30) + total;
+                    }
 
-            // Check if student discount is applied
-            let isStudent = document.getElementById('is_student').value;
-            if (isStudent === 'true') {
-                totalAmount -= 5; // Apply 5 pesos discount for students
-            }
+                    if (this.selectedPlanName) {
+                        const plan = this.plans.find(p => p.name === this.selectedPlanName);
 
-            // Set the total amount in the input field
-            document.getElementById('amount').value = totalAmount.toFixed(2); // Format the amount to 2 decimal places
+                        if (plan) {
+                            total = total + (this.studentDiscount ? plan.discounted_price : plan.price)
+                        }
+                    }
+
+                    return total
+                }
+            };
         }
-
-        // Call the function once to set the initial value
-        calculateTotal();
     </script>
-
 
 
 </x-app-layout>
