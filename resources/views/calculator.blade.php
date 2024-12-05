@@ -3,19 +3,41 @@
     <style>
         /* Custom background image for main content */
         .main-bg {
-            background-image: url('./tbg.png');
+            background-image: url('images/bg.png');
             background-size: cover;
+            background-repeat: no-repeat;
             background-position: center;
-            min-height: 100vh;
+            width: 100vw;
+            min-height: calc(100vh - 6rem);
+            /* Adjusts height to prevent overlap, ensuring room for footer */
+            margin: 0;
+            padding: 0;
         }
 
-        /* Ensure full height for the html and body */
+        #calorie-calculator,
+        #bmi-calculator {
+            padding-bottom: 100px;
+            /* Adds extra space at the bottom */
+        }
+
+
+
         html,
         body {
             height: 100%;
             margin: 0;
-            scroll-behavior: smooth;
-            /* Smooth scrolling */
+            overflow-x: hidden;
+            /* Prevents horizontal scroll */
+            display: flex;
+            flex-direction: column;
+        }
+
+
+
+        #calorieResults,
+        #bmiResults {
+            margin-bottom: 10px;
+            /* Adds space from footer */
         }
 
         /* Card hover effect */
@@ -60,15 +82,25 @@
         .card.hidden {
             display: none;
         }
+
+        #Footlong {
+            background-color: black;
+            color: white;
+            margin: 0;
+            margin-top: -86px;
+            /* Adjust this value as needed */
+
+        }
     </style>
 
 
-    <div class="w-full h-full flex justify-center align-center mt-32">
+
+    <div class="w-full h-full flex justify-center align-center mt-12">
         <div class="flex-column">
-            <!-- Category Section with Three Cards -->
+            <!-- Category Section with 2 Cards -->
             <section id="category" class="main-bg py-20">
-                <div class="card-container flex justify-center items-center gap-12">
-                    <div class="card w-96 h-96 bg-white rounded-lg shadow-lg flex flex-col">
+                <div class="card-container flex justify-center items-center gap-12 ">
+                    <div class="card w-96 h-96 bg-white rounded-lg shadow-lg flex flex-col mt-32">
                         <!-- Image Inside the Card -->
                         <img src="https://myxperiencefitness.com/wp-content/uploads/2021/05/shutterstock_1060688873-scaled.jpg"
                             alt="Calorie Calculator" class="w-full h-48 rounded-t-lg object-cover">
@@ -79,7 +111,7 @@
                             onclick="toggleCalorieCalculator()">Start</button>
                     </div>
 
-                    <div class="card w-96 h-96 bg-white rounded-lg shadow-lg flex flex-col">
+                    <div class="card w-96 h-96 bg-white rounded-lg shadow-lg flex flex-col mt-32">
                         <!-- Image Inside the Card -->
                         <img src="https://www.diabetes.co.uk/wp-content/uploads/2022/09/bmi-calculation.jpg"
                             alt="BMI Calculator" class="w-full h-48 rounded-t-lg object-cover">
@@ -95,7 +127,8 @@
 
 
             <section id="calorie-calculator" class="main-bg flex flex-col items-center justify-start py-10 hidden">
-                <h2 class="text-2xl font-semibold mb-4 text-slate-800">Calorie Calculator</h2>
+                <h2 class="text-2xl font-semibold mb-4 text-black mt-24">Calorie Calculator</h2>
+
                 <form id="calorieForm" class="bg-white p-6 rounded shadow-lg w-full max-w-md">
                     <div class="mb-4">
                         <label for="weight" class="block text-sm font-medium text-gray-700">Weight (kg)</label>
@@ -156,7 +189,7 @@
                 </div>
             </section>
             <section id="bmi-calculator" class="main-bg flex flex-col items-center justify-start py-10 hidden">
-                <h2 class="text-2xl font-semibold mb-4 text-slate-800">BMI Calculator</h2>
+                <h2 class="text-2xl font-semibold mb-4 text-black mt-24">BMI Calculator</h2>
                 <form id="bmiForm" class="bg-white p-6 rounded shadow-lg w-full max-w-md">
                     <div class="mb-4">
                         <label for="weightBMI" class="block text-sm font-medium text-gray-700">Weight (kg)</label>
@@ -200,28 +233,19 @@
 
     </div>
 
-    
+
     <div class="w-full">
-            <section id="Footlong" class="bg-black text-white py-6">
-                <footer class="max-w-7xl mx-auto text-center">
-                    <p class="text-sm">© 2024 Fitness Hub. All rights reserved.</p>
-                    <div class="flex justify-center space-x-4 mt-2">
-                        <a href="#" class="text-white hover:text-red-600">Privacy Policy</a>
-                        <a href="#" class="text-white hover:text-red-600">Terms of Service</a>
-                        <a href="#" class="text-white hover:text-red-600">Contact Us</a>
-                    </div>
-                </footer>
-            </section>
-        </div>
-
-
-
-
-
-
-
-
-
+        <section id="Footlong" class="bg-black text-white py-6">
+            <footer class="max-w-7xl mx-auto text-center">
+                <p class="text-sm">© 2024 Fitness Hub. All rights reserved.</p>
+                <div class="flex justify-center space-x-4 mt-2">
+                    <a href="#" class="text-white hover:text-red-600">Privacy Policy</a>
+                    <a href="#" class="text-white hover:text-red-600">Terms of Service</a>
+                    <a href="#" class="text-white hover:text-red-600">Contact Us</a>
+                </div>
+            </footer>
+        </section>
+    </div>
 
 
 
