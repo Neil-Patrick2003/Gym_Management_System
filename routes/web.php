@@ -159,3 +159,4 @@ Route::get('/member/recommendations', [MemberRecommendationController::class, 'i
 //feedback
 Route::get('member/feedback', [MemberFeedbackController::class, 'index']);
 Route::post('/member/feedback', [MemberFeedbackController::class, 'store']);
+Route::patch('/member/update/photo', [ProfileController::class, 'update_profile']);

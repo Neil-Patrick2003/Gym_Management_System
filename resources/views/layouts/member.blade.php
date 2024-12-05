@@ -132,9 +132,9 @@
                     flex-col">
                         <ul role="list" class="flex flex-1 flex-col gap-y-6 px-4 ">
                             <li>
-                                hi
+
                                 <ul role="list" class=" space-y-1 ">
-                                    <li class="pt-24">
+                                    <li class="pt-12">
                                         <x-member-nav-link href="{{ url('/home') }}" :active="request()->is('home')">
                                             <x-slot:icon>
                                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -256,6 +256,35 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="mt-32">
+                                <center>
+                                    <img class="inline-block size-14 rounded-full"
+                                        src="{{ asset('storage/' . Auth::user()->photo_url) }}" alt="">
+                                </center>
+                                <h1 class="text-md font-bold text-center">{{ Auth::user()->name }}</h1>
+                                <center>
+                                    <form action="/member/update/photo" method="POST" enctype="multipart/form-data"
+                                        id="upload-form">
+                                        @csrf
+                                        @method('Patch')
+                                        <div class="flex flex-col items-center">
+                                            <input type="file" id="file-input" name="profile_photo"
+                                                accept="image/*" onchange="handleFileSelect(event)" class="hidden" />
+
+                                            <button type="button" id="file-button"
+                                                onclick="document.getElementById('file-input').click()"
+                                                class="rounded bg-red-500 w-32 px-4 py-1 text-sm font-semibold text-white shadow-md hover:bg-red-600 transition-all duration-300 ease-in-out">
+                                                Change Photo
+                                            </button>
+                                            <button type="submit" id="submit-button"
+                                                class="border border-red-600  w-32 mt-2 hidden py-1 text-sm font-semibold text-red-600 hover:bg-red-600 hover:text-white transition-all duration-300 ease-in-out">
+                                                Submit
+                                            </button>
+                                        </div>
+
+                                    </form>
+                                </center>
+                            </li>
 
                         </ul>
 
@@ -301,6 +330,16 @@
         </div>
     </div>
 
+    <script>
+        function handleFileSelect(event) {
+            var file = event.target.files[0];
+
+            if (file) {
+                document.getElementById('file-button').textContent = 'Change Photo';
+                document.getElementById('submit-button').classList.remove('hidden');
+            }
+        }
+    </script>
 
 
 
