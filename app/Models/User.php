@@ -68,7 +68,7 @@ class User extends Authenticatable
 
     public function trainingAppointment(): HasMany
     {
-        return $this->hasMany(Appointment::class, 'user_id');
+        return $this->hasMany(Appointment::class, 'trainer_id');
     }
 
     public function Recommendation()
@@ -118,6 +118,7 @@ class User extends Authenticatable
     public function scopeAvailableTrainer(Builder $builder)
     {
         $now = Carbon::now();
+
 
         $builder->where('role', 'Trainer')
             ->whereDoesntHave('supervisingSessions', function (Builder $query) {
