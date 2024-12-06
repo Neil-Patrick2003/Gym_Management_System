@@ -13,19 +13,19 @@
                     class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-t border-gray-900/5 px-4 py-10 sm:border-l sm:px-6 lg:border-t-0 xl:px-8">
                     <dt class="text-sm/6 font-medium text-gray-500">Active</dt>
                     <dd class="text-xs font-medium text-rose-600"></dd>
-                    <dd class="w-full flex-none text-3xl/10 font-medium tracking-tight text-gray-900"></dd>
+                    <dd class="w-full flex-none text-3xl/10 font-medium tracking-tight text-gray-900">{{$active_members_count}}</dd>
                 </div>
                 <div
                     class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-t border-gray-900/5 px-4 py-10 sm:px-6 lg:border-l lg:border-t-0 xl:px-8">
-                    <dt class="text-sm/6 font-medium text-gray-500">Not Active</dt>
+                    <dt class="text-sm/6 font-medium text-gray-500">Inactive</dt>
                     <dd class="text-xs font-medium text-gray-700"></dd>
-                    <dd class="w-full flex-none text-3xl/10 font-medium tracking-tight text-gray-900"></dd>
+                    <dd class="w-full flex-none text-3xl/10 font-medium tracking-tight text-gray-900">{{$inactive_members_count}}</dd>
                 </div>
                 <div
                     class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-t border-gray-900/5 px-4 py-10 sm:border-l sm:px-6 lg:border-t-0 xl:px-8">
                     <dt class="text-sm/6 font-medium text-gray-500">Join Today</dt>
                     <dd class="text-xs font-medium text-rose-600"></dd>
-                    <dd class="w-full flex-none text-3xl/10 font-medium tracking-tight text-gray-900"></dd>
+                    <dd class="w-full flex-none text-3xl/10 font-medium tracking-tight text-gray-900">{{$joined_today_members_count}}</dd>
                 </div>
             </dl>
         </div>
