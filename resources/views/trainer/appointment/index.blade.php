@@ -3,10 +3,13 @@
 
 
 
-        <div class="px-4 py-5  sm:px-6">
-            <h1 class="text-base font-semibold text-gray-900">Appointments</h1>
+        <div class="px-4 py-5 bg-gradient-to-r from-red-500 to-orange-500 sm:px-6">
+            <h1 class="text-base font-bold text-lg font-semibold text-gray-900">Appointments</h1>
+            <p class="text-white font-md"></p>
         </div>
-        <div class="p-0">
+        <div class="p-0 ">
+
+
 
 
             <div class="relative  overflow-x-auto shadow-md  bg-blue-700">
