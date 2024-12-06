@@ -112,24 +112,24 @@ class AdminController extends Controller
         }
 
         // Fetch recommendation counts grouped by type
-$recommendationCounts = DB::table('recommendations')
-->select('type', DB::raw('COUNT(*) as count'))
-->groupBy('type')
-->get();
+        $recommendationCounts = DB::table('recommendations')
+            ->select('type', DB::raw('COUNT(*) as count'))
+            ->groupBy('type')
+            ->get();
 
 
 
-       // Return the data to the view
-return view('admin/index', [
-    'user' => $user,
-    'stats' => $stats,
-    'roles' => $roles,
-    'programs' => $programs,
-    'roleCounts' => $roleCounts,
-    'transactions' => $transactions,
-    'statusCounts' => $statusCounts,
-    'recommendationCounts' => $recommendationCounts,  // Pass the counts of recommendations by type
-]);
+        // Return the data to the view
+        return view('admin/index', [
+            'user' => $user,
+            'stats' => $stats,
+            'roles' => $roles,
+            'programs' => $programs,
+            'roleCounts' => $roleCounts,
+            'transactions' => $transactions,
+            'statusCounts' => $statusCounts,
+            'recommendationCounts' => $recommendationCounts,  // Pass the counts of recommendations by type
+        ]);
 
 
     }
