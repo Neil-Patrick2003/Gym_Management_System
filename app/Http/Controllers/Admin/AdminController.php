@@ -40,7 +40,7 @@ class AdminController extends Controller
             ->groupBy('name')
             ->get();
 
-        // Fetch other stats
+
         $total_trainers = User::trainer()->count();
         $total_members = User::member()->count();
         $total_accepted_appointments = Appointment::whereStatus('Accepted')->count();
@@ -93,6 +93,7 @@ class AdminController extends Controller
             ]
         ];
 
+
         // Fetch individual transactions
         $transactions = DB::table('transactions')
             ->select('created_at', 'amount')
@@ -129,6 +130,7 @@ return view('admin/index', [
     'statusCounts' => $statusCounts,
     'recommendationCounts' => $recommendationCounts,  // Pass the counts of recommendations by type
 ]);
+
 
     }
 }

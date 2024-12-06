@@ -1,56 +1,39 @@
 <x-trainer-layout>
 
+    <div class="px-6 py-8 bg-gray-700 sm:px-8 rounded-lg shadow-lg">
+        <h1 class="text-white text-2xl font-semibold mb-4">Write a Member Recommendation</h1>
+        <p class="text-gray-300 text-lg">Welcome to our community space! Here, you can share your valuable thoughts and
+            experiences about our members. Writing a recommendation not only helps highlight someone's strengths but
+            also contributes to building a stronger, more supportive network.</p>
+    </div>
 
-    <div class="px-4 sm:px-6 lg:px-8">
-        <div class="sm:flex sm:items-center">
-            <div class="sm:flex-auto">
-                <h1 class="text-base font-semibold text-gray-900">Users</h1>
-                <p class="mt-2 text-sm text-gray-700">A list of all the users in your account including their name,
-                    title, email and role.</p>
-            </div>
-            <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                <button type="button"
-                    class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add
-                    user</button>
-            </div>
-        </div>
-        <div class="mt-8 flow-root">
-            <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                    <div class="overflow-hidden shadow ring-1 ring-black/5 sm:rounded-lg">
-                        <table class="min-w-full divide-y divide-gray-300">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th scope="col"
-                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                        Name</th>
-                                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                        <span class="sr-only">Edit</span>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-200 bg-white">
-                                @foreach ($members as $member)
-                                    <tr>
-                                        <td
-                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                            {{ $member->name }}</th>
-                                        </td>
-                                        <td
-                                            class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                            <a href="/trainer/recommendations/create/{{ $member->id }}"
-                                                class="text-indigo-600 hover:text-indigo-900">Add Recommendation<span
-                                                    class="sr-only"></span></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+
+
+    <ul role="list" class="divide-y mt-4 divide-gray-100 overflow-hidden bg-white border shadow-sm sm:rounded-xl">
+        @foreach ($members as $member)
+            <li class="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6">
+                <div class="flex min-w-0 gap-x-4">
+                    <img class="size-12 flex-none rounded-full bg-gray-50"
+                        src="{{ asset('storage/' . $member->photo_url) }}" alt="">
+                    <div class="min-w-0 flex-auto">
+                        <p class="text-sm/6 font-semibold text-gray-900">
+                            {{ $member->name }}
+                        </p>
+                        <p class="mt-1 flex text-xs/5 text-gray-500">
+                            {{ $member->email }}
+                        </p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+                <div class="flex shrink-0 items-center gap-x-4">
+                    <a href="/trainer/recommendations/create/{{ $member->id }}"
+                        class="hidden rounded-md bg-gradient-to-r from-red-500 to-orange-500 px-2.5 py-1.5 text-sm font-semibold text-gray-200 shadow-md ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">Write
+                        Recommendation
+                        <span class="sr-only">, GraphQL API</span></a>
+                </div>
+            </li>
+        @endforeach
+    </ul>
+
 
 
 </x-trainer-layout>
