@@ -1,36 +1,38 @@
 <x-trainer-layout>
 
-    <div class="overflow-hidden mt-4 border rounded-lg bg-gray-100 shadow">
+
+
+    <div class="overflow-hidden h-full mt-4 border rounded-lg bg-gray-100 shadow">
         <div class="px-4 py-5 sm:p-6">
-            <div class="chart-container bg-white p-6 h-96">
+            <div class="flex justify-center items-center ">
+                <!-- Dashboard heading styling -->
+                <h3 class="text-4xl font-semibold text-gray-800 pb-2 mb-6">Dashboard</h3>
+            </div>
+            <div class="chart-container mt-4 bg-white p-6 h-96">
                 <h2 class="chart-title">Daily Sales for {{ $currentMonth }}</h2>
                 <canvas id="salesChart" width="100" height="50"></canvas>
             </div>
             <div class="grid mt-8 mx-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
 
                 @foreach ($stats as $stat)
-                <div class="relative bg-white shadow-sm space-y-2">
-                    <!-- Title div that overlaps the left side of the card -->
-                    <div class="w-full py-1 px-2 bg-red-500 text-white -ml-5 mt-2">
-                      <p class="text-lg font-semibold tracking-wide">{{ $stat['title'] }}</p>
+                    <div class="relative bg-white shadow-sm space-y-2">
+                        <!-- Title div that overlaps the left side of the card -->
+                        <div class="w-full py-1 px-2 bg-red-500 text-white -ml-5 mt-2">
+                            <p class="text-lg font-semibold tracking-wide">{{ $stat['title'] }}</p>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="p-5">
+                            <p class="text-3xl text-slate-800 font-thin">{{ $stat['value'] }}</p>
+                        </div>
                     </div>
-                    
-                    <!-- Card Content -->
-                    <div class="p-5">
-                      <p class="text-3xl text-slate-800 font-thin">{{ $stat['value'] }}</p>
-                    </div>
-                  </div>
                 @endforeach
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="overflow-hidden mt-4 border rounded-lg bg-gray-100 shadow">
-        <div class="px-4 py-5 sm:p-6">
-            Today Schedules
-        </div>
-    </div>
+
 
 
 

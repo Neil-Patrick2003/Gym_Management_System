@@ -19,7 +19,6 @@ class TrainerController extends Controller
      */
     public function index()
     {
-
         $members = User::member()->get();
 
         $total_accepted_appointments = Appointment::whereStatus('Accepted')
@@ -56,7 +55,6 @@ class TrainerController extends Controller
                 "value" => $total_recommendations,
             ],
         ];
-
 
         $salesData = TransactionItem::selectRaw('SUM(sub_total) as total_sales, DATE(created_at) as date')
             ->where('trainer_id', Auth::id())

@@ -17,7 +17,8 @@ class RecommendationController extends Controller
     {
         $members = User::where('role', '=', 'Member')->get();
 
-        // dd($members->toArray());
+
+        
 
         return view('trainer.recommendation.index', [
             'members' => $members
@@ -29,11 +30,12 @@ class RecommendationController extends Controller
      */
     public function create($id)
     {
-
         $member = User::find($id);
+        $recommendations = Recommendation::where( 'user_id', '=', $id)->get();
 
         return view('trainer.recommendation.create', [
-            'member' => $member
+            'member' => $member,
+            'recommendations' => $recommendations
         ]);
     }
 
