@@ -13,11 +13,15 @@
     <link rel="shortcut icon" href="{{ asset('images/workout.png') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('images/workout.png') }}" type="image/png" sizes="114x114">
     <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-    @vite('resources/js/modal.js')
-    @vite('resources/js/filters.js')
+
+    <script src="{{ asset('js/modal.js') }}"></script>
+{{--    @vite('resources/js/filters.js')--}}
 
 
 

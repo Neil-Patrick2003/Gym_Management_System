@@ -10,70 +10,53 @@ use Illuminate\Support\Facades\Auth;
 
 class TimeSheetController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function checkin(Request $request)
     {
         $start_time = Carbon::now();
 
-
-        $timesheet = Timesheet::create([
+        Timesheet::create([
             'user_id' => Auth::id(),
-            'trainer_id' => $request->trainer_id,
+            'trainer_id' => $request->post('trainer_id'),
             'start_time' => $start_time,
         ]);
 
+        return redirect()->back();
+    }
+
+    public function checkout(Timesheet $timesheet)
+    {
+        $timesheet->update(['end_time' => Carbon::now()]);
 
         return redirect()->back();
-
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function addTrainer(Request $request, Timesheet $timesheet)
     {
-        //
+        $timesheet->update(['end_time' => Carbon::now()]);
+
+        Timesheet::create([
+            'user_id' => Auth::id(),
+            'trainer_id' => $request->post('trainer_id'),
+            'start_time' => Carbon::now(),
+        ]);
+
+        return redirect()->back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function removeTrainer(Timesheet $timesheet)
     {
-        //
-    }
+        $timesheet->update(['end_time' => Carbon::now()]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        Timesheet::create([
+            'user_id' => Auth::id(),
+            'trainer_id' => null,
+            'start_time' => Carbon::now(),
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-
+        return redirect()->back();
     }
 }

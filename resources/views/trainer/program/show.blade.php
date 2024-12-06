@@ -184,69 +184,89 @@
             </div>
         </div>
 
+
+
+
+
         <script>
+            function openModal() {
+                document.getElementById('show_video').classList.remove('hidden');
+            }
+
+            // Function to close the modal
+            function closeModal() {
+                document.getElementById('show_video').classList.add('hidden');
+            }
+
+
             $(document).ready(function() {
+
+                // Open the modal when a button with class 'open-modal' is clicked
                 $('.open-modal').click(function() {
-                    const modalId = $(this).data('modal');
-                    $('#' + modalId).removeClass('hidden').addClass('block');
-
-
+                    const modalId = $(this).data('modal'); // Get the modal's ID from data-modal attribute
+                    $('#' + modalId).removeClass('hidden').addClass('block'); // Show the modal
                 });
 
+                // Close the modal when a button with class 'close-modal' is clicked
                 $('.close-modal').click(function() {
-                    const modalId = $(this).data('modal');
-                    $('#' + modalId).removeClass('block').addClass('hidden');
+                    const modalId = $(this).data('modal'); // Get the modal's ID from data-modal attribute
+                    $('#' + modalId).removeClass('block').addClass('hidden'); // Hide the modal
                 });
 
+                // Close the modal if you click outside of it (on the overlay)
                 $(window).click(function(event) {
                     $('.modal').each(function() {
-                        if ($(event.target).is(this)) {
-                            $(this).removeClass('block').addClass('hidden');
+                        if ($(event.target).is(this)) { // If the click is on the modal background
+                            $(this).removeClass('block').addClass('hidden'); // Hide the modal
                         }
                     });
                 });
 
+                // Handle form submission using AJAX to submit form data without reloading
                 $('#ScheduleForm').submit(function(e) {
-                    e.preventDefault();
+                    e.preventDefault(); // Prevent the default form submission
 
-                    var formData = new FormData(this);
-                    var programId = $('input[name="program_id"]').val();
+                    var formData = new FormData(this); // Create a FormData object to hold form data
+                    var programId = $('input[name="program_id"]').val(); // Get the program ID from the form
 
                     $.ajax({
                         type: 'POST',
-                        url: `/trainer/programs/program/{programId}`,
-                        data: formData,
+                        url: `/trainer/programs/program/${programId}`, // URL to send the POST request
+                        data: formData, // Send the form data
                         cache: false,
                         contentType: false,
                         processData: false,
                         success: function(data) {
-                            console.log(data);
+                            console.log(data); // Log the response from the server
                             $('#success-message').text(data.success).removeClass('hidden').fadeIn()
                                 .delay(3000)
-                                .fadeOut();
+                                .fadeOut(); // Show success message and hide it after 3 seconds
                             $('.close-modal[data-modal="modal1"]').trigger(
                                 'click'); // Close the modal
-                            location.reload();
+                            location
+                                .reload(); // Reload the page (you could update parts of the page dynamically instead)
                         },
                         error: function(xhr) {
-                            console.error(xhr.responseText);
-                            alert("An error occurred: " + xhr.status + " " + xhr.statusText);
+                            console.error(xhr.responseText); // Log errors
+                            alert("An error occurred: " + xhr.status + " " + xhr
+                                .statusText); // Show error alert
                         }
                     });
                 });
 
+                // Open the modal and populate dynamic fields based on button data
                 document.querySelectorAll('.open-modal').forEach(button => {
                     button.addEventListener('click', function() {
-                        const modal = document.getElementById(this.dataset.modal);
-                        const programId = this.dataset.id;
-                        const programName = this.dataset.name;
+                        const modal = document.getElementById(this.dataset.modal); // Get modal element
+                        const programId = this.dataset.id; // Get program ID from button data
+                        const programName = this.dataset.name; // Get program name from button data
 
                         // Populate modal fields
                         document.getElementById('program-schedule-id').value = programId;
                         document.getElementById('modal-program-name').textContent =
-                            `Add Exercise to ${programName}`;
+                            `Add Exercise to ${programName}`; // Set program name in modal header
 
-                        // Show modal
+                        // Show the modal
                         modal.classList.remove('hidden');
                     });
                 });

@@ -1,4 +1,5 @@
 <x-app-layout>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <x-slot name="header">
@@ -171,4 +172,16 @@
             }
         });
     </script>
+
+    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            @foreach($stats as $stat)
+                <div class="bg-white p-5 shadow-sm space-y-2">
+                    <p class="text-lg font-semibold tracking-wide">{{$stat['title']}}</p>
+                    <p class="text-3xl text-slate-800 font-thin">{{$stat['value']}}</p>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
 </x-app-layout>

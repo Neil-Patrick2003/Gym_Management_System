@@ -1,52 +1,114 @@
 <x-trainer-layout>
 
-    {{-- <ul role="list" class="grid grid-cols-1  gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        @foreach ($members as $member)
-            <li class="col-span-1 divide-y divide-white bg-zinc-800 rounded-lg bg- shadow">
-                <div class="flex w-full items-center justify-between space-x-6 p-6">
-                    <div class="flex-1 truncate">
-                        <div class="flex items-center space-x-3">
-                            <h3 class="truncate text-sm font-medium text-gray-900">{{$member->name}} </h3>
-                            <span
-                                class="inline-flex shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Admin</span>
-                        </div>
-                        <p class="mt-1 truncate text-sm text-gray-500">Regional Paradigm Technician</p>
-                    </div>
-                    <img class="h-10 w-10 shrink-0 rounded-full bg-gray-300"
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
-                        alt="">
-                </div>
-                <div>
-                    <div class="-mt-px flex divide-x divide-gray-200">
-                        <div class="flex w-0 flex-1">
-                            <a href="mailto:janecooper@example.com"
-                                class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true" data-slot="icon">
-                                    <path
-                                        d="M3 4a2 2 0 0 0-2 2v1.161l8.441 4.221a1.25 1.25 0 0 0 1.118 0L19 7.162V6a2 2 0 0 0-2-2H3Z" />
-                                    <path
-                                        d="m19 8.839-7.77 3.885a2.75 2.75 0 0 1-2.46 0L1 8.839V14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.839Z" />
-                                </svg>
-                                Email
-                            </a>
-                        </div>
-                        <div class="-ml-px flex w-0 flex-1">
-                            <a href="tel:+1-202-555-0170"
-                                class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true" data-slot="icon">
-                                    <path fill-rule="evenodd"
-                                        d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 0 0 6.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 0 1 2.43 8.326 13.019 13.019 0 0 1 2 5V3.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                Call
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        @endforeach
-    </ul> --}}
 
+
+    <div class="overflow-hidden h-full mt-4 border rounded-lg bg-gray-100 shadow">
+        <div class="px-4 py-5 sm:p-6">
+            <div class="flex justify-center items-center ">
+                <!-- Dashboard heading styling -->
+                <h3 class="text-4xl font-semibold text-gray-800 pb-2 mb-6">Dashboard</h3>
+            </div>
+            <div class="chart-container mt-4 bg-white p-6 h-96">
+                <h2 class="chart-title">Daily Sales for {{ $currentMonth }}</h2>
+                <canvas id="salesChart" width="100" height="50"></canvas>
+            </div>
+            <div class="grid mt-8 mx-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
+
+                @foreach ($stats as $stat)
+                    <div class="relative bg-white shadow-sm space-y-2">
+                        <!-- Title div that overlaps the left side of the card -->
+                        <div class="w-full py-1 px-2 bg-red-500 text-white -ml-5 mt-2">
+                            <p class="text-lg font-semibold tracking-wide">{{ $stat['title'] }}</p>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="p-5">
+                            <p class="text-3xl text-slate-800 font-thin">{{ $stat['value'] }}</p>
+                        </div>
+                    </div>
+                @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script>
+        // Get the data from the PHP variables passed to the Blade view
+        var dates = @json($dates); // List of dates (YYYY-MM-DD)
+        var sales = @json($sales); // Sales data for each date
+
+        // Format the dates to show only the day (e.g., "1", "2", "3", etc.)
+        var formattedDates = dates.map(function(date) {
+            return new Date(date).getDate(); // Extract only the day of the month
+        });
+
+        // Create the chart
+        var ctx = document.getElementById('salesChart').getContext('2d');
+
+        // Create gradient for line
+        var gradientStroke = ctx.createLinearGradient(0, 0, 0, 400);
+        gradientStroke.addColorStop(0, "rgba(75, 192, 192, 1)");
+        gradientStroke.addColorStop(1, "rgba(75, 192, 192, 0.2)");
+
+        var gradientFill = ctx.createLinearGradient(0, 0, 0, 400);
+        gradientFill.addColorStop(0, "rgba(75, 192, 192, 0.2)");
+        gradientFill.addColorStop(1, "rgba(75, 192, 192, 0)");
+
+        var salesChart = new Chart(ctx, {
+            type: 'line', // Line chart type
+            data: {
+                labels: formattedDates, // X-axis labels (days of the month)
+                datasets: [{
+                    label: 'Total Sales (Profits)', // Label for the dataset
+                    data: sales, // Y-axis data (sales)
+                    borderColor: gradientStroke, // Line color (gradient)
+                    backgroundColor: gradientFill, // Fill color (gradient)
+                    fill: true, // Fill the area under the line
+                    tension: 0.4, // Smoothness of the line
+                    pointRadius: 5, // Point size
+                    pointBackgroundColor: 'rgb(75, 192, 192)', // Point color
+                    pointHoverRadius: 7, // Hover effect on point
+                    pointHoverBackgroundColor: 'rgb(0, 123, 255)', // Hover color on point
+                }]
+            },
+            options: {
+                responsive: true, // Makes the chart responsive
+                maintainAspectRatio: false, // Avoids fixed aspect ratio
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            // Custom tooltip to display both date and sales
+                            label: function(context) {
+                                var date = formattedDates[context.dataIndex]; // Get the day from X-axis
+                                var salesAmount = context.raw; // Get sales data from Y-axis
+                                return 'Day ' + date + ': ' + salesAmount.toFixed(2); // Display in the tooltip
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true, // Ensures Y-axis starts from 0
+                        ticks: {
+                            callback: function(value) {
+                                return '' + value.toFixed(2); // Format Y-axis with dollar sign
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            callback: function(value) {
+                                return 'Day ' + value; // Format X-axis to show "Day X"
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </x-trainer-layout>

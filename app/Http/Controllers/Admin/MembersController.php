@@ -11,8 +11,10 @@ class MembersController extends Controller
 
     public function index()
     {
-
-        $all_members = User::where('role', '=', 'Member')->count();
+        $all_members = User::member()->count();
+        $active_members_count= User::member()->active()->count();
+        $inactive_members_count= User::member()->inactive()->count();
+        $joined_today_members_count= User::member()->joinedToday()->count();
 
         $members = User::where('role', '=', 'Member')
             ->orderBy('created_at', 'desc')
@@ -21,6 +23,9 @@ class MembersController extends Controller
         return view('admin.member.index', [
             'members' => $members,
             'all_members' => $all_members,
+            'active_members_count' => $active_members_count,
+            'inactive_members_count' => $inactive_members_count,
+            'joined_today_members_count' =>$joined_today_members_count
         ]);
     }
 
