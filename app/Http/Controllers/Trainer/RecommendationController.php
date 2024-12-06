@@ -18,16 +18,13 @@ class RecommendationController extends Controller
         $members = User::where('role', '=', 'Member')->get();
 
 
-        
+
 
         return view('trainer.recommendation.index', [
             'members' => $members
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create($id)
     {
         $member = User::find($id);

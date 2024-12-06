@@ -43,13 +43,7 @@ class AdminController extends Controller
             ->groupBy('name')
             ->get();
 
-        return view('admin.index', [
-            'user' => $user,
-            'roles' => $roles,
-            'programs' => $programs,
-            'roleCounts' => $roleCounts // Pass the role counts
 
-        $user = Auth::user();
 
         $total_trainers = User::trainer()->count();
         $total_members = User::member()->count();
@@ -105,7 +99,10 @@ class AdminController extends Controller
 
         return view('admin/index', [
             'user' => $user,
-            'stats' => $stats
+            'stats' => $stats,
+            'roles' => $roles,
+            'programs' => $programs,
+            'roleCounts' => $roleCounts
 
         ]);
     }
