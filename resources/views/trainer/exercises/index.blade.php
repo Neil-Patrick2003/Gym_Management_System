@@ -37,7 +37,7 @@
     <!-- Modal Structure for each exercise -->
     @foreach ($exercises as $exercise)
         <div id="exerciseModal-{{ $exercise->id }}" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50 text-slate-800 hidden">
-            <div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-3xl mx-auto">
+            <div class="border bg-white p-6 rounded-lg shadow-xl w-full max-w-3xl mx-auto">
                 <!-- Modal Title -->
                 <h2 class="text-2xl font-semibold mb-4 text-gray-800">{{ $exercise->name }}</h2>
 
