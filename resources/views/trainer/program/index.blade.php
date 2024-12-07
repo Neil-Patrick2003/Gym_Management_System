@@ -1,10 +1,30 @@
 <x-trainer-layout>
 
-    <h1 class="p-4">
-        All Programs
-    </h1>
+    <div class="relative p-4">
+        <!-- Heading - Align Left -->
+        <h1 class="text-2xl font-semibold text-gray-800 ">
+            All Programs
+        </h1>
+
+        <!-- Button - Align Right -->
+        <button onclick="openModal()"
+            class="absolute top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg flex items-center space-x-2 transition-all duration-300 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">
+            <!-- SVG Icon -->
+            <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                    d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z"
+                    clip-rule="evenodd" />
+            </svg>
+
+            <!-- Button Text -->
+            <span class="text-lg font-medium">Add</span>
+        </button>
+    </div>
+
+
     @if (session('success'))
-        <div id="success-alert" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+        <div id="success-alert" class="mt-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
             role="alert">
             <span class="block sm:inline">{{ session('success') }}</span>
             <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
@@ -19,6 +39,8 @@
             </span>
         </div>
     @endif
+
+
     @foreach ($programs as $program)
         <a href="/trainer/programs/{{ $program->id }}" class="text-white text-lg font-normal hover:underline">
             <div class="relative border border-gray-300 rounded-lg mb-4 overflow-hidden"
@@ -33,8 +55,8 @@
                 <div class="absolute px-4 py-4 inset-0 bg-black/50 flex items-end justify-between">
                     <div>
                         <h2 class="text-white text-2xl sm:text-4xl md:text-6xl font-bold">{{ $program->name }}</h2>
-                        haaaa
-                        <h2 class="text-white text-2xl sm:text-4xl md:text-6xl font-bold">{{ $program->level }}</h2>
+                        
+                        <h2 class="text-white text-2xl sm:text-xl md:text-2xl font-bold">{{ $program->level }}</h2>
 
                         <p class="text-white text-sm sm:text-base md:text-lg">Created by: {{ $program->created_by }}</p>
 
@@ -67,9 +89,7 @@
 
 
 
-    <button onclick="openModal()" class="bg-blue-500 text-white px-4 py-2 rounded-md">
-        Open Modal
-    </button>
+
 
     <div class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="myModal">
         <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
@@ -129,9 +149,9 @@
                                 </div>
                                 <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                                     <button type="submit"
-                                        class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Cancel</button>
+                                        class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">ADD</button>
                                     <button onclick="closeModal()" type="button"
-                                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Add</button>
+                                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">CANCEL</button>
                                 </div>
                             </form>
                         </div>
@@ -182,7 +202,7 @@
         // Function to close the modal
         function closeModal() {
             document.getElementById('myModal').classList.add('hidden');
-        }   
+        }
     </script>
 
 </x-trainer-layout>

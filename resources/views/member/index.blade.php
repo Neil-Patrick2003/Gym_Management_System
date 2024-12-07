@@ -2,14 +2,19 @@
 
 
     <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="col-span-3 gap-y-4">
+        <div class="col-span-4 gap-y-4">
             <div class="overflow-hidden">
                 <div class="h-36 bg-none border bg-center rounded-lg w-full p-4 mb-4"
                     style="background-image: url('{{ asset('images/final.1.png') }}');">
                     <div class="flex flex-row space-between text-neutral-100 h-full">
-                        <div class="flex-col">
-                            <h1 class="text-xl text-neutral-50 font-bold">Keep on Track on your journey</h1>
-                            <p>"SASHSJFBSHFG.."</p>
+                        <div class="flex flex-col items-center bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-400 p-8 rounded-lg shadow-lg mb-6">
+                            <!-- Title Section -->
+                            <h1 class="text-4xl font-extrabold text-white leading-tight mb-4">
+                                Keep on Track on Your Journey
+                            </h1>
+                            <p class="text-lg text-neutral-200 w-full text-center">
+                                Stay focused and track your progress with our easy-to-use dashboard.
+                            </p>
                         </div>
                         <div>
                             <img src="{{ asset('images/header-bg.png') }}" alt="" class="h-32 w-56 object-cover">
@@ -80,13 +85,7 @@
             </div>
 
         </div>
-        <div>
-            <div class="border overflow-hidden rounded-lg bg-white shadow">
-                <div class="px-4 py-5 sm:p-6">
-                    <!-- Content goes here -->
-                </div>
-            </div>
-        </div>
+        
 
     </div>
     <div class="overflow-hidden border rounded-lg bg-white w-full shadow">

@@ -32,26 +32,9 @@
     <!-- Recommendation Form Section -->
     <div class="overflow-hidden mt-6 shadow-md sm:rounded-lg bg-white">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
-            <!-- Left Side (Empty) -->
-            <div class="col-span-1 bg-gray-100 p-4">
-
-                Recommendations
-                <div class="col-span-1 bg-gray-100 p-4 max-h-64 overflow-y-auto">
-                    @foreach ($recommendations as $recommendation)
-                        <div
-                            class="relative flex mt-2 items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
-                            <div class="min-w-0 flex-1">
-                                <span class="absolute inset-0" aria-hidden="true"></span>
-                                <p class="text-sm font-medium text-gray-900">{{$recommendation->content}}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-            </div>
 
             <!-- Right Side (Form) -->
-            <div class="col-span-2 bg-white border-2 border-gray-200 rounded-lg shadow-md p-6">
+            <div class="col-span-3 bg-white border-2 border-gray-200 rounded-lg shadow-md p-6">
                 <form action="/trainer/recommendations/create/{{ $member->id }}" method="POST">
                     @csrf
                     <!-- Category Select -->

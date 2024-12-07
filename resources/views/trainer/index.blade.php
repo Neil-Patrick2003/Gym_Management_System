@@ -2,12 +2,8 @@
 
 
 
-    <div class="overflow-hidden h-full mt-4 border rounded-lg bg-gray-100 shadow">
+    <div class="overflow-hidden h-full border rounded-lg bg-gray-100 shadow">
         <div class="px-4 py-5 sm:p-6">
-            <div class="flex justify-center items-center ">
-                <!-- Dashboard heading styling -->
-                <h3 class="text-4xl font-semibold text-gray-800 pb-2 mb-6">Dashboard</h3>
-            </div>
             <div class="chart-container mt-4 bg-white p-6 h-96">
                 <h2 class="chart-title">Daily Sales for {{ $currentMonth }}</h2>
                 <canvas id="salesChart" width="100" height="50"></canvas>

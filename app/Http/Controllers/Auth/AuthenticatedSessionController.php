@@ -19,25 +19,34 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
-
     public function store(LoginRequest $request): RedirectResponse
     {
+        // Authenticate the user
         $request->authenticate();
 
+        // Regenerate the session to prevent session fixation attacks
         $request->session()->regenerate();
 
+        // Ensure that the user is available
+        $user = $request->user();
 
-        $role = $request->user()->role;
+        // If no user is logged in, redirect them to the login page
+        if (!$user) {
+            return redirect()->route('login');
+        }
 
-        if ($role === 'Member') {
-            return redirect()->intended(route('member_dashboard'));
+        // Check the role of the authenticated user
+        $role = $user->role;
+
+        // Redirect based on the user's role
+        if ($role === 'Admin') {
+            return redirect()->intended(route('dashboard'));
         } elseif ($role === 'Trainer') {
-            if($request->user)
             return redirect()->intended(route('trainer_dashboard'));
         }
 
-
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Default redirect for other roles (assuming "Member" role here)
+        return redirect()->intended(route('member_dashboard'));
     }
 
     /**

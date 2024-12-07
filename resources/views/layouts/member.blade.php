@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-white">
+<html lang="en" class="h-full bg-gray-200">
 
 <head>
     <meta charset="UTF-8">
@@ -42,7 +42,7 @@
     </style>
 </head>
 
-<body class="h-full bg-white">
+<body class="h-full bg-gray-200">
 
     <div>
         <!-- Off-Canvas Menu -->
@@ -127,7 +127,8 @@
 
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:w-60 lg:flex-col">
             <div class="flex grow flex-col overflow-y-auto">
-                <div class="h-full p-0 bg-white border border-red-500 border-lg">
+                <div class="h-full p-0 bg-white border border-red-500 border-lg 
+                ">
                     <nav class="flex flex-1
                     flex-col">
                         <ul role="list" class="flex flex-1 flex-col gap-y-6 px-4 ">
@@ -263,7 +264,8 @@
                                 </center>
                                 <h1 class="text-md font-bold text-center">{{ Auth::user()->name }}</h1>
                                 <center>
-                                    <form action="/member/update/photo" method="POST" enctype="multipart/form-data"
+                                    <form action="/member/update/photo" meth
+                                    od="POST" enctype="multipart/form-data"
                                         id="upload-form">
                                         @csrf
                                         @method('Patch')
