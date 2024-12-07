@@ -33,13 +33,8 @@
                 <label for="remember_me" class="ml-2 text-sm text-white">{{ __('Remember me') }}</label>
             </div>
 
-            <div class="flex items-center justify-between">
-                @if (Route::has('password.request'))
-                    <a href="{{ route('password.request') }}"
-                        class="text-sm text-white hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
+            <div class="flex items-center justify-end">
+                
 
                 <!-- Updated Login Button -->
                 <x-primary-button
